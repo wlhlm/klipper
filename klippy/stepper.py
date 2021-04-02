@@ -125,7 +125,7 @@ class MCU_stepper:
                                                self._step_dist)
             self.set_trapq(self._trapq)
         return old_sk
-    def note_homing_end(self, did_trigger=False):
+    def note_homing_end(self):
         ffi_main, ffi_lib = chelper.get_ffi()
         ret = ffi_lib.stepcompress_reset(self._stepqueue, 0)
         if ret:
@@ -134,7 +134,7 @@ class MCU_stepper:
         ret = ffi_lib.stepcompress_queue_msg(self._stepqueue, data, len(data))
         if ret:
             raise error("Internal error in stepcompress")
-        if not did_trigger or self._mcu.is_fileoutput():
+        if self._mcu.is_fileoutput():
             return
         params = self._get_position_cmd.send([self._oid])
         last_pos = params['pos']
