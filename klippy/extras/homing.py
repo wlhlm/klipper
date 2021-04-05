@@ -53,9 +53,10 @@ class HomingMove:
         kin = self.toolhead.get_kinematics()
         for s in kin.get_steppers():
             s.set_tag_position(s.get_commanded_position())
-        start_mcu_pos = [(s, name, s.get_mcu_position())
-                         for es, name in self.endstops
-                         for s in es.get_steppers()]
+        start_mcu_pos = [
+            (s, es, name, s.get_mcu_position(), s.get_tag_position())
+            for es, name in self.endstops
+            for s in es.get_steppers() ]
         # Start endstop checking
         print_time = self.toolhead.get_last_move_time()
         endstop_triggers = []
@@ -74,24 +75,34 @@ class HomingMove:
         except self.printer.command_error as e:
             error = "Error during homing move: %s" % (str(e),)
         # Wait for endstops to trigger
+        trigger_times = {}
         move_end_print_time = self.toolhead.get_last_move_time()
         for mcu_endstop, name in self.endstops:
             res = mcu_endstop.home_wait(move_end_print_time)
             did_trigger, did_error, trigger_time = res
-            if did_error and error is None:
+            if did_trigger:
+                trigger_times[mcu_endstop] = trigger_time
+            elif did_error and error is None:
                 error = "Communication timeout during homing %s" % (name,)
-            elif not did_trigger and check_triggered and error is None:
+            elif check_triggered and error is None:
                 error = "No trigger on %s after full movement" % (name,)
         # Determine stepper halt positions
         self.toolhead.flush_step_generation()
-        self.end_mcu_pos = [(s, name, spos, s.get_mcu_position())
-                            for s, name, spos in start_mcu_pos]
+        self.end_mcu_pos = [
+            (s, es, name, spos, cpos, s.get_mcu_position(),
+             s.get_past_mcu_position(trigger_times.get(es,
+                                                       move_end_print_time)))
+             for s, es, name, spos, cpos in start_mcu_pos]
         if probe_pos:
-            for s, name, spos, epos in self.end_mcu_pos:
-                md = (epos - spos) * s.get_step_dist()
-                s.set_tag_position(s.get_tag_position() + md)
-            movepos = list(kin.calc_tag_position())[:3] + movepos[3:]
-        self.toolhead.set_position(movepos)
+            for s, es, name, spos, cpos, epos, tpos in self.end_mcu_pos:
+                s.set_tag_position(cpos + (tpos - spos) * s.get_step_dist())
+            trigpos = list(kin.calc_tag_position())[:3] + movepos[3:]
+            for s, es, name, spos, cpos, epos, tpos in self.end_mcu_pos:
+                s.set_tag_position(cpos + (epos - spos) * s.get_step_dist())
+            endpos = list(kin.calc_tag_position())[:3] + movepos[3:]
+        else:
+            trigpos = endpos = movepos
+        self.toolhead.set_position(endpos)
         # Signal homing/probing move complete
         try:
             self.printer.send_event("homing:homing_move_end", self)
@@ -100,12 +111,12 @@ class HomingMove:
                 error = str(e)
         if error is not None:
             raise self.printer.command_error(error)
-        return movepos
+        return trigpos
     def check_no_movement(self):
         if self.printer.get_start_args().get('debuginput') is not None:
             return None
-        for s, name, spos, epos in self.end_mcu_pos:
-            if spos == epos:
+        for s, es, name, spos, cpos, epos, tpos in self.end_mcu_pos:
+            if spos == tpos:
                 return name
         return None
 
