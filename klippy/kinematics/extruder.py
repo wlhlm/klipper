@@ -152,9 +152,8 @@ class PrinterExtruder:
                           1., pressure_advance, 0.,
                           start_v, cruise_v, accel)
     def find_past_position(self, print_time):
-        mcu = self.stepper.get_mcu()
-        clock = mcu.print_time_to_clock(print_time)
-        return self.stepper.get_past_commanded_position(clock)
+        pos = self.stepper.get_past_mcu_position(print_time)
+        return pos * self.stepper.get_step_dist()
     def cmd_M104(self, gcmd, wait=False):
         # Set Extruder Temperature
         temp = gcmd.get_float('S', 0.)
