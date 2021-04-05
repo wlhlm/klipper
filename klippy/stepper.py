@@ -42,6 +42,8 @@ class MCU_stepper:
         self._itersolve_generate_steps = ffi_lib.itersolve_generate_steps
         self._itersolve_check_active = ffi_lib.itersolve_check_active
         self._trapq = ffi_main.NULL
+        self._mcu.get_printer().register_event_handler('klippy:connect',
+                                                       self._query_mcu_position)
     def get_mcu(self):
         return self._mcu
     def get_name(self, short=False):
@@ -134,12 +136,15 @@ class MCU_stepper:
         ret = ffi_lib.stepcompress_queue_msg(self._stepqueue, data, len(data))
         if ret:
             raise error("Internal error in stepcompress")
+        self._query_mcu_position()
+    def _query_mcu_position(self):
         if self._mcu.is_fileoutput():
             return
         params = self._get_position_cmd.send([self._oid])
         last_pos = params['pos']
         if self._invert_dir:
             last_pos = -last_pos
+        ffi_main, ffi_lib = chelper.get_ffi()
         ret = ffi_lib.stepcompress_set_last_position(self._stepqueue, last_pos)
         if ret:
             raise error("Internal error in stepcompress")
