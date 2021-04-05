@@ -101,7 +101,13 @@ class HomingMove:
                 s.set_tag_position(cpos + (epos - spos) * s.get_step_dist())
             endpos = list(kin.calc_tag_position())[:3] + movepos[3:]
         else:
-            trigpos = endpos = movepos
+            trigpos = movepos
+            self.toolhead.set_position(movepos)
+            # XXX - only calc new position if there is overshoot
+            for s, es, name, spos, cpos, epos, tpos in self.end_mcu_pos:
+                s.set_tag_position(s.get_commanded_position()
+                                   + (epos - tpos) * s.get_step_dist())
+            endpos = list(kin.calc_tag_position())[:3] + movepos[3:]
         self.toolhead.set_position(endpos)
         # Signal homing/probing move complete
         try:
@@ -177,6 +183,7 @@ class Homing:
         for s in kin.get_steppers():
             s.set_tag_position(s.get_commanded_position())
         ret = self.printer.send_event("homing:home_rails_end", self, rails)
+        # XXX - endstop_phases need update to use trigger pos
         if any(ret):
             # Apply any homing offsets
             adjustpos = kin.calc_tag_position()
