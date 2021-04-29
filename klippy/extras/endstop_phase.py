@@ -118,6 +118,7 @@ class EndstopPhases:
     def __init__(self, config):
         self.printer = config.get_printer()
         self.tracking = {}
+        self.last_home_info = {}
         # Register handlers
         self.printer.register_event_handler("homing:home_rails_end",
                                             self.handle_home_rails_end)
@@ -149,14 +150,18 @@ class EndstopPhases:
             return
         phase = convert_phase(driver_phase, driver_phases, len(phase_history))
         phase_history[phase] += 1
+        self.last_home_info[stepper.get_name()] = {
+            'phase': phase, 'phases': len(phase_history),
+            'mcu_position': stepper.get_mcu_position()
+        }
     def handle_home_rails_end(self, homing_state, rails):
         for rail in rails:
-            stepper = rail.get_steppers()[0]
-            stepper_name = stepper.get_name()
-            if stepper_name not in self.tracking:
-                info = self.lookup_rail(stepper, stepper_name)
-                self.tracking[stepper_name] = info
-            self.update_rail(self.tracking[stepper_name], stepper)
+            for stepper in rail.get_steppers():
+                stepper_name = stepper.get_name()
+                if stepper_name not in self.tracking:
+                    info = self.lookup_rail(stepper, stepper_name)
+                    self.tracking[stepper_name] = info
+                self.update_rail(self.tracking[stepper_name], stepper)
     cmd_ENDSTOP_PHASE_CALIBRATE_help = "Calibrate stepper phase"
     def cmd_ENDSTOP_PHASE_CALIBRATE(self, gcmd):
         stepper_name = gcmd.get('STEPPER', None)
@@ -205,6 +210,8 @@ class EndstopPhases:
             if info is None:
                 continue
             self.generate_stats(stepper_name, info)
+    def get_status(self, eventtime):
+        return { 'last_home': dict(self.last_home_info) }
 
 def load_config_prefix(config):
     return EndstopPhase(config)
