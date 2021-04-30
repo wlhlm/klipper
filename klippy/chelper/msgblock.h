@@ -35,8 +35,8 @@ struct queue_message {
 };
 
 struct clock_estimate {
-    uint64_t clock;
-    double clock_time, est_freq;
+    uint64_t last_clock, conv_clock;
+    double conv_time, est_freq;
 };
 
 uint16_t msgblock_crc16_ccitt(uint8_t *buf, uint8_t len);

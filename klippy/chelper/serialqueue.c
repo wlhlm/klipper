@@ -866,12 +866,14 @@ serialqueue_set_receive_window(struct serialqueue *sq, int receive_window)
 // serial port
 void __visible
 serialqueue_set_clock_est(struct serialqueue *sq, double est_freq
-                          , double last_clock_time, uint64_t last_clock)
+                          , double conv_time, uint64_t conv_clock
+                          , uint64_t last_clock)
 {
     pthread_mutex_lock(&sq->lock);
     sq->ce.est_freq = est_freq;
-    sq->ce.clock_time = last_clock_time;
-    sq->ce.clock = last_clock;
+    sq->ce.conv_time = conv_time;
+    sq->ce.conv_clock = conv_clock;
+    sq->ce.last_clock = last_clock;
     pthread_mutex_unlock(&sq->lock);
 }
 

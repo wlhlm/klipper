@@ -191,19 +191,19 @@ message_queue_free(struct list_head *root)
 uint64_t
 clock_from_clock32(struct clock_estimate *ce, uint32_t clock32)
 {
-    return ce->clock + (int32_t)(clock32 - ce->clock);
+    return ce->last_clock + (int32_t)(clock32 - ce->last_clock);
 }
 
 // Convert a clock to its estimated time
 double
 clock_to_time(struct clock_estimate *ce, uint64_t clock)
 {
-    return ce->clock_time + (int64_t)(clock - ce->clock) / ce->est_freq;
+    return ce->conv_time + (int64_t)(clock - ce->conv_clock) / ce->est_freq;
 }
 
 // Convert a time to the nearest clock value
 uint64_t
 clock_from_time(struct clock_estimate *ce, double time)
 {
-    return (int64_t)((time - ce->clock_time) * ce->est_freq + .5) + ce->clock;
+    return (int64_t)((time - ce->conv_time)*ce->est_freq + .5) + ce->conv_clock;
 }
