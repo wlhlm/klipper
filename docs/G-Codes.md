@@ -499,17 +499,20 @@ The following additional commands are also available.
 
 #### SET_RETRACTION
 `SET_RETRACTION [RETRACT_LENGTH=<mm>] [RETRACT_SPEED=<mm/s>]
-[UNRETRACT_EXTRA_LENGTH=<mm>] [UNRETRACT_SPEED=<mm/s>]`: Adjust the
-parameters used by firmware retraction. RETRACT_LENGTH determines the
-length of filament to retract and unretract. The speed of retraction
-is adjusted via RETRACT_SPEED, and is typically set relatively
-high. The speed of unretraction is adjusted via UNRETRACT_SPEED, and
-is not particularly critical, although often lower than RETRACT_SPEED.
-In some cases it is useful to add a small amount of additional length
-on unretraction, and this is set via UNRETRACT_EXTRA_LENGTH.
-SET_RETRACTION is commonly set as part of slicer per-filament
-configuration, as different filaments require different parameter
-settings.
+[UNRETRACT_EXTRA_LENGTH=<mm>] [UNRETRACT_SPEED=<mm/s>] [LIFT_Z=<mm>]`:
+Adjust the parameters used by firmware retraction. RETRACT_LENGTH
+determines the length of filament to retract and unretract. The
+speed of retraction is adjusted via RETRACT_SPEED, and is typically
+set relatively high. The speed of unretraction is adjusted via
+UNRETRACT_SPEED, and is not particularly critical, although often
+lower than RETRACT_SPEED. In some cases it is useful to add a small
+amount of additional length on unretraction, and this is set via
+UNRETRACT_EXTRA_LENGTH. Specifying LIFT_Z enables lifting of the
+toolhead upon every retract (and subsequent dropping upon unretract)
+to prevent the nozzle from dragging across surfaces or catching on
+the print. SET_RETRACTION is commonly set as part of slicer
+per-filament configuration, as different filaments require different
+parameter settings.
 
 #### GET_RETRACTION
 `GET_RETRACTION`: Queries the current parameters used by firmware
