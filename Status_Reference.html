@@ -1036,13 +1036,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#z_thermal_adjust" class="md-nav__link">
-    z_thermal_adjust
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#z_tilt" class="md-nav__link">
     z_tilt
   </a>
@@ -1128,7 +1121,7 @@
   
     <li class="md-nav__item">
       <a href="Exclude_Object.html" class="md-nav__link">
-        Exclude Obects
+        Exclude Objects
       </a>
     </li>
   
@@ -1754,13 +1747,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#z_thermal_adjust" class="md-nav__link">
-    z_thermal_adjust
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#z_tilt" class="md-nav__link">
     z_tilt
   </a>
@@ -1926,9 +1912,9 @@ objects:</p>
 <a href="Config_Reference.html#firmware_retraction">firmware_retraction</a> object:</p>
 <ul>
 <li><code>retract_length</code>, <code>retract_speed</code>, <code>unretract_extra_length</code>,
-  <code>unretract_speed</code>, <code>lift_z</code>: The current settings for the
-  firmware_retraction module. These settings may differ from the
-  config file if a <code>SET_RETRACTION</code> command alters them.</li>
+  <code>unretract_speed</code>: The current settings for the firmware_retraction
+  module. These settings may differ from the config file if a
+  <code>SET_RETRACTION</code> command alters them.</li>
 </ul>
 <h2 id="gcode_macro">gcode_macro<a class="headerlink" href="#gcode_macro" title="Permanent link">&para;</a></h2>
 <p>The following information is available in
@@ -2234,17 +2220,6 @@ object is always available):</p>
   state. Possible values are: "ready", "startup", "shutdown", "error".</li>
 <li><code>state_message</code>: A human readable string giving additional context
   on the current Klipper state.</li>
-</ul>
-<h2 id="z_thermal_adjust">z_thermal_adjust<a class="headerlink" href="#z_thermal_adjust" title="Permanent link">&para;</a></h2>
-<p>The following information is available in the <code>z_thermal_adjust</code> object (this
-object is available if <a href="Config_Reference.html#z_thermal_adjust">z_thermal_adjust</a>
-is defined).</p>
-<ul>
-<li><code>enabled</code>: Returns True if adjustment is enabled.</li>
-<li><code>temperature</code>: Current (smoothed) temperature of the defined sensor. [degC]</li>
-<li><code>current_z_adjust</code>: Last computed Z adjustment [mm].</li>
-<li><code>z_adjust_ref_temperature</code>: Current reference temperature used for calculation
-  of Z <code>current_z_adjust</code> [degC].</li>
 </ul>
 <h2 id="z_tilt">z_tilt<a class="headerlink" href="#z_tilt" title="Permanent link">&para;</a></h2>
 <p>The following information is available in the <code>z_tilt</code> object (this

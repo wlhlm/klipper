@@ -1034,13 +1034,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dockable_probe" class="md-nav__link">
-    [dockable_probe]
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#dual_carriage" class="md-nav__link">
     [dual_carriage]
   </a>
@@ -2192,67 +2185,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#z_calibration" class="md-nav__link">
-    [z_calibration]
-  </a>
-  
-    <nav class="md-nav" aria-label="[z_calibration]">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#calibrate_z" class="md-nav__link">
-    CALIBRATE_Z
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#probe_z_accuracy" class="md-nav__link">
-    PROBE_Z_ACCURACY
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#z_thermal_adjust" class="md-nav__link">
-    [z_thermal_adjust]
-  </a>
-  
-    <nav class="md-nav" aria-label="[z_thermal_adjust]">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#query_z_thermal_adjust" class="md-nav__link">
-    QUERY_Z_THERMAL_ADJUST
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#set_z_thermal_adjust" class="md-nav__link">
-    SET_Z_THERMAL_ADJUST
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#set_z_thermal_adjust_ref" class="md-nav__link">
-    SET_Z_THERMAL_ADJUST_REF
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#z_tilt" class="md-nav__link">
     [z_tilt]
   </a>
@@ -2410,7 +2342,7 @@
   
     <li class="md-nav__item">
       <a href="Exclude_Object.html" class="md-nav__link">
-        Exclude Obects
+        Exclude Objects
       </a>
     </li>
   
@@ -3090,13 +3022,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dockable_probe" class="md-nav__link">
-    [dockable_probe]
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#dual_carriage" class="md-nav__link">
     [dual_carriage]
   </a>
@@ -4248,67 +4173,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#z_calibration" class="md-nav__link">
-    [z_calibration]
-  </a>
-  
-    <nav class="md-nav" aria-label="[z_calibration]">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#calibrate_z" class="md-nav__link">
-    CALIBRATE_Z
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#probe_z_accuracy" class="md-nav__link">
-    PROBE_Z_ACCURACY
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#z_thermal_adjust" class="md-nav__link">
-    [z_thermal_adjust]
-  </a>
-  
-    <nav class="md-nav" aria-label="[z_thermal_adjust]">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#query_z_thermal_adjust" class="md-nav__link">
-    QUERY_Z_THERMAL_ADJUST
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#set_z_thermal_adjust" class="md-nav__link">
-    SET_Z_THERMAL_ADJUST
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#set_z_thermal_adjust_ref" class="md-nav__link">
-    SET_Z_THERMAL_ADJUST_REF
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#z_tilt" class="md-nav__link">
     [z_tilt]
   </a>
@@ -4603,22 +4467,6 @@ provides the following standard G-Code commands:</p>
 <li>Display Message: <code>M117 &lt;message&gt;</code></li>
 <li>Set build percentage: <code>M73 P&lt;percent&gt;</code></li>
 </ul>
-<h3 id="dockable_probe">[dockable_probe]<a class="headerlink" href="#dockable_probe" title="Permanent link">&para;</a></h3>
-<p>In addition to the normal commands available for a [probe], the following
-commands are available when an
-<a href="Config_Reference.html#dockable_probe">dockable_probe config section</a> is enabled
-(also see the <a href="Dockable_Probe.html">Dockable Probe guide</a>):</p>
-<ul>
-<li><code>ATTACH_PROBE</code>: Move to dock and attach probe to the toolhead, the toolhead
-  will return to its previous position after attaching.</li>
-<li><code>DETACH_PROBE</code>: Move to dock and detach probe from the toolhead, the toolhead
-  will return to its previous position after detaching.</li>
-<li><code>GET_PROBE_STATUS</code>: Respond with current probe state. This is useful for
-  verifying configuration settings are working as intended.</li>
-<li><code>SET_PROBE_STATUS STATE=UNKNOWN|ATTACHED|DOCKED</code>: If configured, this allows
-  the probe state to be set manually in the event automated probe verification
-  methods cannot be used.</li>
-</ul>
 <h3 id="dual_carriage">[dual_carriage]<a class="headerlink" href="#dual_carriage" title="Permanent link">&para;</a></h3>
 <p>The following command is available when the
 <a href="Config_Reference.html#dual_carriage">dual_carriage config section</a> is
@@ -4690,16 +4538,16 @@ changes the active hotend.</p>
 [ADVANCE=&lt;pressure_advance&gt;]
 [SMOOTH_TIME=&lt;pressure_advance_smooth_time&gt;]</code>: Set pressure advance
 parameters of an extruder stepper (as defined in an
-<a href="Config_Reference#extruder">extruder</a> or
-<a href="Config_Reference#extruder_stepper">extruder_stepper</a> config section).
+<a href="Config_Reference.html#extruder">extruder</a> or
+<a href="Config_Reference.html#extruder_stepper">extruder_stepper</a> config section).
 If EXTRUDER is not specified, it defaults to the stepper defined in
 the active hotend.</p>
 <h4 id="set_extruder_rotation_distance">SET_EXTRUDER_ROTATION_DISTANCE<a class="headerlink" href="#set_extruder_rotation_distance" title="Permanent link">&para;</a></h4>
 <p><code>SET_EXTRUDER_ROTATION_DISTANCE EXTRUDER=&lt;config_name&gt;
 [DISTANCE=&lt;distance&gt;]</code>: Set a new value for the provided extruder
 stepper's "rotation distance" (as defined in an
-<a href="Config_Reference#extruder">extruder</a> or
-<a href="Config_Reference#extruder_stepper">extruder_stepper</a> config section).
+<a href="Config_Reference.html#extruder">extruder</a> or
+<a href="Config_Reference.html#extruder_stepper">extruder_stepper</a> config section).
 If the rotation distance is a negative number then the stepper motion
 will be inverted (relative to the stepper direction specified in the
 config file). Changed settings are not retained on Klipper reset. Use
@@ -4710,10 +4558,10 @@ current rotation distance.</p>
 <h4 id="sync_extruder_motion">SYNC_EXTRUDER_MOTION<a class="headerlink" href="#sync_extruder_motion" title="Permanent link">&para;</a></h4>
 <p><code>SYNC_EXTRUDER_MOTION EXTRUDER=&lt;name&gt; MOTION_QUEUE=&lt;name&gt;</code>: This
 command will cause the stepper specified by EXTRUDER (as defined in an
-<a href="Config_Reference#extruder">extruder</a> or
-<a href="Config_Reference#extruder_stepper">extruder_stepper</a> config section)
+<a href="Config_Reference.html#extruder">extruder</a> or
+<a href="Config_Reference.html#extruder_stepper">extruder_stepper</a> config section)
 to become synchronized to the movement of an extruder specified by
-MOTION_QUEUE (as defined in an <a href="Config_Reference#extruder">extruder</a>
+MOTION_QUEUE (as defined in an <a href="Config_Reference.html#extruder">extruder</a>
 config section). If MOTION_QUEUE is an empty string then the stepper
 will be desynchronized from all extruder movement.</p>
 <h4 id="set_extruder_step_distance">SET_EXTRUDER_STEP_DISTANCE<a class="headerlink" href="#set_extruder_step_distance" title="Permanent link">&para;</a></h4>
@@ -4758,27 +4606,24 @@ retraction required.</p>
 <p>The following additional commands are also available.</p>
 <h4 id="set_retraction">SET_RETRACTION<a class="headerlink" href="#set_retraction" title="Permanent link">&para;</a></h4>
 <p><code>SET_RETRACTION [RETRACT_LENGTH=&lt;mm&gt;] [RETRACT_SPEED=&lt;mm/s&gt;]
-[UNRETRACT_EXTRA_LENGTH=&lt;mm&gt;] [UNRETRACT_SPEED=&lt;mm/s&gt;] [LIFT_Z=&lt;mm&gt;]</code>:
-Adjust the parameters used by firmware retraction. RETRACT_LENGTH
-determines the length of filament to retract and unretract. The
-speed of retraction is adjusted via RETRACT_SPEED, and is typically
-set relatively high. The speed of unretraction is adjusted via
-UNRETRACT_SPEED, and is not particularly critical, although often
-lower than RETRACT_SPEED. In some cases it is useful to add a small
-amount of additional length on unretraction, and this is set via
-UNRETRACT_EXTRA_LENGTH. Specifying LIFT_Z enables lifting of the
-toolhead upon every retract (and subsequent dropping upon unretract)
-to prevent the nozzle from dragging across surfaces or catching on
-the print. SET_RETRACTION is commonly set as part of slicer
-per-filament configuration, as different filaments require different
-parameter settings.</p>
+[UNRETRACT_EXTRA_LENGTH=&lt;mm&gt;] [UNRETRACT_SPEED=&lt;mm/s&gt;]</code>: Adjust the
+parameters used by firmware retraction. RETRACT_LENGTH determines the
+length of filament to retract and unretract. The speed of retraction
+is adjusted via RETRACT_SPEED, and is typically set relatively
+high. The speed of unretraction is adjusted via UNRETRACT_SPEED, and
+is not particularly critical, although often lower than RETRACT_SPEED.
+In some cases it is useful to add a small amount of additional length
+on unretraction, and this is set via UNRETRACT_EXTRA_LENGTH.
+SET_RETRACTION is commonly set as part of slicer per-filament
+configuration, as different filaments require different parameter
+settings.</p>
 <h4 id="get_retraction">GET_RETRACTION<a class="headerlink" href="#get_retraction" title="Permanent link">&para;</a></h4>
 <p><code>GET_RETRACTION</code>: Queries the current parameters used by firmware
 retraction and displays them on the terminal.</p>
 <h3 id="force_move">[force_move]<a class="headerlink" href="#force_move" title="Permanent link">&para;</a></h3>
 <p>The force_move module is automatically loaded, however some commands
 require setting <code>enable_force_move</code> in the
-<a href="Config_Reference#force_move">printer config</a>.</p>
+<a href="Config_Reference.html#force_move">printer config</a>.</p>
 <h4 id="stepper_buzz">STEPPER_BUZZ<a class="headerlink" href="#stepper_buzz" title="Permanent link">&para;</a></h4>
 <p><code>STEPPER_BUZZ STEPPER=&lt;config_name&gt;</code>: Move the given stepper forward
 one mm and then backward one mm, repeated 10 times. This is a
@@ -5156,23 +5001,28 @@ all enabled accelerometer chips.</p>
 <h4 id="test_resonances">TEST_RESONANCES<a class="headerlink" href="#test_resonances" title="Permanent link">&para;</a></h4>
 <p><code>TEST_RESONANCES AXIS=&lt;axis&gt; OUTPUT=&lt;resonances,raw_data&gt;
 [NAME=&lt;name&gt;] [FREQ_START=&lt;min_freq&gt;] [FREQ_END=&lt;max_freq&gt;]
-[HZ_PER_SEC=&lt;hz_per_sec&gt;] [INPUT_SHAPING=[&lt;0:1&gt;]]</code>: Runs the resonance
+[HZ_PER_SEC=&lt;hz_per_sec&gt;] [CHIPS=&lt;adxl345_chip_name&gt;]
+[POINT=x,y,z] [INPUT_SHAPING=[&lt;0:1&gt;]]</code>: Runs the resonance
 test in all configured probe points for the requested "axis" and
 measures the acceleration using the accelerometer chips configured for
 the respective axis. "axis" can either be X or Y, or specify an
 arbitrary direction as <code>AXIS=dx,dy</code>, where dx and dy are floating
 point numbers defining a direction vector (e.g. <code>AXIS=X</code>, <code>AXIS=Y</code>, or
 <code>AXIS=1,-1</code> to define a diagonal direction). Note that <code>AXIS=dx,dy</code>
-and <code>AXIS=-dx,-dy</code> is equivalent. If <code>INPUT_SHAPING=0</code> or not set
-(default), disables input shaping for the resonance testing, because
+and <code>AXIS=-dx,-dy</code> is equivalent. <code>adxl345_chip_name</code> can be one or
+more configured adxl345 chip,delimited with comma, for example
+<code>CHIPS="adxl345, adxl345 rpi"</code>. Note that <code>adxl345</code> can be omitted from
+named adxl345 chips. If POINT is specified it will override the point(s)
+configured in <code>[resonance_tester]</code>. If <code>INPUT_SHAPING=0</code> or not set(default),
+disables input shaping for the resonance testing, because
 it is not valid to run the resonance testing with the input shaper
 enabled. <code>OUTPUT</code> parameter is a comma-separated list of which outputs
 will be written. If <code>raw_data</code> is requested, then the raw
 accelerometer data is written into a file or a series of files
-<code>/tmp/raw_data_&lt;axis&gt;_[&lt;point&gt;_]&lt;name&gt;.csv</code> with (<code>&lt;point&gt;_</code> part of
-the name generated only if more than 1 probe point is configured).  If
-<code>resonances</code> is specified, the frequency response is calculated
-(across all probe points) and written into
+<code>/tmp/raw_data_&lt;axis&gt;_[&lt;chip_name&gt;_][&lt;point&gt;_]&lt;name&gt;.csv</code> with
+(<code>&lt;point&gt;_</code> part of the name generated only if more than 1 probe point
+is configured or POINT is specified). If <code>resonances</code> is specified, the
+frequency response is calculated (across all probe points) and written into
 <code>/tmp/resonances_&lt;axis&gt;_&lt;name&gt;.csv</code> file. If unset, OUTPUT defaults to
 <code>resonances</code>, and NAME defaults to the current time in
 "YYYYMMDD_HHMMSS" format.</p>
@@ -5232,7 +5082,7 @@ literal.</p>
 is enabled (also see the
 <a href="Manual_Level.html#adjusting-bed-leveling-screws-using-the-bed-probe">manual level guide</a>).</p>
 <h4 id="screws_tilt_calculate">SCREWS_TILT_CALCULATE<a class="headerlink" href="#screws_tilt_calculate" title="Permanent link">&para;</a></h4>
-<p><code>SCREWS_TILT_CALCULATE [DIRECTION=CW|CCW]
+<p><code>SCREWS_TILT_CALCULATE [DIRECTION=CW|CCW] [MAX_DEVIATION=&lt;value&gt;]
 [&lt;probe_parameter&gt;=&lt;value&gt;]</code>: This command will invoke the bed screws
 adjustment tool. It will command the nozzle to different locations (as
 defined in the config file) probing the z height and calculate the
@@ -5240,7 +5090,9 @@ number of knob turns to adjust the bed level. If DIRECTION is
 specified, the knob turns will all be in the same direction, clockwise
 (CW) or counterclockwise (CCW). See the PROBE command for details on
 the optional probe parameters. IMPORTANT: You MUST always do a G28
-before using this command.</p>
+before using this command. If MAX_DEVIATION is specified, the command
+will raise a gcode error if any difference in the screw height
+relative to the base screw height is greater than the value provided.</p>
 <h3 id="sdcard_loop">[sdcard_loop]<a class="headerlink" href="#sdcard_loop" title="Permanent link">&para;</a></h3>
 <p>When the <a href="Config_Reference.html#sdcard_loop">sdcard_loop config section</a>
 is enabled, the following extended commands are available.</p>
@@ -5417,41 +5269,6 @@ enabled:</p>
 print.</p>
 <h4 id="sdcard_reset_file">SDCARD_RESET_FILE<a class="headerlink" href="#sdcard_reset_file" title="Permanent link">&para;</a></h4>
 <p><code>SDCARD_RESET_FILE</code>: Unload file and clear SD state.</p>
-<h3 id="z_calibration">[z_calibration]<a class="headerlink" href="#z_calibration" title="Permanent link">&para;</a></h3>
-<p>The following commands are available when a
-<a href="Config_Reference.html#z_calibration">z_calibration config section</a> is enabled
-(also see the <a href="Z_Calibration.html">Z-Calibration guide</a>). <em>Note</em> that
-appropriate macros and/or configurations are needed to attach and detach
-a mag-probe for these commands!</p>
-<h4 id="calibrate_z">CALIBRATE_Z<a class="headerlink" href="#calibrate_z" title="Permanent link">&para;</a></h4>
-<p><code>CALIBRATE_Z</code>: This calibrates the current offset between the nozzle and
-the print surface.</p>
-<h4 id="probe_z_accuracy">PROBE_Z_ACCURACY<a class="headerlink" href="#probe_z_accuracy" title="Permanent link">&para;</a></h4>
-<p><code>PROBE_Z_ACCURACY [PROBE_SPEED=&lt;mm/s&gt;] [LIFT_SPEED=&lt;mm/s&gt;] [SAMPLES=&lt;count&gt;]
-[SAMPLE_RETRACT_DIST=&lt;mm&gt;]</code>: Calculate the maximum, minimum,
-average, median, and standard deviation of multiple probe
-samples. By default, 10 SAMPLES are taken. Otherwise the optional
-parameters default to their equivalent setting in the z_calibration or probe
-config section.</p>
-<h3 id="z_thermal_adjust">[z_thermal_adjust]<a class="headerlink" href="#z_thermal_adjust" title="Permanent link">&para;</a></h3>
-<p>The following commands are available when the
-<a href="Config_Reference.html#z_thermal_adjust">z_thermal_adjust config section</a>
-is enabled.</p>
-<h4 id="query_z_thermal_adjust">QUERY_Z_THERMAL_ADJUST<a class="headerlink" href="#query_z_thermal_adjust" title="Permanent link">&para;</a></h4>
-<p><code>QUERY_FRAME_COMP</code>: reports current state and key parameters of the Z Thermal
-Adjust module.</p>
-<h4 id="set_z_thermal_adjust">SET_Z_THERMAL_ADJUST<a class="headerlink" href="#set_z_thermal_adjust" title="Permanent link">&para;</a></h4>
-<p><code>SET_Z_THERMAL_ADJUST [ENABLE=&lt;0:1&gt;] [COEFF=&lt;value&gt;]</code>: Enable or disable the
-Z thermal adjustment with <code>ENABLE</code>. Disabling does not remove any adjustment
-already applied, but will freeze the current adjustment value - this prevents
-potentially unsafe downward Z movement. Re-enabling can potentially cause upward
-tool movement as the adjustment is updated and applied. <code>COEFF</code> allows run-time
-tuning of the adjustment temperature coefficient (i.e. the <code>TEMP_COEFF</code> config
-parameter). <code>COEFF</code> values are not saved to the config.</p>
-<h4 id="set_z_thermal_adjust_ref">SET_Z_THERMAL_ADJUST_REF<a class="headerlink" href="#set_z_thermal_adjust_ref" title="Permanent link">&para;</a></h4>
-<p><code>SET_Z_THERMAL_ADJUST_REF [TEMPERATURE=&lt;value&gt;]</code>: Set the thermal adjustment
-reference temperature to the current reading, or to the value supplied with
-<code>TEMPERATURE</code>.</p>
 <h3 id="z_tilt">[z_tilt]<a class="headerlink" href="#z_tilt" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the
 <a href="Config_Reference.html#z_tilt">z_tilt config section</a> is enabled.</p>
