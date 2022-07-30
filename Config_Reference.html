@@ -689,13 +689,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#z_thermal_adjust" class="md-nav__link">
-    [z_thermal_adjust]
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -868,6 +861,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#mpu9250" class="md-nav__link">
+    [mpu9250]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#resonance_tester" class="md-nav__link">
     [resonance_tester]
   </a>
@@ -931,13 +931,6 @@
           <li class="md-nav__item">
   <a href="#bltouch" class="md-nav__link">
     [bltouch]
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dockable_probe" class="md-nav__link">
-    [dockable_probe]
   </a>
   
 </li>
@@ -2347,6 +2340,21 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Sponsors.html" class="md-nav__link">
+        Sponsors
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -2588,13 +2596,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#z_thermal_adjust" class="md-nav__link">
-    [z_thermal_adjust]
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -2767,6 +2768,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#mpu9250" class="md-nav__link">
+    [mpu9250]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#resonance_tester" class="md-nav__link">
     [resonance_tester]
   </a>
@@ -2830,13 +2838,6 @@
           <li class="md-nav__item">
   <a href="#bltouch" class="md-nav__link">
     [bltouch]
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dockable_probe" class="md-nav__link">
-    [dockable_probe]
   </a>
   
 </li>
@@ -4560,35 +4561,6 @@ the nature of skew correction these lengths are set via gcode. See
 <div class="highlight"><pre><span></span><code>[skew_correction]
 </code></pre></div>
 
-<h3 id="z_thermal_adjust">[z_thermal_adjust]<a class="headerlink" href="#z_thermal_adjust" title="Permanent link">&para;</a></h3>
-<p>Temperature-dependant toolhead Z position adjustment. Compensate for vertical
-toolhead movement caused by thermal expansion of the printer's frame in
-real-time using a temperature sensor (typically coupled to a vertical section
-of frame).</p>
-<p>See also: <a href="G-Codes.html#z_thermal_adjust">extended g-code commands</a>.</p>
-<div class="highlight"><pre><span></span><code>[z_thermal_adjust]
-#temp_coeff:
-#   The temperature coefficient of expansion, in mm/degC. For example, a
-#   temp_coeff of 0.01 mm/degC will move the Z axis downwards by 0.01 mm for
-#   every degree Celsius that the temperature sensor increases. Defaults to
-#   0.0 mm/degC, which applies no adjustment.
-temp_sensor:
-#   Temperature sensor to use for Z adjustment. Use full config section name
-#   without quoutes. E.g. temperature_sensor frame. Also compatible with
-#   temperature_fan sensors. This parameter must be provided.
-#smooth_time:
-#   Smoothing window applied to the temperature sensor, in seconds. Can reduce
-#   motor noise from excessive small corrections in response to sensor noise.
-#   The default is 2.0 seconds.
-#z_adjust_off_above:
-#   Disables adjustments above this Z height [mm]. The last computed correction
-#   will remain applied until the toolhead moves below the specified Z height
-#   again. The default is 99999999.0 mm (always on).
-#max_z_adjustment:
-#   Maximum absolute adjustment that can be applied to the Z axis [mm]. The
-#   default is 99999999.0 mm (unlimited).
-</code></pre></div>
-
 <h2 id="customized-homing">Customized homing<a class="headerlink" href="#customized-homing" title="Permanent link">&para;</a></h2>
 <h3 id="safe_z_home">[safe_z_home]<a class="headerlink" href="#safe_z_home" title="Permanent link">&para;</a></h3>
 <p>Safe Z homing. One may use this mechanism to home the Z axis at a
@@ -4817,9 +4789,6 @@ allowing per-filament settings and runtime tuning.</p>
 #   unretracting.
 #unretract_speed: 10
 #   The speed of unretraction, in mm/s. The default is 10 mm/s.
-#lift_z: 0
-#   The amount (in mm) the toolhead should be lifted upon retract. The
-#   default is 0mm.
 </code></pre></div>
 
 <h3 id="gcode_arcs">[gcode_arcs]<a class="headerlink" href="#gcode_arcs" title="Permanent link">&para;</a></h3>
@@ -4926,6 +4895,21 @@ cs_pin:
 #   not recommended to change this rate from the default 3200, and
 #   rates below 800 will considerably affect the quality of resonance
 #   measurements.
+</code></pre></div>
+
+<h3 id="mpu9250">[mpu9250]<a class="headerlink" href="#mpu9250" title="Permanent link">&para;</a></h3>
+<p>Support for mpu9250 and mpu6050 accelerometers (one may define any
+number of sections with an "mpu9250" prefix).</p>
+<div class="highlight"><pre><span></span><code>[mpu9250 my_accelerometer]
+#i2c_address:
+#   Default is 104 (0x68).
+#i2c_mcu:
+#i2c_bus:
+#i2c_speed: 400000
+#   See the &quot;common I2C settings&quot; section for a description of the
+#   above parameters. The default &quot;i2c_speed&quot; is 400000.
+#axes_map: x, y, z
+#   See the &quot;adxl345&quot; section for information on this parameter.
 </code></pre></div>
 
 <h3 id="resonance_tester">[resonance_tester]<a class="headerlink" href="#resonance_tester" title="Permanent link">&para;</a></h3>
@@ -5143,93 +5127,6 @@ control_pin:
 #samples_result:
 #samples_tolerance:
 #samples_tolerance_retries:
-#   See the &quot;probe&quot; section for information on these parameters.
-</code></pre></div>
-
-<h3 id="dockable_probe">[dockable_probe]<a class="headerlink" href="#dockable_probe" title="Permanent link">&para;</a></h3>
-<p>Certain probes are magnetically coupled to the toolhead and stowed
-in a dock when not in use. One should define this section instead
-of a probe section if the probe uses magnets to attach and a dock
-for storage. See <a href="Dockable_Probe.html">Dockable Probe Guide</a>
-for more detailed information regarding configuration and setup.</p>
-<div class="highlight"><pre><span></span><code>[dockable_probe]
-dock_position: 0,0,0
-#   The physical position of the probe dock relative to the origin of
-#   the bed. The coordinates are specified as a comma separated x, y, z
-#   list of values. Certain dock designs are independent of the z axis.
-#   if a z value is provided for these configurations, the z axis will
-#   be raised to that amount in order to prevent collisions.
-#   This parameter is required.
-approach_position: 0,0
-#   The X,Y position where the toolhead needs to be prior to moving into the
-#   dock so that the probe is aligned properly for docking or attaching.
-#   This parameter is required.
-detach_position: 0,0
-#   Similar to the approach_position, the detach_position is the X,Y
-#   where the toolhead is moved after the probe has been docked.
-#   For magnetically coupled probes, this is typically perpendicular to
-#   the approach_position in a direction that does not cause the tool to
-#   collide with the printer.
-#   This parameter is required
-#safe_z_position: 0,0
-#   Optional parameter. If the probe is being used to home the Z
-#   axis, the toolhead will move to these xy coordinates prior to homing.
-#   If this value is not provided, the center of the bed will be used.
-#dock_retries:
-#   The number of times to attempt to attach/dock the probe before raising
-#   and error and aborting probing.
-#attach_speed:
-#detach_speed:
-#travel_speed:
-#   Optional speeds used during various moves. These will default to probe
-#   speed if not specified.
-check_open_attach:     True
-#   The probe status should be verified prior to homing. Setting this option
-#   to true will ensure the probe &quot;endstop&quot; is &quot;open&quot; if the probe is attached
-#   and will abort probing if it reports &quot;triggered&quot; when docked
-#probe_sense_pin:
-#   This supplemental pin can be defined to determine an attached state
-#   instead of check_open_attach
-#dock_sense_pin:
-#   This supplemental pin can be defined to determine a docked state in
-#   addition to probe_sense_pin or check_open_attach
-#allow_delayed_detach: False
-#   When true, the probe will stay attached to the toolhead after the
-#   completion of a command in case there is another command requiring the
-#   use of the probe in the command queue. Once all commands have completed,
-#   the probe is docked. It is recommended to add the DETACH_PROBE command to
-#   macros and slicer start gcode to ensure the probe is correctly detached.
-#   See Annexed_Probe.md for more information
-dock_fixed_z: True
-#   Whether or not the dock is located independently of the Z axis such as
-#   mounted to a moving gantry.
-#pre_attach_gcode:
-#   An optional list of gcode commands to execute prior to attaching the probe
-#attach_gcode:
-#   An optional list of gcode commands used to attach the probe
-#post_attach_gcode:
-#   An optional list of gcode commands to execute immediately after attaching
-#   the probe
-#pre_detach_gcode:
-#   An optional list of gcode commands to execute prior to detaching/docking
-#   the probe
-#detach_gcode:
-#   An optional list of gcode commands used to detach/dock the probe
-#post_detach_gcode:
-#   An optional list of gcode commands to execute immediately after
-#   detaching/docking the probe
-#x_offset:
-#y_offset:
-#z_offset:
-#lift_speed:
-#speed:
-#samples:
-#sample_retract_dist:
-#samples_result:
-#samples_tolerance:
-#samples_tolerance_retries:
-#activate_gcode:
-#deactivate_gcode:
 #   See the &quot;probe&quot; section for information on these parameters.
 </code></pre></div>
 
@@ -5554,7 +5451,7 @@ temperature sensors that are reported via the M105 command.</p>
 <h2 id="temperature-sensors">Temperature sensors<a class="headerlink" href="#temperature-sensors" title="Permanent link">&para;</a></h2>
 <p>Klipper includes definitions for many types of temperature sensors.
 These sensors may be used in any config section that requires a
-temperature sensor (such as an <code>[extruder]</code> or <code>[heated_bed]</code>
+temperature sensor (such as an <code>[extruder]</code> or <code>[heater_bed]</code>
 section).</p>
 <h3 id="common-thermistors">Common thermistors<a class="headerlink" href="#common-thermistors" title="Permanent link">&para;</a></h3>
 <p>Common thermistors. The following parameters are available in heater
@@ -7433,6 +7330,14 @@ wires may result in Klipper raising a run-time error. Klipper's
 support for error recovery varies between each micro-controller type.
 It is generally recommended to only use i2c devices that are on the
 same printed circuit board as the micro-controller.</p>
+<p>Most Klipper micro-controller implementations only support an
+<code>i2c_speed</code> of 100000. The Klipper "linux" micro-controller supports a
+400000 speed, but it must be
+<a href="RPi_microcontroller.html#optional-enabling-i2c">set in the operating system</a>
+and the <code>i2c_speed</code> parameter is otherwise ignored. The Klipper
+"rp2040" micro-controller supports a rate of 400000 via the
+<code>i2c_speed</code> parameter. All other Klipper micro-controllers use a
+100000 rate and ignore the <code>i2c_speed</code> parameter.</p>
 <div class="highlight"><pre><span></span><code>#i2c_address:
 #   The i2c address of the device. This must specified as a decimal
 #   number (not in hex). The default depends on the type of device.

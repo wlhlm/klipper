@@ -1034,13 +1034,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dockable_probe" class="md-nav__link">
-    [dockable_probe]
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#dual_carriage" class="md-nav__link">
     [dual_carriage]
   </a>
@@ -2182,26 +2175,6 @@
           <li class="md-nav__item">
   <a href="#sdcard_reset_file" class="md-nav__link">
     SDCARD_RESET_FILE
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#z_thermal_adjust" class="md-nav__link">
-    [z_thermal_adjust]
-  </a>
-  
-    <nav class="md-nav" aria-label="[z_thermal_adjust]">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#set_z_thermal_adjust" class="md-nav__link">
-    SET_Z_THERMAL_ADJUST
   </a>
   
 </li>
@@ -2716,6 +2689,21 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Sponsors.html" class="md-nav__link">
+        Sponsors
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -3044,13 +3032,6 @@
           <li class="md-nav__item">
   <a href="#display_status" class="md-nav__link">
     [display_status]
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dockable_probe" class="md-nav__link">
-    [dockable_probe]
   </a>
   
 </li>
@@ -4207,26 +4188,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#z_thermal_adjust" class="md-nav__link">
-    [z_thermal_adjust]
-  </a>
-  
-    <nav class="md-nav" aria-label="[z_thermal_adjust]">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#set_z_thermal_adjust" class="md-nav__link">
-    SET_Z_THERMAL_ADJUST
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#z_tilt" class="md-nav__link">
     [z_tilt]
   </a>
@@ -4521,21 +4482,11 @@ provides the following standard G-Code commands:</p>
 <li>Display Message: <code>M117 &lt;message&gt;</code></li>
 <li>Set build percentage: <code>M73 P&lt;percent&gt;</code></li>
 </ul>
-<h3 id="dockable_probe">[dockable_probe]<a class="headerlink" href="#dockable_probe" title="Permanent link">&para;</a></h3>
-<p>In addition to the normal commands available for a [probe], the following
-commands are available when an
-<a href="Config_Reference.html#dockable_probe">dockable_probe config section</a> is enabled
-(also see the <a href="Dockable_Probe.html">Dockable Probe guide</a>):</p>
+<p>Also provided is the following extended G-Code command:</p>
 <ul>
-<li><code>ATTACH_PROBE</code>: Move to dock and attach probe to the toolhead, the toolhead
-  will return to its previous position after attaching.</li>
-<li><code>DETACH_PROBE</code>: Move to dock and detach probe from the toolhead, the toolhead
-  will return to its previous position after detaching.</li>
-<li><code>GET_PROBE_STATUS</code>: Respond with current probe state. This is useful for
-  verifying configuration settings are working as intended.</li>
-<li><code>SET_PROBE_STATUS STATE=UNKNOWN|ATTACHED|DOCKED</code>: If configured, this allows
-  the probe state to be set manually in the event automated probe verification
-  methods cannot be used.</li>
+<li><code>SET_DISPLAY_TEXT MSG=&lt;message&gt;</code>: Performs the equivalent of M117,
+  setting the supplied <code>MSG</code> as the current display message.  If
+  <code>MSG</code> is omitted the display will be cleared.</li>
 </ul>
 <h3 id="dual_carriage">[dual_carriage]<a class="headerlink" href="#dual_carriage" title="Permanent link">&para;</a></h3>
 <p>The following command is available when the
@@ -4676,20 +4627,17 @@ retraction required.</p>
 <p>The following additional commands are also available.</p>
 <h4 id="set_retraction">SET_RETRACTION<a class="headerlink" href="#set_retraction" title="Permanent link">&para;</a></h4>
 <p><code>SET_RETRACTION [RETRACT_LENGTH=&lt;mm&gt;] [RETRACT_SPEED=&lt;mm/s&gt;]
-[UNRETRACT_EXTRA_LENGTH=&lt;mm&gt;] [UNRETRACT_SPEED=&lt;mm/s&gt;] [LIFT_Z=&lt;mm&gt;]</code>:
-Adjust the parameters used by firmware retraction. RETRACT_LENGTH
-determines the length of filament to retract and unretract. The
-speed of retraction is adjusted via RETRACT_SPEED, and is typically
-set relatively high. The speed of unretraction is adjusted via
-UNRETRACT_SPEED, and is not particularly critical, although often
-lower than RETRACT_SPEED. In some cases it is useful to add a small
-amount of additional length on unretraction, and this is set via
-UNRETRACT_EXTRA_LENGTH. Specifying LIFT_Z enables lifting of the
-toolhead upon every retract (and subsequent dropping upon unretract)
-to prevent the nozzle from dragging across surfaces or catching on
-the print. SET_RETRACTION is commonly set as part of slicer
-per-filament configuration, as different filaments require different
-parameter settings.</p>
+[UNRETRACT_EXTRA_LENGTH=&lt;mm&gt;] [UNRETRACT_SPEED=&lt;mm/s&gt;]</code>: Adjust the
+parameters used by firmware retraction. RETRACT_LENGTH determines the
+length of filament to retract and unretract. The speed of retraction
+is adjusted via RETRACT_SPEED, and is typically set relatively
+high. The speed of unretraction is adjusted via UNRETRACT_SPEED, and
+is not particularly critical, although often lower than RETRACT_SPEED.
+In some cases it is useful to add a small amount of additional length
+on unretraction, and this is set via UNRETRACT_EXTRA_LENGTH.
+SET_RETRACTION is commonly set as part of slicer per-filament
+configuration, as different filaments require different parameter
+settings.</p>
 <h4 id="get_retraction">GET_RETRACTION<a class="headerlink" href="#get_retraction" title="Permanent link">&para;</a></h4>
 <p><code>GET_RETRACTION</code>: Queries the current parameters used by firmware
 retraction and displays them on the terminal.</p>
@@ -5130,6 +5078,8 @@ persisted in the config by issuing <code>SAVE_CONFIG</code> command.</p>
   configured default prefix (or <code>echo:</code> if no prefix is configured).</li>
 <li><code>RESPOND TYPE=echo MSG="&lt;message&gt;"</code>: echo the message prepended with
   <code>echo:</code>.</li>
+<li><code>RESPOND TYPE=echo_no_space MSG="&lt;message&gt;"</code>: echo the message prepended with
+  <code>echo:</code> without a space between prefix and message, helpful for compatibility with some octoprint plugins that expect very specific formatting.</li>
 <li><code>RESPOND TYPE=command MSG="&lt;message&gt;"</code>: echo the message prepended
   with <code>//</code>.  OctoPrint can be configured to respond to these messages
   (e.g.  <code>RESPOND TYPE=command MSG=action:pause</code>).</li>
@@ -5342,21 +5292,6 @@ enabled:</p>
 print.</p>
 <h4 id="sdcard_reset_file">SDCARD_RESET_FILE<a class="headerlink" href="#sdcard_reset_file" title="Permanent link">&para;</a></h4>
 <p><code>SDCARD_RESET_FILE</code>: Unload file and clear SD state.</p>
-<h3 id="z_thermal_adjust">[z_thermal_adjust]<a class="headerlink" href="#z_thermal_adjust" title="Permanent link">&para;</a></h3>
-<p>The following commands are available when the
-<a href="Config_Reference.html#z_thermal_adjust">z_thermal_adjust config section</a>
-is enabled.</p>
-<h4 id="set_z_thermal_adjust">SET_Z_THERMAL_ADJUST<a class="headerlink" href="#set_z_thermal_adjust" title="Permanent link">&para;</a></h4>
-<p><code>SET_Z_THERMAL_ADJUST [ENABLE=&lt;0:1&gt;] [TEMP_COEFF=&lt;value&gt;] [REF_TEMP=&lt;value&gt;]</code>:
-Enable or disable the Z thermal adjustment with <code>ENABLE</code>. Disabling does not
-remove any adjustment already applied, but will freeze the current adjustment
-value - this prevents potentially unsafe downward Z movement. Re-enabling can
-potentially cause upward tool movement as the adjustment is updated and applied.
-<code>TEMP_COEFF</code> allows run-time tuning of the adjustment temperature coefficient
-(i.e. the <code>TEMP_COEFF</code> config parameter). <code>TEMP_COEFF</code> values are not saved to
-the config. <code>REF_TEMP</code> manually overrides the reference temperature typically
-set during homing (for use in e.g. non-standard homing routines) - will be reset
-automatically upon homing.</p>
 <h3 id="z_tilt">[z_tilt]<a class="headerlink" href="#z_tilt" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the
 <a href="Config_Reference.html#z_tilt">z_tilt config section</a> is enabled.</p>
