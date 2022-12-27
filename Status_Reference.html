@@ -839,6 +839,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#extruder_stepper" class="md-nav__link">
+    extruder_stepper
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#fan" class="md-nav__link">
     fan
   </a>
@@ -981,6 +988,13 @@
         <li class="md-nav__item">
   <a href="#query_endstops" class="md-nav__link">
     query_endstops
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#screws_tilt_adjust" class="md-nav__link">
+    screws_tilt_adjust
   </a>
   
 </li>
@@ -1586,6 +1600,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#extruder_stepper" class="md-nav__link">
+    extruder_stepper
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#fan" class="md-nav__link">
     fan
   </a>
@@ -1728,6 +1749,13 @@
         <li class="md-nav__item">
   <a href="#query_endstops" class="md-nav__link">
     query_endstops
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#screws_tilt_adjust" class="md-nav__link">
+    screws_tilt_adjust
   </a>
   
 </li>
@@ -1954,6 +1982,13 @@ the following strings: "adjust", "fine".</li>
 <li><code>excluded_objects</code>: An array of strings listing the names of excluded objects.</li>
 <li><code>current_object</code>: The name of the object currently being printed.</li>
 </ul>
+<h2 id="extruder_stepper">extruder_stepper<a class="headerlink" href="#extruder_stepper" title="Permanent link">&para;</a></h2>
+<p>The following information is available for extruder_stepper objects (as well as
+<a href="Config_Reference.html#extruder">extruder</a> objects):</p>
+<ul>
+<li><code>pressure_advance</code>: The current <a href="Pressure_Advance.html">pressure advance</a> value.</li>
+<li><code>smooth_time</code>: The current pressure advance smooth time.</li>
+</ul>
 <h2 id="fan">fan<a class="headerlink" href="#fan" title="Permanent link">&para;</a></h2>
 <p>The following information is available in
 <a href="Config_Reference.html#fan">fan</a>,
@@ -1988,9 +2023,9 @@ objects:</p>
 <a href="Config_Reference.html#firmware_retraction">firmware_retraction</a> object:</p>
 <ul>
 <li><code>retract_length</code>, <code>retract_speed</code>, <code>unretract_extra_length</code>,
-  <code>unretract_speed</code>, <code>lift_z</code>: The current settings for the
-  firmware_retraction module. These settings may differ from the
-  config file if a <code>SET_RETRACTION</code> command alters them.</li>
+  <code>unretract_speed</code>: The current settings for the firmware_retraction
+  module. These settings may differ from the config file if a
+  <code>SET_RETRACTION</code> command alters them.</li>
 </ul>
 <h2 id="gcode_macro">gcode_macro<a class="headerlink" href="#gcode_macro" title="Permanent link">&para;</a></h2>
 <p>The following information is available in
@@ -2157,8 +2192,12 @@ is defined):</p>
 defined):</p>
 <ul>
 <li><code>filename</code>, <code>total_duration</code>, <code>print_duration</code>, <code>filament_used</code>,
-  <code>state</code>, <code>message</code>: Estimated information about the current print
-  when a virtual_sdcard print is active.</li>
+  <code>state</code>, <code>message</code>: Estimated information about the current print when a
+  virtual_sdcard print is active.</li>
+<li><code>info.total_layer</code>: The total layer value of the last <code>SET_PRINT_STATS_INFO
+   TOTAL_LAYER=&lt;value&gt;</code> G-Code command.</li>
+<li><code>info.current_layer</code>: The current layer value of the last
+  <code>SET_PRINT_STATS_INFO CURRENT_LAYER=&lt;value&gt;</code> G-Code command.</li>
 </ul>
 <h2 id="probe">probe<a class="headerlink" href="#probe" title="Permanent link">&para;</a></h2>
 <p>The following information is available in the
@@ -2191,6 +2230,30 @@ is defined):</p>
   if this is used in a macro, due to the order of template expansion,
   the QUERY_ENDSTOP command must be run prior to the macro containing
   this reference.</li>
+</ul>
+<h2 id="screws_tilt_adjust">screws_tilt_adjust<a class="headerlink" href="#screws_tilt_adjust" title="Permanent link">&para;</a></h2>
+<p>The following information is available in the <code>screws_tilt_adjust</code>
+object:</p>
+<ul>
+<li><code>error</code>: Returns True if the most recent <code>SCREWS_TILT_CALCULATE</code>
+  command included the <code>MAX_DEVIATION</code> parameter and any of the probed
+  screw points exceeded the specified <code>MAX_DEVIATION</code>.</li>
+<li><code>results</code>: A list of the probed screw locations. Each entry in
+  the list will be a dictionary containing the following keys:<ul>
+<li><code>name</code>: The name of the screw as specified in the config file.</li>
+<li><code>x</code>: The X coordinate of the screw as specified in the config file.</li>
+<li><code>y</code>: The Y coordinate of the screw as specified in the config file.</li>
+<li><code>z</code>: The measured Z height of the screw location.</li>
+<li><code>sign</code>: A string specifying the direction to turn to screw for the
+  necessary adjustment. Either "CW" for clockwise or "CCW" for
+  counterclockwise. The base screw will not have a <code>sign</code> key.</li>
+<li><code>adjust</code>: The number of screw turns to adjust the screw, given in
+  the format "HH:MM," where "HH" is the number of full screw turns
+  and "MM" is the number of "minutes of a clock face" representing
+  a partial screw turn. (E.g. "01:15" would mean to turn the screw
+  one and a quarter revolutions.)</li>
+</ul>
+</li>
 </ul>
 <h2 id="servo">servo<a class="headerlink" href="#servo" title="Permanent link">&para;</a></h2>
 <p>The following information is available in
@@ -2271,6 +2334,8 @@ objects (eg, <code>[tmc2208 stepper_x]</code>):</p>
 <li><code>axis_minimum</code>, <code>axis_maximum</code>: The axis travel limits (mm) after
   homing.  It is possible to access the x, y, z components of this
   limit value (eg, <code>axis_minimum.x</code>, <code>axis_maximum.z</code>).</li>
+<li>For Delta printers the <code>cone_start_z</code> is the max z height at
+  maximum radius (<code>printer.toolhead.cone_start_z</code>).</li>
 <li><code>max_velocity</code>, <code>max_accel</code>, <code>max_accel_to_decel</code>,
   <code>square_corner_velocity</code>: The current printing limits that are in
   effect. This may differ from the config file settings if a
@@ -2315,6 +2380,8 @@ is defined).</p>
 <ul>
 <li><code>enabled</code>: Returns True if adjustment is enabled.</li>
 <li><code>temperature</code>: Current (smoothed) temperature of the defined sensor. [degC]</li>
+<li><code>measured_min_temp</code>: Minimum measured temperature. [degC]</li>
+<li><code>measured_max_temp</code>: Maximum measured temperature. [degC]</li>
 <li><code>current_z_adjust</code>: Last computed Z adjustment [mm].</li>
 <li><code>z_adjust_ref_temperature</code>: Current reference temperature used for calculation
   of Z <code>current_z_adjust</code> [degC].</li>
