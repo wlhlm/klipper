@@ -1040,6 +1040,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#dockable_probe" class="md-nav__link">
+    [dockable_probe]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#dual_carriage" class="md-nav__link">
     [dual_carriage]
   </a>
@@ -2204,6 +2211,26 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#virtual_pins" class="md-nav__link">
+    [virtual_pins]
+  </a>
+  
+    <nav class="md-nav" aria-label="[virtual_pins]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set_virtual_pin" class="md-nav__link">
+    SET_VIRTUAL_PIN
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#virtual_sdcard" class="md-nav__link">
     [virtual_sdcard]
   </a>
@@ -2221,46 +2248,6 @@
           <li class="md-nav__item">
   <a href="#sdcard_reset_file" class="md-nav__link">
     SDCARD_RESET_FILE
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#z_thermal_adjust" class="md-nav__link">
-    [z_thermal_adjust]
-  </a>
-  
-    <nav class="md-nav" aria-label="[z_thermal_adjust]">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#set_z_thermal_adjust" class="md-nav__link">
-    SET_Z_THERMAL_ADJUST
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#z_tilt" class="md-nav__link">
-    [z_tilt]
-  </a>
-  
-    <nav class="md-nav" aria-label="[z_tilt]">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#z_tilt_adjust" class="md-nav__link">
-    Z_TILT_ADJUST
   </a>
   
 </li>
@@ -3103,6 +3090,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#dockable_probe" class="md-nav__link">
+    [dockable_probe]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#dual_carriage" class="md-nav__link">
     [dual_carriage]
   </a>
@@ -4267,6 +4261,26 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#virtual_pins" class="md-nav__link">
+    [virtual_pins]
+  </a>
+  
+    <nav class="md-nav" aria-label="[virtual_pins]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set_virtual_pin" class="md-nav__link">
+    SET_VIRTUAL_PIN
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#virtual_sdcard" class="md-nav__link">
     [virtual_sdcard]
   </a>
@@ -4284,46 +4298,6 @@
           <li class="md-nav__item">
   <a href="#sdcard_reset_file" class="md-nav__link">
     SDCARD_RESET_FILE
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#z_thermal_adjust" class="md-nav__link">
-    [z_thermal_adjust]
-  </a>
-  
-    <nav class="md-nav" aria-label="[z_thermal_adjust]">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#set_z_thermal_adjust" class="md-nav__link">
-    SET_Z_THERMAL_ADJUST
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#z_tilt" class="md-nav__link">
-    [z_tilt]
-  </a>
-  
-    <nav class="md-nav" aria-label="[z_tilt]">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#z_tilt_adjust" class="md-nav__link">
-    Z_TILT_ADJUST
   </a>
   
 </li>
@@ -4614,6 +4588,20 @@ provides the following standard G-Code commands:</p>
   setting the supplied <code>MSG</code> as the current display message.  If
   <code>MSG</code> is omitted the display will be cleared.</li>
 </ul>
+<h3 id="dockable_probe">[dockable_probe]<a class="headerlink" href="#dockable_probe" title="Permanent link">&para;</a></h3>
+<p>In addition to the normal commands available for a [probe], the following
+commands are available when an
+<a href="Config_Reference.html#dockable_probe">dockable_probe config section</a> is enabled
+(also see the <a href="Dockable_Probe.html">Dockable Probe guide</a>):</p>
+<p><code>ATTACH_PROBE</code>: Move to dock and attach probe to the toolhead, the toolhead
+will return to its previous position after attaching.
+<code>DETACH_PROBE</code>: Move to dock and detach probe from the toolhead, the toolhead
+will return to its previous position after detaching.
+<code>GET_PROBE_STATUS</code>: Respond with current probe state. This is useful for
+verifying configuration settings are working as intended.
+<code>SET_PROBE_STATUS STATE=UNKNOWN|ATTACHED|DOCKED</code>: If configured, this allows
+the probe state to be set manually in the event automated probe verification
+methods cannot be used.</p>
 <h3 id="dual_carriage">[dual_carriage]<a class="headerlink" href="#dual_carriage" title="Permanent link">&para;</a></h3>
 <p>The following command is available when the
 <a href="Config_Reference.html#dual_carriage">dual_carriage config section</a> is
@@ -4753,17 +4741,20 @@ retraction required.</p>
 <p>The following additional commands are also available.</p>
 <h4 id="set_retraction">SET_RETRACTION<a class="headerlink" href="#set_retraction" title="Permanent link">&para;</a></h4>
 <p><code>SET_RETRACTION [RETRACT_LENGTH=&lt;mm&gt;] [RETRACT_SPEED=&lt;mm/s&gt;]
-[UNRETRACT_EXTRA_LENGTH=&lt;mm&gt;] [UNRETRACT_SPEED=&lt;mm/s&gt;]</code>: Adjust the
-parameters used by firmware retraction. RETRACT_LENGTH determines the
-length of filament to retract and unretract. The speed of retraction
-is adjusted via RETRACT_SPEED, and is typically set relatively
-high. The speed of unretraction is adjusted via UNRETRACT_SPEED, and
-is not particularly critical, although often lower than RETRACT_SPEED.
-In some cases it is useful to add a small amount of additional length
-on unretraction, and this is set via UNRETRACT_EXTRA_LENGTH.
-SET_RETRACTION is commonly set as part of slicer per-filament
-configuration, as different filaments require different parameter
-settings.</p>
+[UNRETRACT_EXTRA_LENGTH=&lt;mm&gt;] [UNRETRACT_SPEED=&lt;mm/s&gt;] [LIFT_Z=&lt;mm&gt;]</code>:
+Adjust the parameters used by firmware retraction. RETRACT_LENGTH
+determines the length of filament to retract and unretract. The
+speed of retraction is adjusted via RETRACT_SPEED, and is typically
+set relatively high. The speed of unretraction is adjusted via
+UNRETRACT_SPEED, and is not particularly critical, although often
+lower than RETRACT_SPEED. In some cases it is useful to add a small
+amount of additional length on unretraction, and this is set via
+UNRETRACT_EXTRA_LENGTH. Specifying LIFT_Z enables lifting of the
+toolhead upon every retract (and subsequent dropping upon unretract)
+to prevent the nozzle from dragging across surfaces or catching on
+the print. SET_RETRACTION is commonly set as part of slicer
+per-filament configuration, as different filaments require different
+parameter settings.</p>
 <h4 id="get_retraction">GET_RETRACTION<a class="headerlink" href="#get_retraction" title="Permanent link">&para;</a></h4>
 <p><code>GET_RETRACTION</code>: Queries the current parameters used by firmware
 retraction and displays them on the terminal.</p>
@@ -5070,12 +5061,16 @@ the filament load is complete.</p>
 in the config file.</p>
 <h4 id="pid_calibrate_1">PID_CALIBRATE<a class="headerlink" href="#pid_calibrate_1" title="Permanent link">&para;</a></h4>
 <p><code>PID_CALIBRATE HEATER=&lt;config_name&gt; TARGET=&lt;temperature&gt;
-[WRITE_FILE=1]</code>: Perform a PID calibration test. The specified heater
-will be enabled until the specified target temperature is reached, and
-then the heater will be turned off and on for several cycles. If the
-WRITE_FILE parameter is enabled, then the file /tmp/heattest.txt will
-be created with a log of all temperature samples taken during the
-test.</p>
+[WRITE_FILE=1]</code>: Perform a PID calibration test. The
+specified heater will be enabled until the specified target temperature
+is reached, and then the heater will be turned off and on for several
+cycles. If the WRITE_FILE parameter is enabled, then the file
+/tmp/heattest.txt will be created with a log of all temperature samples
+taken during the test. TOLERANCE defaults to 0.02 if not passed in. The
+tighter the tolerance the better the calibration result will be, but how
+tight you can achieve depends on how clean your sensor readings are. low
+noise readings might allow 0.01, to be used, while noisy reading might
+require a value of 0.03 or higher.</p>
 <h3 id="pause_resume">[pause_resume]<a class="headerlink" href="#pause_resume" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the
 <a href="Config_Reference.html#pause_resume">pause_resume config section</a> is
@@ -5418,6 +5413,13 @@ three possible combinations of options:</p>
   You can simply count bands or read tuning tower labels to determine
   the optimum value.</li>
 </ul>
+<h3 id="virtual_pins">[virtual_pins]<a class="headerlink" href="#virtual_pins" title="Permanent link">&para;</a></h3>
+<p>The following command is available when a
+<a href="Config_Reference.html#virtual_pins">virtual_pins config section</a> is
+enabled.</p>
+<h4 id="set_virtual_pin">SET_VIRTUAL_PIN<a class="headerlink" href="#set_virtual_pin" title="Permanent link">&para;</a></h4>
+<p><code>SET_VIRTUAL_PIN PIN=&lt;virtual_pin_name&gt; VALUE=&lt;value&gt;</code>: This will
+alter the value of the specified virtual pin.</p>
 <h3 id="virtual_sdcard">[virtual_sdcard]<a class="headerlink" href="#virtual_sdcard" title="Permanent link">&para;</a></h3>
 <p>Klipper supports the following standard G-Code commands if the
 <a href="Config_Reference.html#virtual_sdcard">virtual_sdcard config section</a> is
@@ -5438,6 +5440,319 @@ enabled:</p>
 print.</p>
 <h4 id="sdcard_reset_file">SDCARD_RESET_FILE<a class="headerlink" href="#sdcard_reset_file" title="Permanent link">&para;</a></h4>
 <p><code>SDCARD_RESET_FILE</code>: Unload file and clear SD state.</p>
+<h1 id="head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD<a class="headerlink" href="#head" title="Permanent link">&para;</a></h1>
+<h2 id="g-code-firmware-retraction">G-Code firmware retraction<a class="headerlink" href="#g-code-firmware-retraction" title="Permanent link">&para;</a></h2>
+<p>The following standard G-Code commands are available if a
+<a href="Config_Reference.html#firmware_retraction">firmware_retraction config section</a>
+is enabled:</p>
+<ul>
+<li>Retract: <code>G10</code></li>
+<li>Unretract: <code>G11</code></li>
+</ul>
+<h2 id="g-code-display-commands">G-Code display commands<a class="headerlink" href="#g-code-display-commands" title="Permanent link">&para;</a></h2>
+<p>The following standard G-Code commands are available if a
+<a href="Config_Reference.html#display">display config section</a> is enabled:</p>
+<ul>
+<li>Display Message: <code>M117 &lt;message&gt;</code></li>
+<li>Set build percentage: <code>M73 P&lt;percent&gt;</code></li>
+</ul>
+<h2 id="other-available-g-code-commands">Other available G-Code commands<a class="headerlink" href="#other-available-g-code-commands" title="Permanent link">&para;</a></h2>
+<p>The following standard G-Code commands are currently available, but
+using them is not recommended:</p>
+<ul>
+<li>Get Endstop Status: <code>M119</code> (Use QUERY_ENDSTOPS instead.)</li>
+</ul>
+<h1 id="extended-g-code-commands">Extended G-Code Commands<a class="headerlink" href="#extended-g-code-commands" title="Permanent link">&para;</a></h1>
+<p>Klipper uses "extended" G-Code commands for general configuration and
+status.  These extended commands all follow a similar format - they
+start with a command name and may be followed by one or more
+parameters. For example: <code>SET_SERVO SERVO=myservo ANGLE=5.3</code>. In this
+document, the commands and parameters are shown in uppercase, however
+they are not case sensitive. (So, "SET_SERVO" and "set_servo" both run
+the same command.)</p>
+<p>The following standard commands are supported:</p>
+<ul>
+<li><code>QUERY_ENDSTOPS</code>: Probe the axis endstops and report if they are
+  "triggered" or in an "open" state. This command is typically used to
+  verify that an endstop is working correctly.</li>
+<li><code>QUERY_ADC [NAME=&lt;config_name&gt;] [PULLUP=&lt;value&gt;]</code>: Report the last
+  analog value received for a configured analog pin. If NAME is not
+  provided, the list of available adc names are reported. If PULLUP is
+  provided (as a value in Ohms), the raw analog value along with the
+  equivalent resistance given that pullup is reported.</li>
+<li><code>GET_POSITION</code>: Return information on the current location of the
+  toolhead.</li>
+<li><code>SET_GCODE_OFFSET [X=&lt;pos&gt;|X_ADJUST=&lt;adjust&gt;]
+  [Y=&lt;pos&gt;|Y_ADJUST=&lt;adjust&gt;] [Z=&lt;pos&gt;|Z_ADJUST=&lt;adjust&gt;]
+  [MOVE=1 [MOVE_SPEED=&lt;speed&gt;]]</code>: Set a positional offset to apply to
+  future G-Code commands. This is commonly used to virtually change
+  the Z bed offset or to set nozzle XY offsets when switching
+  extruders. For example, if "SET_GCODE_OFFSET Z=0.2" is sent, then
+  future G-Code moves will have 0.2mm added to their Z height. If the
+  X_ADJUST style parameters are used, then the adjustment will be
+  added to any existing offset (eg, "SET_GCODE_OFFSET Z=-0.2" followed
+  by "SET_GCODE_OFFSET Z_ADJUST=0.3" would result in a total Z offset
+  of 0.1). If "MOVE=1" is specified then a toolhead move will be
+  issued to apply the given offset (otherwise the offset will take
+  effect on the next absolute G-Code move that specifies the given
+  axis). If "MOVE_SPEED" is specified then the toolhead move will be
+  performed with the given speed (in mm/s); otherwise the toolhead
+  move will use the last specified G-Code speed.</li>
+<li><code>SAVE_GCODE_STATE [NAME=&lt;state_name&gt;]</code>: Save the current
+  g-code coordinate parsing state. Saving and restoring the g-code
+  state is useful in scripts and macros. This command saves the
+  current g-code absolute coordinate mode (G90/G91), absolute extrude
+  mode (M82/M83), origin (G92), offset (SET_GCODE_OFFSET), speed
+  override (M220), extruder override (M221), move speed, current XYZ
+  position, and relative extruder "E" position. If NAME is provided it
+  allows one to name the saved state to the given string. If NAME is
+  not provided it defaults to "default".</li>
+<li><code>RESTORE_GCODE_STATE [NAME=&lt;state_name&gt;]
+  [MOVE=1 [MOVE_SPEED=&lt;speed&gt;]]</code>: Restore a state previously saved via
+  SAVE_GCODE_STATE. If "MOVE=1" is specified then a toolhead move will
+  be issued to move back to the previous XYZ position. If "MOVE_SPEED"
+  is specified then the toolhead move will be performed with the given
+  speed (in mm/s); otherwise the toolhead move will use the restored
+  g-code speed.</li>
+<li><code>PID_CALIBRATE HEATER=&lt;config_name&gt; TARGET=&lt;temperature&gt;
+  [WRITE_FILE=1]</code>: Perform a PID calibration test. The specified
+  heater will be enabled until the specified target temperature is
+  reached, and then the heater will be turned off and on for several
+  cycles. If the WRITE_FILE parameter is enabled, then the file
+  /tmp/heattest.txt will be created with a log of all temperature
+  samples taken during the test.</li>
+<li><code>TURN_OFF_HEATERS</code>: Turn off all heaters.</li>
+<li><code>TEMPERATURE_WAIT SENSOR=&lt;config_name&gt; [MINIMUM=&lt;target&gt;] [MAXIMUM=&lt;target&gt;]</code>:
+  Wait until the given temperature sensor is at or above the supplied
+  MINIMUM and/or at or below the supplied MAXIMUM.</li>
+<li><code>SET_VELOCITY_LIMIT [VELOCITY=&lt;value&gt;] [ACCEL=&lt;value&gt;]
+  [ACCEL_TO_DECEL=&lt;value&gt;] [SQUARE_CORNER_VELOCITY=&lt;value&gt;]</code>: Modify
+  the printer's velocity limits. Note that one may only set values
+  less than or equal to the limits specified in the config file.</li>
+<li><code>SET_HEATER_TEMPERATURE HEATER=&lt;heater_name&gt; [TARGET=&lt;target_temperature&gt;]</code>:
+  Sets the target temperature for a heater. If a target temperature is
+  not supplied, the target is 0.</li>
+<li><code>ACTIVATE_EXTRUDER EXTRUDER=&lt;config_name&gt;</code>: In a printer with
+  multiple extruders this command is used to change the active
+  extruder.</li>
+<li><code>SET_PRESSURE_ADVANCE [EXTRUDER=&lt;config_name&gt;] [ADVANCE=&lt;pressure_advance&gt;]
+  [SMOOTH_TIME=&lt;pressure_advance_smooth_time&gt;]</code>: Set pressure advance
+  parameters. If EXTRUDER is not specified, it defaults to the active
+  extruder.</li>
+<li><code>SET_EXTRUDER_STEP_DISTANCE [EXTRUDER=&lt;config_name&gt;]
+  [DISTANCE=&lt;distance&gt;]</code>: Set a new value for the provided extruder's
+  "step distance". The "step distance" is
+  <code>rotation_distance/(full_steps_per_rotation*microsteps)</code>. Value is
+  not retained on Klipper reset. Use with caution, small changes can
+  result in excessive pressure between extruder and hot end. Do proper
+  calibration steps with filament before use. If 'DISTANCE' value is
+  not included command will return current step distance.</li>
+<li><code>SET_STEPPER_ENABLE STEPPER=&lt;config_name&gt; ENABLE=[0|1]</code>: Enable or
+  disable only the given stepper. This is a diagnostic and debugging
+  tool and must be used with care. Disabling an axis motor does not
+  reset the homing information. Manually moving a disabled stepper may
+  cause the machine to operate the motor outside of safe limits. This
+  can lead to damage to axis components, hot ends, and print surface.</li>
+<li><code>STEPPER_BUZZ STEPPER=&lt;config_name&gt;</code>: Move the given stepper forward
+  one mm and then backward one mm, repeated 10 times. This is a
+  diagnostic tool to help verify stepper connectivity.</li>
+<li><code>MANUAL_PROBE [SPEED=&lt;speed&gt;]</code>: Run a helper script useful for
+  measuring the height of the nozzle at a given location. If SPEED is
+  specified, it sets the speed of TESTZ commands (the default is
+  5mm/s). During a manual probe, the following additional commands are
+  available:<ul>
+<li><code>ACCEPT</code>: This command accepts the current Z position and
+concludes the manual probing tool.</li>
+<li><code>ABORT</code>: This command terminates the manual probing tool.</li>
+<li><code>TESTZ Z=&lt;value&gt;</code>: This command moves the nozzle up or down by the
+  amount specified in "value". For example, <code>TESTZ Z=-.1</code> would move
+  the nozzle down .1mm while <code>TESTZ Z=.1</code> would move the nozzle up
+  .1mm. The value may also be <code>+</code>, <code>-</code>, <code>++</code>, or <code>--</code> to move the
+  nozzle up or down an amount relative to previous attempts.</li>
+</ul>
+</li>
+<li><code>Z_ENDSTOP_CALIBRATE [SPEED=&lt;speed&gt;]</code>: Run a helper script useful
+  for calibrating a Z position_endstop config setting. See the
+  MANUAL_PROBE command for details on the parameters and the
+  additional commands available while the tool is active.</li>
+<li><code>TUNING_TOWER COMMAND=&lt;command&gt; PARAMETER=&lt;name&gt; START=&lt;value&gt;
+  FACTOR=&lt;value&gt; [BAND=&lt;value&gt;]</code>: A tool for tuning a parameter on
+  each Z height during a print. The tool will run the given COMMAND
+  with the given PARAMETER assigned to the value using the formula
+  <code>value = start + factor * z_height</code>. If BAND is provided then the
+  adjustment will only be made every BAND millimeters of z height - in
+  that case the formula used is <code>value = start + factor *
+  ((floor(z_height / band) + .5) * band)</code>.</li>
+<li><code>SET_DISPLAY_GROUP [DISPLAY=&lt;display&gt;] GROUP=&lt;group&gt;</code>: Set the
+  active display group of an lcd display. This allows to define
+  multiple display data groups in the config,
+  e.g. <code>[display_data &lt;group&gt; &lt;elementname&gt;]</code> and switch between them
+  using this extended gcode command. If DISPLAY is not specified it
+  defaults to "display" (the primary display).</li>
+<li><code>SET_IDLE_TIMEOUT [TIMEOUT=&lt;timeout&gt;]</code>:  Allows the user to set the
+  idle timeout (in seconds).</li>
+<li><code>RESTART</code>: This will cause the host software to reload its config
+  and perform an internal reset. This command will not clear error
+  state from the micro-controller (see FIRMWARE_RESTART) nor will it
+  load new software (see
+  <a href="FAQ.html#how-do-i-upgrade-to-the-latest-software">the FAQ</a>).</li>
+<li><code>FIRMWARE_RESTART</code>: This is similar to a RESTART command, but it
+  also clears any error state from the micro-controller.</li>
+<li><code>SAVE_CONFIG</code>: This command will overwrite the main printer config
+  file and restart the host software. This command is used in
+  conjunction with other calibration commands to store the results of
+  calibration tests.</li>
+<li><code>STATUS</code>: Report the Klipper host software status.</li>
+<li><code>HELP</code>: Report the list of available extended G-Code commands.</li>
+</ul>
+<h2 id="g-code-macro-commands">G-Code Macro Commands<a class="headerlink" href="#g-code-macro-commands" title="Permanent link">&para;</a></h2>
+<p>The following command is available when a
+<a href="Config_Reference.html#gcode_macro">gcode_macro config section</a> is
+enabled (also see the
+<a href="Command_Templates.html">command templates guide</a>):</p>
+<ul>
+<li><code>SET_GCODE_VARIABLE MACRO=&lt;macro_name&gt; VARIABLE=&lt;name&gt;
+  VALUE=&lt;value&gt;</code>: This command allows one to change the value of a
+  gcode_macro variable at run-time. The provided VALUE is parsed as a
+  Python literal.</li>
+</ul>
+<h2 id="custom-pin-commands">Custom Pin Commands<a class="headerlink" href="#custom-pin-commands" title="Permanent link">&para;</a></h2>
+<p>The following command is available when an
+<a href="Config_Reference.html#output_pin">output_pin config section</a> is
+enabled:</p>
+<ul>
+<li><code>SET_PIN PIN=config_name VALUE=&lt;value&gt; CYCLE_TIME=&lt;cycle_time&gt;</code></li>
+</ul>
+<p>Note: Hardware PWM does not currently support the CYCLE_TIME parameter
+and will use the cycle time defined in the config.</p>
+<h2 id="manually-controlled-fans-commands">Manually Controlled Fans Commands<a class="headerlink" href="#manually-controlled-fans-commands" title="Permanent link">&para;</a></h2>
+<p>The following command is available when a
+<a href="Config_Reference.html#fan_generic">fan_generic config section</a> is
+enabled:</p>
+<ul>
+<li><code>SET_FAN_SPEED FAN=config_name SPEED=&lt;speed&gt;</code> This command sets
+  the speed of a fan. <speed> must be between 0.0 and 1.0.</li>
+</ul>
+<h2 id="neopixel-and-dotstar-commands">Neopixel and Dotstar Commands<a class="headerlink" href="#neopixel-and-dotstar-commands" title="Permanent link">&para;</a></h2>
+<p>The following command is available when a
+<a href="Config_Reference.html#neopixel">neopixel config section</a> or
+<a href="Config_Reference.html#dotstar">dotstar config section</a> is enabled:</p>
+<ul>
+<li><code>SET_LED LED=&lt;config_name&gt; RED=&lt;value&gt; GREEN=&lt;value&gt; BLUE=&lt;value&gt;
+  WHITE=&lt;value&gt; [INDEX=&lt;index&gt;] [TRANSMIT=0]</code>: This sets the LED
+  output. Each color <code>&lt;value&gt;</code> must be between 0.0 and 1.0. The WHITE
+  option is only valid on RGBW LEDs. If multiple LED chips are
+  daisy-chained then one may specify INDEX to alter the color of just
+  the given chip (1 for the first chip, 2 for the second, etc.). If
+  INDEX is not provided then all LEDs in the daisy-chain will be set
+  to the provided color. If TRANSMIT=0 is specified then the color
+  change will only be made on the next SET_LED command that does not
+  specify TRANSMIT=0; this may be useful in combination with the INDEX
+  parameter to batch multiple updates in a daisy-chain.</li>
+</ul>
+<h2 id="servo-commands">Servo Commands<a class="headerlink" href="#servo-commands" title="Permanent link">&para;</a></h2>
+<p>The following commands are available when a
+<a href="Config_Reference.html#servo">servo config section</a> is enabled:</p>
+<ul>
+<li><code>SET_SERVO SERVO=config_name [ANGLE=&lt;degrees&gt; | WIDTH=&lt;seconds&gt;]</code>:
+  Set the servo position to the given angle (in degrees) or pulse
+  width (in seconds). Use <code>WIDTH=0</code> to disable the servo output.</li>
+</ul>
+<h2 id="manual-stepper-commands">Manual stepper Commands<a class="headerlink" href="#manual-stepper-commands" title="Permanent link">&para;</a></h2>
+<p>The following command is available when a
+<a href="Config_Reference.html#manual_stepper">manual_stepper config section</a> is
+enabled:</p>
+<ul>
+<li><code>MANUAL_STEPPER STEPPER=config_name [ENABLE=[0|1]]
+  [SET_POSITION=&lt;pos&gt;] [SPEED=&lt;speed&gt;] [ACCEL=&lt;accel&gt;]
+  [MOVE=&lt;pos&gt; [STOP_ON_ENDSTOP=[1|2|-1|-2]] [SYNC=0]]</code>: This command
+  will alter the state of the stepper. Use the ENABLE parameter to
+  enable/disable the stepper. Use the SET_POSITION parameter to force
+  the stepper to think it is at the given position. Use the MOVE
+  parameter to request a movement to the given position. If SPEED
+  and/or ACCEL is specified then the given values will be used instead
+  of the defaults specified in the config file. If an ACCEL of zero is
+  specified then no acceleration will be performed. If
+  STOP_ON_ENDSTOP=1 is specified then the move will end early should
+  the endstop report as triggered (use STOP_ON_ENDSTOP=2 to complete
+  the move without error even if the endstop does not trigger, use -1
+  or -2 to stop when the endstop reports not triggered). Normally
+  future G-Code commands will be scheduled to run after the stepper
+  move completes, however if a manual stepper move uses SYNC=0 then
+  future G-Code movement commands may run in parallel with the stepper
+  movement.</li>
+</ul>
+<h2 id="extruder-stepper-commands">Extruder stepper Commands<a class="headerlink" href="#extruder-stepper-commands" title="Permanent link">&para;</a></h2>
+<p>The following command is available when an
+<a href="Config_Reference.html#extruder_stepper">extruder_stepper config section</a>
+is enabled:</p>
+<ul>
+<li><code>SYNC_STEPPER_TO_EXTRUDER STEPPER=&lt;extruder_stepper config_name&gt;
+  [EXTRUDER=&lt;extruder config_name&gt;]</code>: This command will cause the given
+  STEPPER to become synchronized to the given EXTRUDER, overriding
+  the extruder defined in the "extruder_stepper" config section.</li>
+</ul>
+<h2 id="probe_2">Probe<a class="headerlink" href="#probe_2" title="Permanent link">&para;</a></h2>
+<p>The following commands are available when a
+<a href="Config_Reference.html#probe">probe config section</a> is enabled (also see
+the <a href="Probe_Calibrate.html">probe calibrate guide</a>):</p>
+<ul>
+<li><code>PROBE [PROBE_SPEED=&lt;mm/s&gt;] [LIFT_SPEED=&lt;mm/s&gt;] [SAMPLES=&lt;count&gt;]
+  [SAMPLE_RETRACT_DIST=&lt;mm&gt;] [SAMPLES_TOLERANCE=&lt;mm&gt;]
+  [SAMPLES_TOLERANCE_RETRIES=&lt;count&gt;]
+  [SAMPLES_RESULT=median|average]</code>: Move the nozzle downwards until
+  the probe triggers. If any of the optional parameters are provided
+  they override their equivalent setting in the
+  <a href="Config_Reference.html#probe">probe config section</a>.</li>
+<li><code>QUERY_PROBE</code>: Report the current status of the probe ("triggered"
+  or "open").</li>
+<li><code>PROBE_ACCURACY [PROBE_SPEED=&lt;mm/s&gt;] [SAMPLES=&lt;count&gt;]
+  [SAMPLE_RETRACT_DIST=&lt;mm&gt;]</code>: Calculate the maximum, minimum,
+  average, median, and standard deviation of multiple probe
+  samples. By default, 10 SAMPLES are taken. Otherwise the optional
+  parameters default to their equivalent setting in the probe config
+  section.</li>
+<li><code>PROBE_CALIBRATE [SPEED=&lt;speed&gt;] [&lt;probe_parameter&gt;=&lt;value&gt;]</code>: Run a
+  helper script useful for calibrating the probe's z_offset. See the
+  PROBE command for details on the optional probe parameters. See the
+  MANUAL_PROBE command for details on the SPEED parameter and the
+  additional commands available while the tool is active. Please note,
+  the PROBE_CALIBRATE command uses the speed variable to move in XY direction
+  as well as Z.</li>
+</ul>
+<h2 id="bltouch_1">BLTouch<a class="headerlink" href="#bltouch_1" title="Permanent link">&para;</a></h2>
+<p>The following command is available when a
+<a href="Config_Reference.html#bltouch">bltouch config section</a> is enabled (also
+see the <a href="BLTouch.html">BL-Touch guide</a>):</p>
+<ul>
+<li>
+<p><code>BLTOUCH_DEBUG COMMAND=&lt;command&gt;</code>: This sends a command to the
+  BLTouch. It may be useful for debugging. Available commands are:
+  <code>pin_down</code>, <code>touch_mode</code>, <code>pin_up</code>, <code>self_test</code>, <code>reset</code>,
+  (*1): <code>set_5V_output_mode</code>, <code>set_OD_output_mode</code>, <code>output_mode_store</code></p>
+<p>**<em> Note that the commands marked by (</em>1) are solely supported
+    by a BL-Touch V3.0 or V3.1(+)</p>
+</li>
+</ul>
+<ul>
+<li><code>BLTOUCH_STORE MODE=&lt;output_mode&gt;</code>: This stores an output mode in the
+  EEPROM of a BLTouch V3.1 Available output_modes are: <code>5V</code>, <code>OD</code></li>
+</ul>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>upstream-work-annex-probe</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <h3 id="z_thermal_adjust">[z_thermal_adjust]<a class="headerlink" href="#z_thermal_adjust" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the
 <a href="Config_Reference.html#z_thermal_adjust">z_thermal_adjust config section</a>
