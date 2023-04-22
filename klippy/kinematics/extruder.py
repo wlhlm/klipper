@@ -91,17 +91,27 @@ class ExtruderStepper:
             raise gcmd.error("Unable to infer active extruder stepper")
         extruder.extruder_stepper.cmd_SET_PRESSURE_ADVANCE(gcmd)
     def cmd_SET_PRESSURE_ADVANCE(self, gcmd):
-        pressure_advance = gcmd.get_float('ADVANCE', self.pressure_advance,
+        in_pressure_advance = gcmd.get_float('ADVANCE', self.pressure_advance,
                                           minval=0.)
-        smooth_time = gcmd.get_float('SMOOTH_TIME',
+        in_smooth_time = gcmd.get_float('SMOOTH_TIME',
                                      self.pressure_advance_smooth_time,
                                      minval=0., maxval=.200)
+
+        if in_pressure_advance is not None:
+            pressure_advance = in_pressure_advance
+        else:
+            pressure_advance = self.pressure_advance
+        if in_smooth_time is not None:
+            smooth_time = in_smooth_time
+        else:
+            smooth_time = self.pressure_advance_smooth_time
+
         self._set_pressure_advance(pressure_advance, smooth_time)
-        msg = ("pressure_advance: %.6f\n"
-               "pressure_advance_smooth_time: %.6f"
+        msg = ("pressure_advance: %.6f\npressure_advance_smooth_time: %.6f"
                % (pressure_advance, smooth_time))
         self.printer.set_rollover_info(self.name, "%s: %s" % (self.name, msg))
-        gcmd.respond_info(msg, log=False)
+        if in_pressure_advance is None and in_smooth_time is None:
+            gcmd.respond_info(msg, log=False)
     cmd_SET_E_ROTATION_DISTANCE_help = "Set extruder rotation distance"
     def cmd_SET_E_ROTATION_DISTANCE(self, gcmd):
         rotation_dist = gcmd.get_float('DISTANCE', None)
