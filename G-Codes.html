@@ -1046,13 +1046,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dockable_probe" class="md-nav__link">
-    [dockable_probe]
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#dual_carriage" class="md-nav__link">
     [dual_carriage]
   </a>
@@ -2207,26 +2200,6 @@
           <li class="md-nav__item">
   <a href="#tuning_tower_1" class="md-nav__link">
     TUNING_TOWER
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#virtual_pins" class="md-nav__link">
-    [virtual_pins]
-  </a>
-  
-    <nav class="md-nav" aria-label="[virtual_pins]">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#set_virtual_pin" class="md-nav__link">
-    SET_VIRTUAL_PIN
   </a>
   
 </li>
@@ -3136,13 +3109,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dockable_probe" class="md-nav__link">
-    [dockable_probe]
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#dual_carriage" class="md-nav__link">
     [dual_carriage]
   </a>
@@ -4307,26 +4273,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#virtual_pins" class="md-nav__link">
-    [virtual_pins]
-  </a>
-  
-    <nav class="md-nav" aria-label="[virtual_pins]">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#set_virtual_pin" class="md-nav__link">
-    SET_VIRTUAL_PIN
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#virtual_sdcard" class="md-nav__link">
     [virtual_sdcard]
   </a>
@@ -4548,14 +4494,15 @@ available for tle5012b chips.</p>
 <a href="Config_Reference.html#bed_mesh">bed_mesh config section</a> is enabled
 (also see the <a href="Bed_Mesh.html">bed mesh guide</a>).</p>
 <h4 id="bed_mesh_calibrate">BED_MESH_CALIBRATE<a class="headerlink" href="#bed_mesh_calibrate" title="Permanent link">&para;</a></h4>
-<p><code>BED_MESH_CALIBRATE [METHOD=manual] [&lt;probe_parameter&gt;=&lt;value&gt;]
-[&lt;mesh_parameter&gt;=&lt;value&gt;]</code>: This command probes the bed using
-generated points specified by the parameters in the config. After
-probing, a mesh is generated and z-movement is adjusted according to
-the mesh. See the PROBE command for details on the optional probe
-parameters. If METHOD=manual is specified then the manual probing tool
-is activated - see the MANUAL_PROBE command above for details on the
-additional commands available while this tool is active.</p>
+<p><code>BED_MESH_CALIBRATE [METHOD=manual] [HORIZONTAL_MOVE_Z=&lt;value&gt;]
+[&lt;probe_parameter&gt;=&lt;value&gt;] [&lt;mesh_parameter&gt;=&lt;value&gt;]</code>: This command probes
+the bed using generated points specified by the parameters in the config. After
+probing, a mesh is generated and z-movement is adjusted according to the mesh.
+See the PROBE command for details on the optional probe parameters. If
+METHOD=manual is specified then the manual probing tool is activated - see the
+MANUAL_PROBE command above for details on the additional commands available
+while this tool is active. The optional <code>HORIZONTAL_MOVE_Z</code> value overrides the
+<code>horizontal_move_z</code> option specified in the config file.</p>
 <h4 id="bed_mesh_output">BED_MESH_OUTPUT<a class="headerlink" href="#bed_mesh_output" title="Permanent link">&para;</a></h4>
 <p><code>BED_MESH_OUTPUT PGP=[&lt;0:1&gt;]</code>: This command outputs the current probed
 z values and current mesh values to the terminal.  If PGP=1 is
@@ -4598,13 +4545,14 @@ bed screws so that the bed is a constant distance from the nozzle.</p>
 <p>The following commands are available when the
 <a href="Config_Reference.html#bed_tilt">bed_tilt config section</a> is enabled.</p>
 <h4 id="bed_tilt_calibrate">BED_TILT_CALIBRATE<a class="headerlink" href="#bed_tilt_calibrate" title="Permanent link">&para;</a></h4>
-<p><code>BED_TILT_CALIBRATE [METHOD=manual] [&lt;probe_parameter&gt;=&lt;value&gt;]</code>: This
-command will probe the points specified in the config and then
-recommend updated x and y tilt adjustments. See the PROBE command for
-details on the optional probe parameters. If METHOD=manual is
-specified then the manual probing tool is activated - see the
-MANUAL_PROBE command above for details on the additional commands
-available while this tool is active.</p>
+<p><code>BED_TILT_CALIBRATE [METHOD=manual] [HORIZONTAL_MOVE_Z=&lt;value&gt;]
+[&lt;probe_parameter&gt;=&lt;value&gt;]</code>: This command will probe the points specified in
+the config and then recommend updated x and y tilt adjustments. See the PROBE
+command for details on the optional probe parameters. If METHOD=manual is
+specified then the manual probing tool is activated - see the MANUAL_PROBE
+command above for details on the additional commands available while this tool
+is active. The optional <code>HORIZONTAL_MOVE_Z</code> value overrides the
+<code>horizontal_move_z</code> option specified in the config file.</p>
 <h3 id="bltouch">[bltouch]<a class="headerlink" href="#bltouch" title="Permanent link">&para;</a></h3>
 <p>The following command is available when a
 <a href="Config_Reference.html#bltouch">bltouch config section</a> is enabled (also
@@ -4640,13 +4588,14 @@ from executing.</p>
 <a href="Config_Reference.html#linear-delta-kinematics">delta_calibrate config section</a>
 is enabled (also see the <a href="Delta_Calibrate.html">delta calibrate guide</a>).</p>
 <h4 id="delta_calibrate_1">DELTA_CALIBRATE<a class="headerlink" href="#delta_calibrate_1" title="Permanent link">&para;</a></h4>
-<p><code>DELTA_CALIBRATE [METHOD=manual] [&lt;probe_parameter&gt;=&lt;value&gt;]</code>: This
-command will probe seven points on the bed and recommend updated
-endstop positions, tower angles, and radius. See the PROBE command for
-details on the optional probe parameters. If METHOD=manual is
-specified then the manual probing tool is activated - see the
-MANUAL_PROBE command above for details on the additional commands
-available while this tool is active.</p>
+<p><code>DELTA_CALIBRATE [METHOD=manual] [HORIZONTAL_MOVE_Z=&lt;value&gt;]
+[&lt;probe_parameter&gt;=&lt;value&gt;]</code>: This command will probe seven points on the bed
+and recommend updated endstop positions, tower angles, and radius. See the
+PROBE command for details on the optional probe parameters. If METHOD=manual is
+specified then the manual probing tool is activated - see the MANUAL_PROBE
+command above for details on the additional commands available while this tool
+is active. The optional <code>HORIZONTAL_MOVE_Z</code> value overrides the
+<code>horizontal_move_z</code> option specified in the config file.</p>
 <h4 id="delta_analyze">DELTA_ANALYZE<a class="headerlink" href="#delta_analyze" title="Permanent link">&para;</a></h4>
 <p><code>DELTA_ANALYZE</code>: This command is used during enhanced delta
 calibration. See <a href="Delta_Calibrate.html">Delta Calibrate</a> for details.</p>
@@ -4673,22 +4622,6 @@ provides the following standard G-Code commands:</p>
 <li><code>SET_DISPLAY_TEXT MSG=&lt;message&gt;</code>: Performs the equivalent of M117,
   setting the supplied <code>MSG</code> as the current display message.  If
   <code>MSG</code> is omitted the display will be cleared.</li>
-</ul>
-<h3 id="dockable_probe">[dockable_probe]<a class="headerlink" href="#dockable_probe" title="Permanent link">&para;</a></h3>
-<p>In addition to the normal commands available for a [probe], the following
-commands are available when an
-<a href="Config_Reference.html#annexed_probe">annexed_probe config section</a> is enabled
-(also see the <a href="Annexed_Probe.md">Annexed Probe guide</a>):</p>
-<ul>
-<li><code>ATTACH_PROBE</code>: Move to dock and attach probe to the toolhead, the toolhead
-  will return to its previous position after attaching.</li>
-<li><code>DETACH_PROBE</code>: Move to dock and detach probe from the toolhead, the toolhead
-  will return to its previous position after detaching.</li>
-<li><code>GET_PROBE_STATUS</code>: Respond with current probe state. This is useful for
-  verifying configuration settings are working as intended.</li>
-<li><code>SET_PROBE_STATUS STATE=UNKNOWN|ATTACHED|DOCKED</code>: If configured, this allows
-  the probe state to be set manually in the event automated probe verification
-  methods cannot be used.</li>
 </ul>
 <h3 id="dual_carriage">[dual_carriage]<a class="headerlink" href="#dual_carriage" title="Permanent link">&para;</a></h3>
 <p>The following command is available when the
@@ -4829,20 +4762,17 @@ retraction required.</p>
 <p>The following additional commands are also available.</p>
 <h4 id="set_retraction">SET_RETRACTION<a class="headerlink" href="#set_retraction" title="Permanent link">&para;</a></h4>
 <p><code>SET_RETRACTION [RETRACT_LENGTH=&lt;mm&gt;] [RETRACT_SPEED=&lt;mm/s&gt;]
-[UNRETRACT_EXTRA_LENGTH=&lt;mm&gt;] [UNRETRACT_SPEED=&lt;mm/s&gt;] [LIFT_Z=&lt;mm&gt;]</code>:
-Adjust the parameters used by firmware retraction. RETRACT_LENGTH
-determines the length of filament to retract and unretract. The
-speed of retraction is adjusted via RETRACT_SPEED, and is typically
-set relatively high. The speed of unretraction is adjusted via
-UNRETRACT_SPEED, and is not particularly critical, although often
-lower than RETRACT_SPEED. In some cases it is useful to add a small
-amount of additional length on unretraction, and this is set via
-UNRETRACT_EXTRA_LENGTH. Specifying LIFT_Z enables lifting of the
-toolhead upon every retract (and subsequent dropping upon unretract)
-to prevent the nozzle from dragging across surfaces or catching on
-the print. SET_RETRACTION is commonly set as part of slicer
-per-filament configuration, as different filaments require different
-parameter settings.</p>
+[UNRETRACT_EXTRA_LENGTH=&lt;mm&gt;] [UNRETRACT_SPEED=&lt;mm/s&gt;]</code>: Adjust the
+parameters used by firmware retraction. RETRACT_LENGTH determines the
+length of filament to retract and unretract. The speed of retraction
+is adjusted via RETRACT_SPEED, and is typically set relatively
+high. The speed of unretraction is adjusted via UNRETRACT_SPEED, and
+is not particularly critical, although often lower than RETRACT_SPEED.
+In some cases it is useful to add a small amount of additional length
+on unretraction, and this is set via UNRETRACT_EXTRA_LENGTH.
+SET_RETRACTION is commonly set as part of slicer per-filament
+configuration, as different filaments require different parameter
+settings.</p>
 <h4 id="get_retraction">GET_RETRACTION<a class="headerlink" href="#get_retraction" title="Permanent link">&para;</a></h4>
 <p><code>GET_RETRACTION</code>: Queries the current parameters used by firmware
 retraction and displays them on the terminal.</p>
@@ -5113,9 +5043,16 @@ commands to manage the LED's color settings).</p>
 <a href="Config_Reference.html#output_pin">output_pin config section</a> is
 enabled.</p>
 <h4 id="set_pin">SET_PIN<a class="headerlink" href="#set_pin" title="Permanent link">&para;</a></h4>
-<p><code>SET_PIN PIN=config_name VALUE=&lt;value&gt; CYCLE_TIME=&lt;cycle_time&gt;</code>:
-Note - hardware PWM does not currently support the CYCLE_TIME
-parameter and will use the cycle time defined in the config.</p>
+<p><code>SET_PIN PIN=config_name VALUE=&lt;value&gt; [CYCLE_TIME=&lt;cycle_time&gt;]</code>: Set
+the pin to the given output <code>VALUE</code>. VALUE should be 0 or 1 for
+"digital" output pins. For PWM pins, set to a value between 0.0 and
+1.0, or between 0.0 and <code>scale</code> if a scale is configured in the
+output_pin config section.</p>
+<p>Some pins (currently only "soft PWM" pins) support setting an explicit
+cycle time using the CYCLE_TIME parameter (specified in seconds). Note
+that the CYCLE_TIME parameter is not stored between SET_PIN commands
+(any SET_PIN command without an explicit CYCLE_TIME parameter will use
+the <code>cycle_time</code> specified in the output_pin config section).</p>
 <h3 id="palette2">[palette2]<a class="headerlink" href="#palette2" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the
 <a href="Config_Reference.html#palette2">palette2 config section</a> is enabled.</p>
@@ -5149,16 +5086,12 @@ the filament load is complete.</p>
 in the config file.</p>
 <h4 id="pid_calibrate_1">PID_CALIBRATE<a class="headerlink" href="#pid_calibrate_1" title="Permanent link">&para;</a></h4>
 <p><code>PID_CALIBRATE HEATER=&lt;config_name&gt; TARGET=&lt;temperature&gt;
-[WRITE_FILE=1]</code>: Perform a PID calibration test. The
-specified heater will be enabled until the specified target temperature
-is reached, and then the heater will be turned off and on for several
-cycles. If the WRITE_FILE parameter is enabled, then the file
-/tmp/heattest.txt will be created with a log of all temperature samples
-taken during the test. TOLERANCE defaults to 0.02 if not passed in. The
-tighter the tolerance the better the calibration result will be, but how
-tight you can achieve depends on how clean your sensor readings are. low
-noise readings might allow 0.01, to be used, while noisy reading might
-require a value of 0.03 or higher.</p>
+[WRITE_FILE=1]</code>: Perform a PID calibration test. The specified heater
+will be enabled until the specified target temperature is reached, and
+then the heater will be turned off and on for several cycles. If the
+WRITE_FILE parameter is enabled, then the file /tmp/heattest.txt will
+be created with a log of all temperature samples taken during the
+test.</p>
 <h3 id="pause_resume">[pause_resume]<a class="headerlink" href="#pause_resume" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the
 <a href="Config_Reference.html#pause_resume">pause_resume config section</a> is
@@ -5335,16 +5268,17 @@ is enabled (also see the
 <a href="Manual_Level.html#adjusting-bed-leveling-screws-using-the-bed-probe">manual level guide</a>).</p>
 <h4 id="screws_tilt_calculate">SCREWS_TILT_CALCULATE<a class="headerlink" href="#screws_tilt_calculate" title="Permanent link">&para;</a></h4>
 <p><code>SCREWS_TILT_CALCULATE [DIRECTION=CW|CCW] [MAX_DEVIATION=&lt;value&gt;]
-[&lt;probe_parameter&gt;=&lt;value&gt;]</code>: This command will invoke the bed screws
-adjustment tool. It will command the nozzle to different locations (as
-defined in the config file) probing the z height and calculate the
-number of knob turns to adjust the bed level. If DIRECTION is
-specified, the knob turns will all be in the same direction, clockwise
-(CW) or counterclockwise (CCW). See the PROBE command for details on
-the optional probe parameters. IMPORTANT: You MUST always do a G28
-before using this command. If MAX_DEVIATION is specified, the command
-will raise a gcode error if any difference in the screw height
-relative to the base screw height is greater than the value provided.</p>
+[HORIZONTAL_MOVE_Z=&lt;value&gt;] [&lt;probe_parameter&gt;=&lt;value&gt;]</code>: This command will
+invoke the bed screws adjustment tool. It will command the nozzle to different
+locations (as defined in the config file) probing the z height and calculate
+the number of knob turns to adjust the bed level. If DIRECTION is specified,
+the knob turns will all be in the same direction, clockwise (CW) or
+counterclockwise (CCW). See the PROBE command for details on the optional probe
+parameters. IMPORTANT: You MUST always do a G28 before using this command. If
+MAX_DEVIATION is specified, the command will raise a gcode error if any
+difference in the screw height relative to the base screw height is greater
+than the value provided. The optional <code>HORIZONTAL_MOVE_Z</code> value overrides the
+<code>horizontal_move_z</code> option specified in the config file.</p>
 <h3 id="sdcard_loop">[sdcard_loop]<a class="headerlink" href="#sdcard_loop" title="Permanent link">&para;</a></h3>
 <p>When the <a href="Config_Reference.html#sdcard_loop">sdcard_loop config section</a>
 is enabled, the following extended commands are available.</p>
@@ -5445,8 +5379,9 @@ no change is applied.</p>
 <a href="Config_Reference.html#tmc-stepper-driver-configuration">tmcXXXX config sections</a>
 are enabled.</p>
 <h4 id="dump_tmc">DUMP_TMC<a class="headerlink" href="#dump_tmc" title="Permanent link">&para;</a></h4>
-<p><code>DUMP_TMC STEPPER=&lt;name&gt;</code>: This command will read the TMC driver
-registers and report their values.</p>
+<p><code>DUMP_TMC STEPPER=&lt;name&gt; [REGISTER=&lt;name&gt;]</code>: This command will read all TMC
+driver registers and report their values. If a REGISTER is provided, only
+the specified register will be dumped.</p>
 <h4 id="init_tmc">INIT_TMC<a class="headerlink" href="#init_tmc" title="Permanent link">&para;</a></h4>
 <p><code>INIT_TMC STEPPER=&lt;name&gt;</code>: This command will initialize the TMC
 registers. Needed to re-enable the driver if power to the chip is
@@ -5454,15 +5389,21 @@ turned off then back on.</p>
 <h4 id="set_tmc_current">SET_TMC_CURRENT<a class="headerlink" href="#set_tmc_current" title="Permanent link">&para;</a></h4>
 <p><code>SET_TMC_CURRENT STEPPER=&lt;name&gt; CURRENT=&lt;amps&gt; HOLDCURRENT=&lt;amps&gt;</code>:
 This will adjust the run and hold currents of the TMC driver.
-(HOLDCURRENT is not applicable to tmc2660 drivers.)</p>
+<code>HOLDCURRENT</code> is not applicable to tmc2660 drivers.
+When used on a driver which has the <code>globalscaler</code> field (tmc5160 and tmc2240),
+if StealthChop2 is used, the stepper must be held at standstill for &gt;130ms so
+that the driver executes the AT#1 calibration.</p>
 <h4 id="set_tmc_field">SET_TMC_FIELD<a class="headerlink" href="#set_tmc_field" title="Permanent link">&para;</a></h4>
-<p><code>SET_TMC_FIELD STEPPER=&lt;name&gt; FIELD=&lt;field&gt; VALUE=&lt;value&gt;</code>: This will
-alter the value of the specified register field of the TMC driver.
+<p><code>SET_TMC_FIELD STEPPER=&lt;name&gt; FIELD=&lt;field&gt; VALUE=&lt;value&gt; VELOCITY=&lt;value&gt;</code>:
+This will alter the value of the specified register field of the TMC driver.
 This command is intended for low-level diagnostics and debugging only
 because changing the fields during run-time can lead to undesired and
 potentially dangerous behavior of your printer. Permanent changes
 should be made using the printer configuration file instead. No sanity
-checks are performed for the given values.</p>
+checks are performed for the given values.
+A VELOCITY can also be specified instead of a VALUE. This velocity is
+converted to the 20bit TSTEP based value representation. Only use the VELOCITY
+argument for fields that represent velocities.</p>
 <h3 id="toolhead">[toolhead]<a class="headerlink" href="#toolhead" title="Permanent link">&para;</a></h3>
 <p>The toolhead module is automatically loaded.</p>
 <h4 id="set_velocity_limit">SET_VELOCITY_LIMIT<a class="headerlink" href="#set_velocity_limit" title="Permanent link">&para;</a></h4>
@@ -5501,13 +5442,6 @@ three possible combinations of options:</p>
   You can simply count bands or read tuning tower labels to determine
   the optimum value.</li>
 </ul>
-<h3 id="virtual_pins">[virtual_pins]<a class="headerlink" href="#virtual_pins" title="Permanent link">&para;</a></h3>
-<p>The following command is available when a
-<a href="Config_Reference.html#virtual_pins">virtual_pins config section</a> is
-enabled.</p>
-<h4 id="set_virtual_pin">SET_VIRTUAL_PIN<a class="headerlink" href="#set_virtual_pin" title="Permanent link">&para;</a></h4>
-<p><code>SET_VIRTUAL_PIN PIN=&lt;virtual_pin_name&gt; VALUE=&lt;value&gt;</code>: This will
-alter the value of the specified virtual pin.</p>
 <h3 id="virtual_sdcard">[virtual_sdcard]<a class="headerlink" href="#virtual_sdcard" title="Permanent link">&para;</a></h3>
 <p>Klipper supports the following standard G-Code commands if the
 <a href="Config_Reference.html#virtual_sdcard">virtual_sdcard config section</a> is
@@ -5547,10 +5481,11 @@ automatically upon homing.</p>
 <p>The following commands are available when the
 <a href="Config_Reference.html#z_tilt">z_tilt config section</a> is enabled.</p>
 <h4 id="z_tilt_adjust">Z_TILT_ADJUST<a class="headerlink" href="#z_tilt_adjust" title="Permanent link">&para;</a></h4>
-<p><code>Z_TILT_ADJUST [&lt;probe_parameter&gt;=&lt;value&gt;]</code>: This command will probe
-the points specified in the config and then make independent
-adjustments to each Z stepper to compensate for tilt. See the PROBE
-command for details on the optional probe parameters.</p>
+<p><code>Z_TILT_ADJUST [HORIZONTAL_MOVE_Z=&lt;value&gt;] [&lt;probe_parameter&gt;=&lt;value&gt;]</code>: This
+command will probe the points specified in the config and then make independent
+adjustments to each Z stepper to compensate for tilt. See the PROBE command for
+details on the optional probe parameters. The optional <code>HORIZONTAL_MOVE_Z</code>
+value overrides the <code>horizontal_move_z</code> option specified in the config file.</p>
 
               
             </article>

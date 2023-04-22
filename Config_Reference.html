@@ -859,13 +859,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#virtual_pins" class="md-nav__link">
-    [virtual_pins]
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -964,13 +957,6 @@
           <li class="md-nav__item">
   <a href="#bltouch" class="md-nav__link">
     [bltouch]
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dockable_probe" class="md-nav__link">
-    [dockable_probe]
   </a>
   
 </li>
@@ -1129,6 +1115,13 @@
           <li class="md-nav__item">
   <a href="#bmp280bme280bme680-temperature-sensor" class="md-nav__link">
     BMP280/BME280/BME680 temperature sensor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aht10-temperature-sensor" class="md-nav__link">
+    AHT10 temperature sensor
   </a>
   
 </li>
@@ -1349,6 +1342,13 @@
           <li class="md-nav__item">
   <a href="#tmc2660" class="md-nav__link">
     [tmc2660]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tmc2240" class="md-nav__link">
+    [tmc2240]
   </a>
   
 </li>
@@ -2794,13 +2794,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#virtual_pins" class="md-nav__link">
-    [virtual_pins]
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -2899,13 +2892,6 @@
           <li class="md-nav__item">
   <a href="#bltouch" class="md-nav__link">
     [bltouch]
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dockable_probe" class="md-nav__link">
-    [dockable_probe]
   </a>
   
 </li>
@@ -3064,6 +3050,13 @@
           <li class="md-nav__item">
   <a href="#bmp280bme280bme680-temperature-sensor" class="md-nav__link">
     BMP280/BME280/BME680 temperature sensor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aht10-temperature-sensor" class="md-nav__link">
+    AHT10 temperature sensor
   </a>
   
 </li>
@@ -3284,6 +3277,13 @@
           <li class="md-nav__item">
   <a href="#tmc2660" class="md-nav__link">
     [tmc2660]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tmc2240" class="md-nav__link">
+    [tmc2240]
   </a>
   
 </li>
@@ -3910,7 +3910,7 @@ max_z_velocity:
 #min_angle: 5
 #   This represents the minimum angle (in degrees) relative to horizontal
 #   that the deltesian arms are allowed to achieve. This parameter is
-#   intended to restrict the arms from becomming completely horizontal,
+#   intended to restrict the arms from becoming completely horizontal,
 #   which would risk accidental inversion of the XZ axis. The default is 5.
 #print_width:
 #   The distance (in mm) of valid toolhead X coordinates. One may use
@@ -3947,7 +3947,7 @@ arm_x_length:
 #   for stepper_right, this parameter defaults to the value specified for
 #   stepper_left.
 
-# The stepper_right section is used to desribe the stepper controlling the
+# The stepper_right section is used to describe the stepper controlling the
 # right tower.
 [stepper_right]
 
@@ -4327,9 +4327,8 @@ sensor_pin:
 #   be smoothed to reduce the impact of measurement noise. The default
 #   is 1 seconds.
 control:
-#   Control algorithm (either pid, pid_v or watermark). This parameter must
-#   be provided. pid_v should only be used on well calibrated heaters with
-#   low to moderate noise.
+#   Control algorithm (either pid or watermark). This parameter must
+#   be provided.
 pid_Kp:
 pid_Ki:
 pid_Kd:
@@ -4597,12 +4596,12 @@ information.</p>
 #   The height (in mm) that the head should be commanded to move to
 #   just prior to starting a probe operation. The default is 5.
 #screw_thread: CW-M3
-#   The type of screw used for bed level, M3, M4 or M5 and the
-#   direction of the knob used to level the bed, clockwise decrease
-#   counter-clockwise decrease.
+#   The type of screw used for bed leveling, M3, M4, or M5, and the
+#   rotation direction of the knob that is used to level the bed.
 #   Accepted values: CW-M3, CCW-M3, CW-M4, CCW-M4, CW-M5, CCW-M5.
-#   Default value is CW-M3, most printers use an M3 screw and
-#   turning the knob clockwise decrease distance.
+#   Default value is CW-M3 which most printers use. A clockwise
+#   rotation of the knob decreases the gap between the nozzle and the
+#   bed. Conversely, a counter-clockwise rotation increases the gap.
 </code></pre></div>
 
 <h3 id="z_tilt">[z_tilt]<a class="headerlink" href="#z_tilt" title="Permanent link">&para;</a></h3>
@@ -4963,9 +4962,6 @@ allowing per-filament settings and runtime tuning.</p>
 #   unretracting.
 #unretract_speed: 10
 #   The speed of unretraction, in mm/s. The default is 10 mm/s.
-#lift_z: 0
-#   The amount (in mm) the toolhead should be lifted upon retract. The
-#   default is 0mm.
 </code></pre></div>
 
 <h3 id="gcode_arcs">[gcode_arcs]<a class="headerlink" href="#gcode_arcs" title="Permanent link">&para;</a></h3>
@@ -5005,10 +5001,6 @@ Marlin/RepRapFirmware compatible M486 G-Code macro.</p>
 <div class="highlight"><pre><span></span><code>[exclude_object]
 </code></pre></div>
 
-<h3 id="virtual_pins">[virtual_pins]<a class="headerlink" href="#virtual_pins" title="Permanent link">&para;</a></h3>
-<p>Enables support for virtual pins, unseful for testing purposes.</p>
-<p>See the <a href="G-Codes.html#virtual_pins">command reference</a> for additional
-information.</p>
 <h2 id="resonance-compensation">Resonance compensation<a class="headerlink" href="#resonance-compensation" title="Permanent link">&para;</a></h2>
 <h3 id="input_shaper">[input_shaper]<a class="headerlink" href="#input_shaper" title="Permanent link">&para;</a></h3>
 <p>Enables <a href="Resonance_Compensation.html">resonance compensation</a>. Also see
@@ -5309,93 +5301,6 @@ control_pin:
 #samples_result:
 #samples_tolerance:
 #samples_tolerance_retries:
-#   See the &quot;probe&quot; section for information on these parameters.
-</code></pre></div>
-
-<h3 id="dockable_probe">[dockable_probe]<a class="headerlink" href="#dockable_probe" title="Permanent link">&para;</a></h3>
-<p>Certain probes are magnetically coupled to the toolhead and stowed
-in a dock when not in use. One should define this section instead
-of a probe section if the probe uses magnets to attach and a dock
-for storage. See <a href="Dockable_Probe.html">Dockable Probe Guide</a>
-for more detailed information regarding configuration and setup.</p>
-<div class="highlight"><pre><span></span><code>[dockable_probe]
-dock_position: 0,0,0
-#   The physical position of the probe dock relative to the origin of
-#   the bed. The coordinates are specified as a comma separated x, y, z
-#   list of values. Certain dock designs are independent of the z axis.
-#   if a z value is provided for these configurations, the z axis will
-#   be raised to that amount in order to prevent collisions.
-#   This parameter is required.
-approach_position: 0,0
-#   The X,Y position where the toolhead needs to be prior to moving into the
-#   dock so that the probe is aligned properly for docking or attaching.
-#   This parameter is required.
-detach_position: 0,0
-#   Similar to the approach_position, the detach_position is the X,Y
-#   where the toolhead is moved after the probe has been docked.
-#   For magnetically coupled probes, this is typically perpendicular to
-#   the approach_position in a direction that does not cause the tool to
-#   collide with the printer.
-#   This parameter is required
-#safe_z_position: 0,0
-#   Optional parameter. If the probe is being used to home the Z
-#   axis, the toolhead will move to these xy coordinates prior to homing.
-#   If this value is not provided, the center of the bed will be used.
-#dock_retries:
-#   The number of times to attempt to attach/dock the probe before raising
-#   and error and aborting probing.
-#attach_speed:
-#detach_speed:
-#travel_speed:
-#   Optional speeds used during various moves. These will default to probe
-#   speed if not specified.
-check_open_attach:     True
-#   The probe status should be verified prior to homing. Setting this option
-#   to true will ensure the probe &quot;endstop&quot; is &quot;open&quot; if the probe is attached
-#   and will abort probing if it reports &quot;triggered&quot; when docked
-#probe_sense_pin:
-#   This supplemental pin can be defined to determine an attached state
-#   instead of check_open_attach
-#dock_sense_pin:
-#   This supplemental pin can be defined to determine a docked state in
-#   addition to probe_sense_pin or check_open_attach
-#allow_delayed_detach: False
-#   When true, the probe will stay attached to the toolhead after the
-#   completion of a command in case there is another command requiring the
-#   use of the probe in the command queue. Once all commands have completed,
-#   the probe is docked. It is recommended to add the DETACH_PROBE command to
-#   macros and slicer start gcode to ensure the probe is correctly detached.
-#   See Annexed_Probe.md for more information
-dock_fixed_z: True
-#   Whether or not the dock is located independently of the Z axis such as
-#   mounted to a moving gantry.
-#pre_attach_gcode:
-#   An optional list of gcode commands to execute prior to attaching the probe
-#attach_gcode:
-#   An optional list of gcode commands used to attach the probe
-#post_attach_gcode:
-#   An optional list of gcode commands to execute immediately after attaching
-#   the probe
-#pre_detach_gcode:
-#   An optional list of gcode commands to execute prior to detaching/docking
-#   the probe
-#detach_gcode:
-#   An optional list of gcode commands used to detach/dock the probe
-#post_detach_gcode:
-#   An optional list of gcode commands to execute immediately after
-#   detaching/docking the probe
-#x_offset:
-#y_offset:
-#z_offset:
-#lift_speed:
-#speed:
-#samples:
-#sample_retract_dist:
-#samples_result:
-#samples_tolerance:
-#samples_tolerance_retries:
-#activate_gcode:
-#deactivate_gcode:
 #   See the &quot;probe&quot; section for information on these parameters.
 </code></pre></div>
 
@@ -5819,6 +5724,26 @@ temperature.</p>
 #i2c_speed:
 #   See the &quot;common I2C settings&quot; section for a description of the
 #   above parameters.
+</code></pre></div>
+
+<h3 id="aht10-temperature-sensor">AHT10 temperature sensor<a class="headerlink" href="#aht10-temperature-sensor" title="Permanent link">&para;</a></h3>
+<p>AHT10 two wire interface (I2C) environmental sensor.
+Note that these sensors are not intended for use with extruders and
+heater beds, but rather for monitoring ambient temperature (C) and
+relative humidity. See
+<a href="https://github.com/Klipper3d/klipper/blob/master/config/sample-macros.cfg">sample-macros.cfg</a> for a gcode_macro
+that may be used to report humidity in addition to temperature.</p>
+<div class="highlight"><pre><span></span><code>sensor_type: AHT10
+#i2c_address:
+#   Default is 56 (0x38). Some AHT10 sensors give the option to use
+#   57 (0x39) by moving a resistor.
+#i2c_mcu:
+#i2c_bus:
+#i2c_speed:
+#   See the &quot;common I2C settings&quot; section for a description of the
+#   above parameters.
+#aht10_report_time:
+#   Interval in seconds between readings. Default is 30, minimum is 5
 </code></pre></div>
 
 <h3 id="htu21d-sensor">HTU21D sensor<a class="headerlink" href="#htu21d-sensor" title="Permanent link">&para;</a></h3>
@@ -6674,6 +6599,123 @@ run_current:
 #   HDEC) is interpreted as the MSB of HSTRT in this case).
 </code></pre></div>
 
+<h3 id="tmc2240">[tmc2240]<a class="headerlink" href="#tmc2240" title="Permanent link">&para;</a></h3>
+<p>Configure a TMC2240 stepper motor driver via SPI bus. To use this
+feature, define a config section with a "tmc2240" prefix followed by
+the name of the corresponding stepper config section (for example,
+"[tmc2240 stepper_x]").</p>
+<div class="highlight"><pre><span></span><code>[tmc2240 stepper_x]
+cs_pin:
+#   The pin corresponding to the TMC2240 chip select line. This pin
+#   will be set to low at the start of SPI messages and raised to high
+#   after the message completes. This parameter must be provided.
+#spi_speed:
+#spi_bus:
+#spi_software_sclk_pin:
+#spi_software_mosi_pin:
+#spi_software_miso_pin:
+#   See the &quot;common SPI settings&quot; section for a description of the
+#   above parameters.
+#chain_position:
+#chain_length:
+#   These parameters configure an SPI daisy chain. The two parameters
+#   define the stepper position in the chain and the total chain length.
+#   Position 1 corresponds to the stepper that connects to the MOSI signal.
+#   The default is to not use an SPI daisy chain.
+#interpolate: True
+#   If true, enable step interpolation (the driver will internally
+#   step at a rate of 256 micro-steps). The default is True.
+run_current:
+#   The amount of current (in amps RMS) to configure the driver to use
+#   during stepper movement. This parameter must be provided.
+#hold_current:
+#   The amount of current (in amps RMS) to configure the driver to use
+#   when the stepper is not moving. Setting a hold_current is not
+#   recommended (see TMC_Drivers.md for details). The default is to
+#   not reduce the current.
+#rref: 12000
+#   The resistance (in ohms) of the resistor between IREF and GND. The
+#   default is 12000.
+#stealthchop_threshold: 0
+#   The velocity (in mm/s) to set the &quot;stealthChop&quot; threshold to. When
+#   set, &quot;stealthChop&quot; mode will be enabled if the stepper motor
+#   velocity is below this value. The default is 0, which disables
+#   &quot;stealthChop&quot; mode.
+#driver_MSLUT0: 2863314260
+#driver_MSLUT1: 1251300522
+#driver_MSLUT2: 608774441
+#driver_MSLUT3: 269500962
+#driver_MSLUT4: 4227858431
+#driver_MSLUT5: 3048961917
+#driver_MSLUT6: 1227445590
+#driver_MSLUT7: 4211234
+#driver_W0: 2
+#driver_W1: 1
+#driver_W2: 1
+#driver_W3: 1
+#driver_X1: 128
+#driver_X2: 255
+#driver_X3: 255
+#driver_START_SIN: 0
+#driver_START_SIN90: 247
+#driver_OFFSET_SIN90: 0
+#   These fields control the Microstep Table registers directly. The optimal
+#   wave table is specific to each motor and might vary with current. An
+#   optimal configuration will have minimal print artifacts caused by
+#   non-linear stepper movement. The values specified above are the default
+#   values used by the driver. The value must be specified as a decimal integer
+#   (hex form is not supported). In order to compute the wave table fields,
+#   see the tmc2130 &quot;Calculation Sheet&quot; from the Trinamic website.
+#   Additionally, this driver also has the OFFSET_SIN90 field which can be used
+#   to tune a motor with unbalanced coils. See the `Sine Wave Lookup Table`
+#   section in the datasheet for information about this field and how to tune
+#   it.
+#driver_IHOLDDELAY: 6
+#driver_IRUNDELAY: 4
+#driver_TPOWERDOWN: 10
+#driver_TBL: 2
+#driver_TOFF: 3
+#driver_HEND: 2
+#driver_HSTRT: 5
+#driver_FD3: 0
+#driver_TPFD: 4
+#driver_CHM: 0
+#driver_VHIGHFS: 0
+#driver_VHIGHCHM: 0
+#driver_DISS2G: 0
+#driver_DISS2VS: 0
+#driver_PWM_AUTOSCALE: True
+#driver_PWM_AUTOGRAD: True
+#driver_PWM_FREQ: 0
+#driver_FREEWHEEL: 0
+#driver_PWM_GRAD: 0
+#driver_PWM_OFS: 29
+#driver_PWM_REG: 4
+#driver_PWM_LIM: 12
+#driver_SGT: 0
+#driver_SEMIN: 0
+#driver_SEUP: 0
+#driver_SEMAX: 0
+#driver_SEDN: 0
+#driver_SEIMIN: 0
+#driver_SFILT: 0
+#driver_SG4_ANGLE_OFFSET: 1
+#   Set the given register during the configuration of the TMC2240
+#   chip. This may be used to set custom motor parameters. The
+#   defaults for each parameter are next to the parameter name in the
+#   above list.
+#diag0_pin:
+#diag1_pin:
+#   The micro-controller pin attached to one of the DIAG lines of the
+#   TMC2240 chip. Only a single diag pin should be specified. The pin
+#   is &quot;active low&quot; and is thus normally prefaced with &quot;^!&quot;. Setting
+#   this creates a &quot;tmc2240_stepper_x:virtual_endstop&quot; virtual pin
+#   which may be used as the stepper&#39;s endstop_pin. Doing this enables
+#   &quot;sensorless homing&quot;. (Be sure to also set driver_SGT to an
+#   appropriate sensitivity value.) The default is to not enable
+#   sensorless homing.
+</code></pre></div>
+
 <h3 id="tmc5160">[tmc5160]<a class="headerlink" href="#tmc5160" title="Permanent link">&para;</a></h3>
 <p>Configure a TMC5160 stepper motor driver via SPI bus. To use this
 feature, define a config section with a "tmc5160" prefix followed by
@@ -6768,6 +6810,10 @@ run_current:
 #driver_SEDN: 0
 #driver_SEIMIN: 0
 #driver_SFILT: 0
+#driver_DRVSTRENGTH: 0
+#driver_BBMCLKS: 4
+#driver_BBMTIME: 0
+#driver_FILT_ISENSE: 0
 #   Set the given register during the configuration of the TMC5160
 #   chip. This may be used to set custom motor parameters. The
 #   defaults for each parameter are next to the parameter name in the
@@ -7594,7 +7640,7 @@ serial:
 #auto_load_speed: 2
 #   Extrude feedrate when autoloading, default is 2 (mm/s)
 #auto_cancel_variation: 0.1
-#   Auto cancel print when ping varation is above this threshold
+#   Auto cancel print when ping variation is above this threshold
 </code></pre></div>
 
 <h3 id="angle">[angle]<a class="headerlink" href="#angle" title="Permanent link">&para;</a></h3>
@@ -7651,19 +7697,19 @@ SPI bus.</p>
 <h3 id="common-i2c-settings">Common I2C settings<a class="headerlink" href="#common-i2c-settings" title="Permanent link">&para;</a></h3>
 <p>The following parameters are generally available for devices using an
 I2C bus.</p>
-<p>Note that Klipper's current micro-controller support for i2c is
-generally not tolerant to line noise. Unexpected errors on the i2c
+<p>Note that Klipper's current micro-controller support for I2C is
+generally not tolerant to line noise. Unexpected errors on the I2C
 wires may result in Klipper raising a run-time error. Klipper's
 support for error recovery varies between each micro-controller type.
-It is generally recommended to only use i2c devices that are on the
+It is generally recommended to only use I2C devices that are on the
 same printed circuit board as the micro-controller.</p>
 <p>Most Klipper micro-controller implementations only support an
-<code>i2c_speed</code> of 100000. The Klipper "linux" micro-controller supports a
-400000 speed, but it must be
+<code>i2c_speed</code> of 100000 (<em>standard mode</em>, 100kbit/s). The Klipper "Linux"
+micro-controller supports a 400000 speed (<em>fast mode</em>, 400kbit/s), but it must be
 <a href="RPi_microcontroller.html#optional-enabling-i2c">set in the operating system</a>
 and the <code>i2c_speed</code> parameter is otherwise ignored. The Klipper
-"rp2040" micro-controller supports a rate of 400000 via the
-<code>i2c_speed</code> parameter. All other Klipper micro-controllers use a
+"RP2040" micro-controller and ATmega AVR family support a rate of 400000
+via the <code>i2c_speed</code> parameter. All other Klipper micro-controllers use a
 100000 rate and ignore the <code>i2c_speed</code> parameter.</p>
 <div class="highlight"><pre><span></span><code>#i2c_address:
 #   The i2c address of the device. This must specified as a decimal
@@ -7679,7 +7725,7 @@ and the <code>i2c_speed</code> parameter is otherwise ignored. The Klipper
 #   The I2C speed (in Hz) to use when communicating with the device.
 #   The Klipper implementation on most micro-controllers is hard-coded
 #   to 100000 and changing this value has no effect. The default is
-#   100000.
+#   100000. Linux, RP2040 and ATmega support 400000.
 </code></pre></div>
 
               
