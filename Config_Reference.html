@@ -859,13 +859,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#virtual_pins" class="md-nav__link">
-    [virtual_pins]
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -964,13 +957,6 @@
           <li class="md-nav__item">
   <a href="#bltouch" class="md-nav__link">
     [bltouch]
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dockable_probe" class="md-nav__link">
-    [dockable_probe]
   </a>
   
 </li>
@@ -1134,8 +1120,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#aht10-temperature-sensor" class="md-nav__link">
-    AHT10 temperature sensor
+  <a href="#aht10aht20aht21-temperature-sensor" class="md-nav__link">
+    AHT10/AHT20/AHT21 temperature sensor
   </a>
   
 </li>
@@ -2366,6 +2352,20 @@
   
   
     <li class="md-nav__item">
+      <a href="CANBUS_Troubleshooting.html" class="md-nav__link">
+        CANBUS Troubleshooting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="TSL1401CL_Filament_Width_Sensor.html" class="md-nav__link">
         TSL1401CL filament width sensor
       </a>
@@ -2808,13 +2808,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#virtual_pins" class="md-nav__link">
-    [virtual_pins]
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -2913,13 +2906,6 @@
           <li class="md-nav__item">
   <a href="#bltouch" class="md-nav__link">
     [bltouch]
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dockable_probe" class="md-nav__link">
-    [dockable_probe]
   </a>
   
 </li>
@@ -3083,8 +3069,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#aht10-temperature-sensor" class="md-nav__link">
-    AHT10 temperature sensor
+  <a href="#aht10aht20aht21-temperature-sensor" class="md-nav__link">
+    AHT10/AHT20/AHT21 temperature sensor
   </a>
   
 </li>
@@ -4355,9 +4341,8 @@ sensor_pin:
 #   be smoothed to reduce the impact of measurement noise. The default
 #   is 1 seconds.
 control:
-#   Control algorithm (either pid, pid_v or watermark). This parameter must
-#   be provided. pid_v should only be used on well calibrated heaters with
-#   low to moderate noise.
+#   Control algorithm (either pid or watermark). This parameter must
+#   be provided.
 pid_Kp:
 pid_Ki:
 pid_Kd:
@@ -4510,10 +4495,18 @@ toward the center of the print area.</p>
 #   be applied to change the amount of slope interpolated. Larger
 #   numbers will increase the amount of slope, which results in more
 #   curvature in the mesh. Default is .2.
+#zero_reference_position:
+#   An optional X,Y coordinate that specifies the location on the bed
+#   where Z = 0.  When this option is specified the mesh will be offset
+#   so that zero Z adjustment occurs at this location.  The default is
+#   no zero reference.
 #relative_reference_index:
-#   A point index in the mesh to reference all z values to. Enabling
-#   this parameter produces a mesh relative to the probed z position
-#   at the provided index.
+#   **DEPRECATED, use the &quot;zero_reference_position&quot; option**
+#   The legacy option superceded by the &quot;zero reference position&quot;.
+#   Rather than a coordinate this option takes an integer &quot;index&quot; that
+#   refers to the location of one of the generated points. It is recommended
+#   to use the &quot;zero_reference_position&quot; instead of this option for new
+#   configurations. The default is no relative reference index.
 #faulty_region_1_min:
 #faulty_region_1_max:
 #   Optional points that define a faulty region.  See docs/Bed_Mesh.md
@@ -4991,9 +4984,6 @@ allowing per-filament settings and runtime tuning.</p>
 #   unretracting.
 #unretract_speed: 10
 #   The speed of unretraction, in mm/s. The default is 10 mm/s.
-#lift_z: 0
-#   The amount (in mm) the toolhead should be lifted upon retract. The
-#   default is 0mm.
 </code></pre></div>
 
 <h3 id="gcode_arcs">[gcode_arcs]<a class="headerlink" href="#gcode_arcs" title="Permanent link">&para;</a></h3>
@@ -5033,10 +5023,6 @@ Marlin/RepRapFirmware compatible M486 G-Code macro.</p>
 <div class="highlight"><pre><span></span><code>[exclude_object]
 </code></pre></div>
 
-<h3 id="virtual_pins">[virtual_pins]<a class="headerlink" href="#virtual_pins" title="Permanent link">&para;</a></h3>
-<p>Enables support for virtual pins, unseful for testing purposes.</p>
-<p>See the <a href="G-Codes.html#virtual_pins">command reference</a> for additional
-information.</p>
 <h2 id="resonance-compensation">Resonance compensation<a class="headerlink" href="#resonance-compensation" title="Permanent link">&para;</a></h2>
 <h3 id="input_shaper">[input_shaper]<a class="headerlink" href="#input_shaper" title="Permanent link">&para;</a></h3>
 <p>Enables <a href="Resonance_Compensation.html">resonance compensation</a>. Also see
@@ -5115,6 +5101,8 @@ accelerometers (one may define any number of sections with an
 #   Default is 104 (0x68). If AD0 is high, it would be 0x69 instead.
 #i2c_mcu:
 #i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
 #i2c_speed: 400000
 #   See the &quot;common I2C settings&quot; section for a description of the
 #   above parameters. The default &quot;i2c_speed&quot; is 400000.
@@ -5337,93 +5325,6 @@ control_pin:
 #samples_result:
 #samples_tolerance:
 #samples_tolerance_retries:
-#   See the &quot;probe&quot; section for information on these parameters.
-</code></pre></div>
-
-<h3 id="dockable_probe">[dockable_probe]<a class="headerlink" href="#dockable_probe" title="Permanent link">&para;</a></h3>
-<p>Certain probes are magnetically coupled to the toolhead and stowed
-in a dock when not in use. One should define this section instead
-of a probe section if the probe uses magnets to attach and a dock
-for storage. See <a href="Dockable_Probe.html">Dockable Probe Guide</a>
-for more detailed information regarding configuration and setup.</p>
-<div class="highlight"><pre><span></span><code>[dockable_probe]
-dock_position: 0,0,0
-#   The physical position of the probe dock relative to the origin of
-#   the bed. The coordinates are specified as a comma separated x, y, z
-#   list of values. Certain dock designs are independent of the z axis.
-#   if a z value is provided for these configurations, the z axis will
-#   be raised to that amount in order to prevent collisions.
-#   This parameter is required.
-approach_position: 0,0
-#   The X,Y position where the toolhead needs to be prior to moving into the
-#   dock so that the probe is aligned properly for docking or attaching.
-#   This parameter is required.
-detach_position: 0,0
-#   Similar to the approach_position, the detach_position is the X,Y
-#   where the toolhead is moved after the probe has been docked.
-#   For magnetically coupled probes, this is typically perpendicular to
-#   the approach_position in a direction that does not cause the tool to
-#   collide with the printer.
-#   This parameter is required
-#safe_z_position: 0,0
-#   Optional parameter. If the probe is being used to home the Z
-#   axis, the toolhead will move to these xy coordinates prior to homing.
-#   If this value is not provided, the center of the bed will be used.
-#dock_retries:
-#   The number of times to attempt to attach/dock the probe before raising
-#   and error and aborting probing.
-#attach_speed:
-#detach_speed:
-#travel_speed:
-#   Optional speeds used during various moves. These will default to probe
-#   speed if not specified.
-check_open_attach:     True
-#   The probe status should be verified prior to homing. Setting this option
-#   to true will ensure the probe &quot;endstop&quot; is &quot;open&quot; if the probe is attached
-#   and will abort probing if it reports &quot;triggered&quot; when docked
-#probe_sense_pin:
-#   This supplemental pin can be defined to determine an attached state
-#   instead of check_open_attach
-#dock_sense_pin:
-#   This supplemental pin can be defined to determine a docked state in
-#   addition to probe_sense_pin or check_open_attach
-#allow_delayed_detach: False
-#   When true, the probe will stay attached to the toolhead after the
-#   completion of a command in case there is another command requiring the
-#   use of the probe in the command queue. Once all commands have completed,
-#   the probe is docked. It is recommended to add the DETACH_PROBE command to
-#   macros and slicer start gcode to ensure the probe is correctly detached.
-#   See Annexed_Probe.md for more information
-dock_fixed_z: True
-#   Whether or not the dock is located independently of the Z axis such as
-#   mounted to a moving gantry.
-#pre_attach_gcode:
-#   An optional list of gcode commands to execute prior to attaching the probe
-#attach_gcode:
-#   An optional list of gcode commands used to attach the probe
-#post_attach_gcode:
-#   An optional list of gcode commands to execute immediately after attaching
-#   the probe
-#pre_detach_gcode:
-#   An optional list of gcode commands to execute prior to detaching/docking
-#   the probe
-#detach_gcode:
-#   An optional list of gcode commands used to detach/dock the probe
-#post_detach_gcode:
-#   An optional list of gcode commands to execute immediately after
-#   detaching/docking the probe
-#x_offset:
-#y_offset:
-#z_offset:
-#lift_speed:
-#speed:
-#samples:
-#sample_retract_dist:
-#samples_result:
-#samples_tolerance:
-#samples_tolerance_retries:
-#activate_gcode:
-#deactivate_gcode:
 #   See the &quot;probe&quot; section for information on these parameters.
 </code></pre></div>
 
@@ -5844,19 +5745,22 @@ temperature.</p>
 #   (0x77).
 #i2c_mcu:
 #i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
 #i2c_speed:
 #   See the &quot;common I2C settings&quot; section for a description of the
 #   above parameters.
 </code></pre></div>
 
-<h3 id="aht10-temperature-sensor">AHT10 temperature sensor<a class="headerlink" href="#aht10-temperature-sensor" title="Permanent link">&para;</a></h3>
-<p>AHT10 two wire interface (I2C) environmental sensor.
+<h3 id="aht10aht20aht21-temperature-sensor">AHT10/AHT20/AHT21 temperature sensor<a class="headerlink" href="#aht10aht20aht21-temperature-sensor" title="Permanent link">&para;</a></h3>
+<p>AHT10/AHT20/AHT21 two wire interface (I2C) environmental sensors.
 Note that these sensors are not intended for use with extruders and
 heater beds, but rather for monitoring ambient temperature (C) and
 relative humidity. See
 <a href="https://github.com/Klipper3d/klipper/blob/master/config/sample-macros.cfg">sample-macros.cfg</a> for a gcode_macro
 that may be used to report humidity in addition to temperature.</p>
 <div class="highlight"><pre><span></span><code>sensor_type: AHT10
+#   Also use AHT10 for AHT20 and AHT21 sensors.
 #i2c_address:
 #   Default is 56 (0x38). Some AHT10 sensors give the option to use
 #   57 (0x39) by moving a resistor.
@@ -5882,6 +5786,8 @@ temperature.</p>
 #   Default is 64 (0x40).
 #i2c_mcu:
 #i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
 #i2c_speed:
 #   See the &quot;common I2C settings&quot; section for a description of the
 #   above parameters.
@@ -5912,6 +5818,8 @@ monitoring. They can also function as simple fan/heater controllers.</p>
 #   (usually with jumpers or hard wired).
 #i2c_mcu:
 #i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
 #i2c_speed:
 #   See the &quot;common I2C settings&quot; section for a description of the
 #   above parameters.
@@ -6279,6 +6187,8 @@ clock_pin:
 #   the PCA9533/1, 99 for the PCA9533/2. The default is 98.
 #i2c_mcu:
 #i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
 #i2c_speed:
 #   See the &quot;common I2C settings&quot; section for a description of the
 #   above parameters.
@@ -6297,6 +6207,8 @@ clock_pin:
 #   96, 97, 98, or 99.  The default is 98.
 #i2c_mcu:
 #i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
 #i2c_speed:
 #   See the &quot;common I2C settings&quot; section for a description of the
 #   above parameters.
@@ -6587,6 +6499,7 @@ run_current:
 #   set, &quot;stealthChop&quot; mode will be enabled if the stepper motor
 #   velocity is below this value. The default is 0, which disables
 #   &quot;stealthChop&quot; mode.
+#driver_MULTISTEP_FILT: True
 #driver_IHOLDDELAY: 8
 #driver_TPOWERDOWN: 20
 #driver_TBL: 2
@@ -6625,6 +6538,7 @@ run_current:
 #   The address of the TMC2209 chip for UART messages (an integer
 #   between 0 and 3). This is typically used when multiple TMC2209
 #   chips are connected to the same UART pin. The default is zero.
+#driver_MULTISTEP_FILT: True
 #driver_IHOLDDELAY: 8
 #driver_TPOWERDOWN: 20
 #driver_TBL: 2
@@ -6793,6 +6707,7 @@ run_current:
 #   to tune a motor with unbalanced coils. See the `Sine Wave Lookup Table`
 #   section in the datasheet for information about this field and how to tune
 #   it.
+#driver_MULTISTEP_FILT: True
 #driver_IHOLDDELAY: 6
 #driver_IRUNDELAY: 4
 #driver_TPOWERDOWN: 10
@@ -6905,6 +6820,7 @@ run_current:
 #   values used by the driver. The value must be specified as a decimal integer
 #   (hex form is not supported). In order to compute the wave table fields,
 #   see the tmc2130 &quot;Calculation Sheet&quot; from the Trinamic website.
+#driver_MULTISTEP_FILT: True
 #driver_IHOLDDELAY: 6
 #driver_TPOWERDOWN: 10
 #driver_TBL: 2
@@ -7000,6 +6916,8 @@ i2c_address:
 #   parameter must be provided.
 #i2c_mcu:
 #i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
 #i2c_speed:
 #   See the &quot;common I2C settings&quot; section for a description of the
 #   above parameters.
@@ -7033,6 +6951,8 @@ prefix).</p>
 #   is 96.
 #i2c_mcu:
 #i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
 #i2c_speed:
 #   See the &quot;common I2C settings&quot; section for a description of the
 #   above parameters.
@@ -7278,6 +7198,8 @@ lcd_type:
 #   Set to either &quot;ssd1306&quot; or &quot;sh1106&quot; for the given display type.
 #i2c_mcu:
 #i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
 #i2c_speed:
 #   Optional parameters available for displays connected via an i2c
 #   bus. See the &quot;common I2C settings&quot; section for a description of
@@ -7617,13 +7539,11 @@ i2c_address:
 #   113. This parameter must be provided.
 #i2c_mcu:
 #i2c_bus:
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
 #i2c_speed:
 #   See the &quot;common I2C settings&quot; section for a description of the
 #   above parameters.
-#i2c_bus:
-#   If the I2C implementation of your micro-controller supports
-#   multiple I2C busses, you may specify the bus name here. The
-#   default is to use the default micro-controller i2c bus.
 </code></pre></div>
 
 <h3 id="samd_sercom">[samd_sercom]<a class="headerlink" href="#samd_sercom" title="Permanent link">&para;</a></h3>
@@ -7844,6 +7764,13 @@ via the <code>i2c_speed</code> parameter. All other Klipper micro-controllers us
 #   If the micro-controller supports multiple I2C busses then one may
 #   specify the micro-controller bus name here. The default depends on
 #   the type of micro-controller.
+#i2c_software_scl_pin:
+#i2c_software_sda_pin:
+#   Specify these parameters to use micro-controller software based
+#   I2C &quot;bit-banging&quot; support. The two parameters should the two pins
+#   on the micro-controller to use for the scl and sda wires. The
+#   default is to use hardware based I2C support as specified by the
+#   i2c_bus parameter.
 #i2c_speed:
 #   The I2C speed (in Hz) to use when communicating with the device.
 #   The Klipper implementation on most micro-controllers is hard-coded
