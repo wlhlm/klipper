@@ -13,7 +13,7 @@
     
     
       
-        <title>Debugging - Klipper documentation</title>
+        <title>PID - Klipper documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#debugging" class="md-skip">
+        <a href="#pid" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Debugging
+              PID
             
           </span>
         </div>
@@ -869,14 +869,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
       
       
       
@@ -981,114 +979,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Debugging
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="Debugging.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="Debugging.html" class="md-nav__link">
         Debugging
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#running-the-regression-tests" class="md-nav__link">
-    Running the regression tests
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#manually-sending-commands-to-the-micro-controller" class="md-nav__link">
-    Manually sending commands to the micro-controller
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#translating-gcode-files-to-micro-controller-commands" class="md-nav__link">
-    Translating gcode files to micro-controller commands
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#motion-analysis-and-data-logging" class="md-nav__link">
-    Motion analysis and data logging
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#generating-load-graphs" class="md-nav__link">
-    Generating load graphs
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#extracting-information-from-the-klippylog-file" class="md-nav__link">
-    Extracting information from the klippy.log file
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#testing-with-simulavr" class="md-nav__link">
-    Testing with simulavr
-  </a>
-  
-    <nav class="md-nav" aria-label="Testing with simulavr">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#using-simulavr-with-gtkwave" class="md-nav__link">
-    Using simulavr with gtkwave
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#using-virtual-pins" class="md-nav__link">
-    Using virtual-pins
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1344,71 +1239,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#running-the-regression-tests" class="md-nav__link">
-    Running the regression tests
+  <a href="#history" class="md-nav__link">
+    History
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#manually-sending-commands-to-the-micro-controller" class="md-nav__link">
-    Manually sending commands to the micro-controller
+  <a href="#pid-calibration" class="md-nav__link">
+    PID Calibration
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#translating-gcode-files-to-micro-controller-commands" class="md-nav__link">
-    Translating gcode files to micro-controller commands
+  <a href="#pid-control-parameters" class="md-nav__link">
+    Pid Control Parameters
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#motion-analysis-and-data-logging" class="md-nav__link">
-    Motion analysis and data logging
+  <a href="#pid-control-algorithms" class="md-nav__link">
+    Pid Control Algorithms
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#generating-load-graphs" class="md-nav__link">
-    Generating load graphs
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#extracting-information-from-the-klippylog-file" class="md-nav__link">
-    Extracting information from the klippy.log file
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#testing-with-simulavr" class="md-nav__link">
-    Testing with simulavr
-  </a>
-  
-    <nav class="md-nav" aria-label="Testing with simulavr">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#using-simulavr-with-gtkwave" class="md-nav__link">
-    Using simulavr with gtkwave
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#using-virtual-pins" class="md-nav__link">
-    Using virtual-pins
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1424,240 +1278,95 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/Klipper3d/klipper/blob/master/docs/Debugging.md" title="Edit this page" class="md-content__button md-icon">
+<a href="https://github.com/Klipper3d/klipper/blob/master/docs/PID.md" title="Edit this page" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-<h1 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">&para;</a></h1>
-<p>This document describes some of the Klipper debugging tools.</p>
-<h2 id="running-the-regression-tests">Running the regression tests<a class="headerlink" href="#running-the-regression-tests" title="Permanent link">&para;</a></h2>
-<p>The main Klipper GitHub repository uses "github actions" to run a
-series of regression tests. It can be useful to run some of these
-tests locally.</p>
-<p>The source code "whitespace check" can be run with:</p>
-<div class="highlight"><pre><span></span><code>./scripts/check_whitespace.sh
+<h1 id="pid">PID<a class="headerlink" href="#pid" title="Permanent link">&para;</a></h1>
+<p>PID control is a widely used control method in the 3D printing world.
+It’s ubiquitous when it comes to temperature control, be it with heaters to
+generate or fans to remove heat. This document aims to provide a high-level
+overview of what PID is and how to use it best in Klipper.</p>
+<h2 id="history">History<a class="headerlink" href="#history" title="Permanent link">&para;</a></h2>
+<p>The first rudimentary PID controller was developed by Elmer Sperry in 1911 to
+automate the control of a ship's rudder. Engineer Nicolas Minorsky published the
+first mathematical analysis of a PID controller in 1922. In 1942, John Ziegler &amp;
+Nathaniel Nichols published their seminal paper, "Optimum Settings for Automatic
+Controllers," which described a trial-and-error method for tuning a PID
+controller, now commonly referred to as the "Ziegler-Nichols method.</p>
+<p>In 1984, Karl Astrom and Tore Hagglund published their paper "Automatic Tuning
+of Simple Regulators with Specifications on Phase and Amplitude Margins". In the
+paper they introduced an automatic tuning method commonly referred to as the
+"Astrom-Hagglund method" or the "relay method".</p>
+<p>In 2019 Brandon Taysom &amp; Carl Sorensen published their paper "Adaptive Relay
+Autotuning under Static and Non-static Disturbances with Application to
+Friction Stir Welding", which laid out a method to generate more accurate
+results from a relay test. This is the PID calibration method currently used by
+Klipper.</p>
+<h2 id="pid-calibration">PID Calibration<a class="headerlink" href="#pid-calibration" title="Permanent link">&para;</a></h2>
+<p>As previously mentioned, Klipper uses a relay test for calibration purposes. A
+standard relay test is conceptually simple. You turn the heater’s power on and
+off to get it to oscillate about the target temperature, as seen in the
+following graph.</p>
+<p><img alt="simple relay test" src="img/pid_01.png" /></p>
+<p>The above graph shows a common issue with a standard relay test. If the system
+being calibrated has too much or too little power for the chosen target
+temperature, it will produce biased and asymmetric results. As can be seen
+above, the system spends more time in the off state than on and has a larger
+amplitude above the target temperature than below.</p>
+<p>In an ideal system, both the on and off times and the amplitude above and below
+the target temperature would be the same. 3D printers don’t actively cool the
+hot end or bed, so they can never reach the ideal state.</p>
+<p>The following graph is a relay test based on the methodology laid out by
+Taysom &amp; Sorensen. After each iteration, the data is analyzed and a new maximum
+power setting is calculated. As can be seen, the system starts the test
+asymmetric but ends very symmetric.</p>
+<p><img alt="advanced relay test" src="img/pid_02.png" /></p>
+<p>A topic that’s not often discussed in the 3D printing community is the
+conditions in which calibration should be performed. When a calibration test is
+performed external variables should be minimized as much as possible, as the
+goal of the test is to model the system in a steady-state condition and free of
+external disturbances. For example, if you are calibrating a hot end, you do
+not want a bed or chamber heater actively heating up or cooling down. You want
+them off, or holding at their target temperature. Part cooling and chamber fans
+can also be problematic, as they can cause temperature fluctuations in the hot
+end.</p>
+<h2 id="pid-control-parameters">Pid Control Parameters<a class="headerlink" href="#pid-control-parameters" title="Permanent link">&para;</a></h2>
+<p>Many methods exist for calculating control parameters, such as Ziegler-Nichols,
+Cohen-Coon, Kappa-Tau, Lambda, and many more. By default, classical
+Ziegler-Nichols parameters are generated. If A user wants to experiment with
+other flavors of Ziegler-Nichols, or Cohen-Coon parameters, they can extract the
+constants from the log as seen below and enter them into this
+<a href="resources/pid_params.xls">spreadsheet</a>.</p>
+<div class="highlight"><pre><span></span><code>Ziegler-Nichols constants: Ku=0.103092 Tu=41.800000
+Cohen-Coon constants: Km=-17.734845 Theta=6.600000 Tau=-10.182680
 </code></pre></div>
 
-<p>The Klippy regression test suite requires "data dictionaries" from
-many platforms. The easiest way to obtain them is to
-<a href="https://github.com/Klipper3d/klipper/issues/1438">download them from github</a>.
-Once the data dictionaries are downloaded, use the following to run
-the regression suite:</p>
-<div class="highlight"><pre><span></span><code>tar xfz klipper-dict-20??????.tar.gz
-~/klippy-env/bin/python ~/klipper/scripts/test_klippy.py -d dict/ ~/klipper/test/klippy/*.test
-</code></pre></div>
-
-<h2 id="manually-sending-commands-to-the-micro-controller">Manually sending commands to the micro-controller<a class="headerlink" href="#manually-sending-commands-to-the-micro-controller" title="Permanent link">&para;</a></h2>
-<p>Normally, the host klippy.py process would be used to translate gcode
-commands to Klipper micro-controller commands. However, it's also
-possible to manually send these MCU commands (functions marked with
-the DECL_COMMAND() macro in the Klipper source code). To do so, run:</p>
-<div class="highlight"><pre><span></span><code>~/klippy-env/bin/python ./klippy/console.py /tmp/pseudoserial
-</code></pre></div>
-
-<p>See the "HELP" command within the tool for more information on its
-functionality.</p>
-<p>Some command-line options are available. For more information run:
-<code>~/klippy-env/bin/python ./klippy/console.py --help</code></p>
-<h2 id="translating-gcode-files-to-micro-controller-commands">Translating gcode files to micro-controller commands<a class="headerlink" href="#translating-gcode-files-to-micro-controller-commands" title="Permanent link">&para;</a></h2>
-<p>The Klippy host code can run in a batch mode to produce the low-level
-micro-controller commands associated with a gcode file. Inspecting
-these low-level commands is useful when trying to understand the
-actions of the low-level hardware. It can also be useful to compare
-the difference in micro-controller commands after a code change.</p>
-<p>To run Klippy in this batch mode, there is a one time step necessary
-to generate the micro-controller "data dictionary". This is done by
-compiling the micro-controller code to obtain the <strong>out/klipper.dict</strong>
-file:</p>
-<div class="highlight"><pre><span></span><code>make menuconfig
-make
-</code></pre></div>
-
-<p>Once the above is done it is possible to run Klipper in batch mode
-(see <a href="Installation.html">installation</a> for the steps necessary to build
-the python virtual environment and a printer.cfg file):</p>
-<div class="highlight"><pre><span></span><code>~/klippy-env/bin/python ./klippy/klippy.py ~/printer.cfg -i test.gcode -o test.serial -v -d out/klipper.dict
-</code></pre></div>
-
-<p>The above will produce a file <strong>test.serial</strong> with the binary serial
-output. This output can be translated to readable text with:</p>
-<div class="highlight"><pre><span></span><code>~/klippy-env/bin/python ./klippy/parsedump.py out/klipper.dict test.serial &gt; test.txt
-</code></pre></div>
-
-<p>The resulting file <strong>test.txt</strong> contains a human readable list of
-micro-controller commands.</p>
-<p>The batch mode disables certain response / request commands in order
-to function. As a result, there will be some differences between
-actual commands and the above output. The generated data is useful for
-testing and inspection; it is not useful for sending to a real
-micro-controller.</p>
-<h2 id="motion-analysis-and-data-logging">Motion analysis and data logging<a class="headerlink" href="#motion-analysis-and-data-logging" title="Permanent link">&para;</a></h2>
-<p>Klipper supports logging its internal motion history, which can be
-later analyzed. To use this feature, Klipper must be started with the
-<a href="API_Server.html">API Server</a> enabled.</p>
-<p>Data logging is enabled with the <code>data_logger.py</code> tool. For example:</p>
-<div class="highlight"><pre><span></span><code>~/klipper/scripts/motan/data_logger.py /tmp/klippy_uds mylog
-</code></pre></div>
-
-<p>This command will connect to the Klipper API Server, subscribe to
-status and motion information, and log the results. Two files are
-generated - a compressed data file and an index file (eg,
-<code>mylog.json.gz</code> and <code>mylog.index.gz</code>). After starting the logging, it
-is possible to complete prints and other actions - the logging will
-continue in the background. When done logging, hit <code>ctrl-c</code> to exit
-from the <code>data_logger.py</code> tool.</p>
-<p>The resulting files can be read and graphed using the <code>motan_graph.py</code>
-tool. To generate graphs on a Raspberry Pi, a one time step is
-necessary to install the "matplotlib" package:</p>
-<div class="highlight"><pre><span></span><code>sudo apt-get update
-sudo apt-get install python-matplotlib
-</code></pre></div>
-
-<p>However, it may be more convenient to copy the data files to a desktop
-class machine along with the Python code in the <code>scripts/motan/</code>
-directory. The motion analysis scripts should run on any machine with
-a recent version of <a href="https://python.org">Python</a> and
-<a href="https://matplotlib.org/">Matplotlib</a> installed.</p>
-<p>Graphs can be generated with a command like the following:</p>
-<div class="highlight"><pre><span></span><code>~/klipper/scripts/motan/motan_graph.py mylog -o mygraph.png
-</code></pre></div>
-
-<p>One can use the <code>-g</code> option to specify the datasets to graph (it takes
-a Python literal containing a list of lists). For example:</p>
-<div class="highlight"><pre><span></span><code>~/klipper/scripts/motan/motan_graph.py mylog -g &#39;[[&quot;trapq(toolhead,velocity)&quot;], [&quot;trapq(toolhead,accel)&quot;]]&#39;
-</code></pre></div>
-
-<p>The list of available datasets can be found using the <code>-l</code> option -
-for example:</p>
-<div class="highlight"><pre><span></span><code>~/klipper/scripts/motan/motan_graph.py -l
-</code></pre></div>
-
-<p>It is also possible to specify matplotlib plot options for each
-dataset:</p>
-<div class="highlight"><pre><span></span><code>~/klipper/scripts/motan/motan_graph.py mylog -g &#39;[[&quot;trapq(toolhead,velocity)?color=red&amp;alpha=0.4&quot;]]&#39;
-</code></pre></div>
-
-<p>Many matplotlib options are available; some examples are "color",
-"label", "alpha", and "linestyle".</p>
-<p>The <code>motan_graph.py</code> tool supports several other command-line
-options - use the <code>--help</code> option to see a list. It may also be
-convenient to view/modify the
-<a href="https://github.com/Klipper3d/klipper/blob/master/scripts/motan/motan_graph.py">motan_graph.py</a> script itself.</p>
-<p>The raw data logs produced by the <code>data_logger.py</code> tool follow the
-format described in the <a href="API_Server.html">API Server</a>. It may be useful
-to inspect the data with a Unix command like the following:
-<code>gunzip &lt; mylog.json.gz | tr '\03' '\n' | less</code></p>
-<h2 id="generating-load-graphs">Generating load graphs<a class="headerlink" href="#generating-load-graphs" title="Permanent link">&para;</a></h2>
-<p>The Klippy log file (/tmp/klippy.log) stores statistics on bandwidth,
-micro-controller load, and host buffer load. It can be useful to graph
-these statistics after a print.</p>
-<p>To generate a graph, a one time step is necessary to install the
-"matplotlib" package:</p>
-<div class="highlight"><pre><span></span><code>sudo apt-get update
-sudo apt-get install python-matplotlib
-</code></pre></div>
-
-<p>Then graphs can be produced with:</p>
-<div class="highlight"><pre><span></span><code>~/klipper/scripts/graphstats.py /tmp/klippy.log -o loadgraph.png
-</code></pre></div>
-
-<p>One can then view the resulting <strong>loadgraph.png</strong> file.</p>
-<p>Different graphs can be produced. For more information run:
-<code>~/klipper/scripts/graphstats.py --help</code></p>
-<h2 id="extracting-information-from-the-klippylog-file">Extracting information from the klippy.log file<a class="headerlink" href="#extracting-information-from-the-klippylog-file" title="Permanent link">&para;</a></h2>
-<p>The Klippy log file (/tmp/klippy.log) also contains debugging
-information. There is a logextract.py script that may be useful when
-analyzing a micro-controller shutdown or similar problem. It is
-typically run with something like:</p>
-<div class="highlight"><pre><span></span><code>mkdir work_directory
-cd work_directory
-cp /tmp/klippy.log .
-~/klipper/scripts/logextract.py ./klippy.log
-</code></pre></div>
-
-<p>The script will extract the printer config file and will extract MCU
-shutdown information. The information dumps from an MCU shutdown (if
-present) will be reordered by timestamp to assist in diagnosing cause
-and effect scenarios.</p>
-<h2 id="testing-with-simulavr">Testing with simulavr<a class="headerlink" href="#testing-with-simulavr" title="Permanent link">&para;</a></h2>
-<p>The <a href="http://www.nongnu.org/simulavr/">simulavr</a> tool enables one to
-simulate an Atmel ATmega micro-controller. This section describes how
-one can run test gcode files through simulavr. It is recommended to
-run this on a desktop class machine (not a Raspberry Pi) as it does
-require significant cpu to run efficiently.</p>
-<p>To use simulavr, download the simulavr package and compile with python
-support. Note that the build system may need to have some packages (such as
-swig) installed in order to build the python module.</p>
-<div class="highlight"><pre><span></span><code>git clone git://git.savannah.nongnu.org/simulavr.git
-cd simulavr
-make python
-make build
-</code></pre></div>
-
-<p>Make sure a file like <strong>./build/pysimulavr/_pysimulavr.*.so</strong> is present
-after the above compilation:</p>
-<div class="highlight"><pre><span></span><code>ls ./build/pysimulavr/_pysimulavr.*.so
-</code></pre></div>
-
-<p>This command should report a specific file (e.g.
-<strong>./build/pysimulavr/_pysimulavr.cpython-39-x86_64-linux-gnu.so</strong>) and
-not an error.</p>
-<p>If you are on a Debian-based system (Debian, Ubuntu, etc.) you can
-install the following packages and generate *.deb files for system-wide
-installation of simulavr:</p>
-<div class="highlight"><pre><span></span><code>sudo apt update
-sudo apt install g++ make cmake swig rst2pdf help2man texinfo
-make cfgclean python debian
-sudo dpkg -i build/debian/python3-simulavr*.deb
-</code></pre></div>
-
-<p>To compile Klipper for use in simulavr, run:</p>
-<div class="highlight"><pre><span></span><code>cd /path/to/klipper
-make menuconfig
-</code></pre></div>
-
-<p>and compile the micro-controller software for an AVR atmega644p and
-select SIMULAVR software emulation support. Then one can compile
-Klipper (run <code>make</code>) and then start the simulation with:</p>
-<div class="highlight"><pre><span></span><code>PYTHONPATH=/path/to/simulavr/build/pysimulavr/ ./scripts/avrsim.py out/klipper.elf
-</code></pre></div>
-
-<p>Note that if you have installed python3-simulavr system-wide, you do
-not need to set <code>PYTHONPATH</code>, and can simply run the simulator as</p>
-<div class="highlight"><pre><span></span><code>./scripts/avrsim.py out/klipper.elf
-</code></pre></div>
-
-<p>Then, with simulavr running in another window, one can run the
-following to read gcode from a file (eg, "test.gcode"), process it
-with Klippy, and send it to Klipper running in simulavr (see
-<a href="Installation.html">installation</a> for the steps necessary to build the
-python virtual environment):</p>
-<div class="highlight"><pre><span></span><code>~/klippy-env/bin/python ./klippy/klippy.py config/generic-simulavr.cfg -i test.gcode -v
-</code></pre></div>
-
-<h3 id="using-simulavr-with-gtkwave">Using simulavr with gtkwave<a class="headerlink" href="#using-simulavr-with-gtkwave" title="Permanent link">&para;</a></h3>
-<p>One useful feature of simulavr is its ability to create signal wave
-generation files with the exact timing of events. To do this, follow
-the directions above, but run avrsim.py with a command-line like the
-following:</p>
-<div class="highlight"><pre><span></span><code>PYTHONPATH=/path/to/simulavr/src/python/ ./scripts/avrsim.py out/klipper.elf -t PORTA.PORT,PORTC.PORT
-</code></pre></div>
-
-<p>The above would create a file <strong>avrsim.vcd</strong> with information on each
-change to the GPIOs on PORTA and PORTB. This could then be viewed
-using gtkwave with:</p>
-<div class="highlight"><pre><span></span><code>gtkwave avrsim.vcd
-</code></pre></div>
-
-<h3 id="using-virtual-pins">Using virtual-pins<a class="headerlink" href="#using-virtual-pins" title="Permanent link">&para;</a></h3>
-<p>The AVR atmega644p has a total of 40 pins, but only 30 of those can actually be
-used in Klipper (with 8 ADC capable).</p>
-<p>If you need more pins, you can use add a
-<a href="Config_Reference.html#virtual_pins">virtual_pins config section</a> and start using
-<code>virtual_pin:&lt;name&gt;</code> as the pin name.</p>
-<p>The virtual pins can be modified at run-time using the
-<a href="G-Codes.html#set_virtual_pin">SET_VIRTUAL_PIN command</a>.</p>
+<p>Classic Ziegler-Nichols parameters work in all scenarios. Cohen-Coon parameters
+work better with systems that have a large amount of dead time/delay. For
+example, if a printer has a bed with a large thermal mass that’s slow to heat
+up and stabilize, the Cohen-Coon parameters will generally do a better job at
+controlling it.</p>
+<h2 id="pid-control-algorithms">Pid Control Algorithms<a class="headerlink" href="#pid-control-algorithms" title="Permanent link">&para;</a></h2>
+<p>Klipper currently supports two control algorithms: Positional and Velocity.
+The fundamental difference between the two algorithms is that the Positional
+algorithm calculates what the PWM value should be for the current time
+interval, and the Velocity algorithm calculates how much the previous PWM
+setting should be changed to get the PWM value for the current time interval.</p>
+<p>Positional is the default algorithm, as it will work in every scenario. The
+Velocity algorithm can provide superior results to the Positional algorithm but
+requires lower noise sensor readings, or a larger smoothing time setting.</p>
+<p>The most noticeable difference between the two algorithms is that for the same
+configuration parameters, velocity control will eliminate or drastically reduce
+overshoot, as seen in the graphs below, as it isn’t susceptible to integral
+wind-up.</p>
+<p><img alt="algorithm comparison" src="img/pid_03.png" /></p>
+<p><img alt="zoomed algorithm comparison" src="img/pid_04.png" /></p>
+<p>In some scenarios Velocity control will also be better at holding the heater at
+its target temperature, and rejecting disturbances. The primary reason for this
+is that velocity control is more like a standard second order differential
+equation. It takes into account position, velocity, and acceleration.</p>
 
               
             </article>
@@ -1672,41 +1381,6 @@ used in Klipper (with 8 ADC capable).</p>
       </main>
       
         <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="CANBUS_protocol.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: CANBUS protocol" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              CANBUS protocol
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="Benchmarks.html" class="md-footer__link md-footer__link--next" aria-label="Next: Benchmarks" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Benchmarks
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

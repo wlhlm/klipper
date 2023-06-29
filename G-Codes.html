@@ -1046,6 +1046,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#dockable_probe" class="md-nav__link">
+    [dockable_probe]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#dual_carriage" class="md-nav__link">
     [dual_carriage]
   </a>
@@ -2200,6 +2207,26 @@
           <li class="md-nav__item">
   <a href="#tuning_tower_1" class="md-nav__link">
     TUNING_TOWER
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtual_pins" class="md-nav__link">
+    [virtual_pins]
+  </a>
+  
+    <nav class="md-nav" aria-label="[virtual_pins]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set_virtual_pin" class="md-nav__link">
+    SET_VIRTUAL_PIN
   </a>
   
 </li>
@@ -3123,6 +3150,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#dockable_probe" class="md-nav__link">
+    [dockable_probe]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#dual_carriage" class="md-nav__link">
     [dual_carriage]
   </a>
@@ -4287,6 +4321,26 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#virtual_pins" class="md-nav__link">
+    [virtual_pins]
+  </a>
+  
+    <nav class="md-nav" aria-label="[virtual_pins]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set_virtual_pin" class="md-nav__link">
+    SET_VIRTUAL_PIN
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#virtual_sdcard" class="md-nav__link">
     [virtual_sdcard]
   </a>
@@ -4637,6 +4691,22 @@ provides the following standard G-Code commands:</p>
   setting the supplied <code>MSG</code> as the current display message.  If
   <code>MSG</code> is omitted the display will be cleared.</li>
 </ul>
+<h3 id="dockable_probe">[dockable_probe]<a class="headerlink" href="#dockable_probe" title="Permanent link">&para;</a></h3>
+<p>In addition to the normal commands available for a [probe], the following
+commands are available when an
+<a href="Config_Reference.html#annexed_probe">annexed_probe config section</a> is enabled
+(also see the <a href="Annexed_Probe.md">Annexed Probe guide</a>):</p>
+<ul>
+<li><code>ATTACH_PROBE</code>: Move to dock and attach probe to the toolhead, the toolhead
+  will return to its previous position after attaching.</li>
+<li><code>DETACH_PROBE</code>: Move to dock and detach probe from the toolhead, the toolhead
+  will return to its previous position after detaching.</li>
+<li><code>GET_PROBE_STATUS</code>: Respond with current probe state. This is useful for
+  verifying configuration settings are working as intended.</li>
+<li><code>SET_PROBE_STATUS STATE=UNKNOWN|ATTACHED|DOCKED</code>: If configured, this allows
+  the probe state to be set manually in the event automated probe verification
+  methods cannot be used.</li>
+</ul>
 <h3 id="dual_carriage">[dual_carriage]<a class="headerlink" href="#dual_carriage" title="Permanent link">&para;</a></h3>
 <p>The following command is available when the
 <a href="Config_Reference.html#dual_carriage">dual_carriage config section</a> is
@@ -4776,17 +4846,20 @@ retraction required.</p>
 <p>The following additional commands are also available.</p>
 <h4 id="set_retraction">SET_RETRACTION<a class="headerlink" href="#set_retraction" title="Permanent link">&para;</a></h4>
 <p><code>SET_RETRACTION [RETRACT_LENGTH=&lt;mm&gt;] [RETRACT_SPEED=&lt;mm/s&gt;]
-[UNRETRACT_EXTRA_LENGTH=&lt;mm&gt;] [UNRETRACT_SPEED=&lt;mm/s&gt;]</code>: Adjust the
-parameters used by firmware retraction. RETRACT_LENGTH determines the
-length of filament to retract and unretract. The speed of retraction
-is adjusted via RETRACT_SPEED, and is typically set relatively
-high. The speed of unretraction is adjusted via UNRETRACT_SPEED, and
-is not particularly critical, although often lower than RETRACT_SPEED.
-In some cases it is useful to add a small amount of additional length
-on unretraction, and this is set via UNRETRACT_EXTRA_LENGTH.
-SET_RETRACTION is commonly set as part of slicer per-filament
-configuration, as different filaments require different parameter
-settings.</p>
+[UNRETRACT_EXTRA_LENGTH=&lt;mm&gt;] [UNRETRACT_SPEED=&lt;mm/s&gt;] [LIFT_Z=&lt;mm&gt;]</code>:
+Adjust the parameters used by firmware retraction. RETRACT_LENGTH
+determines the length of filament to retract and unretract. The
+speed of retraction is adjusted via RETRACT_SPEED, and is typically
+set relatively high. The speed of unretraction is adjusted via
+UNRETRACT_SPEED, and is not particularly critical, although often
+lower than RETRACT_SPEED. In some cases it is useful to add a small
+amount of additional length on unretraction, and this is set via
+UNRETRACT_EXTRA_LENGTH. Specifying LIFT_Z enables lifting of the
+toolhead upon every retract (and subsequent dropping upon unretract)
+to prevent the nozzle from dragging across surfaces or catching on
+the print. SET_RETRACTION is commonly set as part of slicer
+per-filament configuration, as different filaments require different
+parameter settings.</p>
 <h4 id="get_retraction">GET_RETRACTION<a class="headerlink" href="#get_retraction" title="Permanent link">&para;</a></h4>
 <p><code>GET_RETRACTION</code>: Queries the current parameters used by firmware
 retraction and displays them on the terminal.</p>
@@ -5100,12 +5173,16 @@ the filament load is complete.</p>
 in the config file.</p>
 <h4 id="pid_calibrate_1">PID_CALIBRATE<a class="headerlink" href="#pid_calibrate_1" title="Permanent link">&para;</a></h4>
 <p><code>PID_CALIBRATE HEATER=&lt;config_name&gt; TARGET=&lt;temperature&gt;
-[WRITE_FILE=1]</code>: Perform a PID calibration test. The specified heater
-will be enabled until the specified target temperature is reached, and
-then the heater will be turned off and on for several cycles. If the
-WRITE_FILE parameter is enabled, then the file /tmp/heattest.txt will
-be created with a log of all temperature samples taken during the
-test.</p>
+[WRITE_FILE=1]</code>: Perform a PID calibration test. The
+specified heater will be enabled until the specified target temperature
+is reached, and then the heater will be turned off and on for several
+cycles. If the WRITE_FILE parameter is enabled, then the file
+/tmp/heattest.txt will be created with a log of all temperature samples
+taken during the test. TOLERANCE defaults to 0.02 if not passed in. The
+tighter the tolerance the better the calibration result will be, but how
+tight you can achieve depends on how clean your sensor readings are. low
+noise readings might allow 0.01, to be used, while noisy reading might
+require a value of 0.03 or higher.</p>
 <h3 id="pause_resume">[pause_resume]<a class="headerlink" href="#pause_resume" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the
 <a href="Config_Reference.html#pause_resume">pause_resume config section</a> is
@@ -5458,6 +5535,13 @@ three possible combinations of options:</p>
   You can simply count bands or read tuning tower labels to determine
   the optimum value.</li>
 </ul>
+<h3 id="virtual_pins">[virtual_pins]<a class="headerlink" href="#virtual_pins" title="Permanent link">&para;</a></h3>
+<p>The following command is available when a
+<a href="Config_Reference.html#virtual_pins">virtual_pins config section</a> is
+enabled.</p>
+<h4 id="set_virtual_pin">SET_VIRTUAL_PIN<a class="headerlink" href="#set_virtual_pin" title="Permanent link">&para;</a></h4>
+<p><code>SET_VIRTUAL_PIN PIN=&lt;virtual_pin_name&gt; VALUE=&lt;value&gt;</code>: This will
+alter the value of the specified virtual pin.</p>
 <h3 id="virtual_sdcard">[virtual_sdcard]<a class="headerlink" href="#virtual_sdcard" title="Permanent link">&para;</a></h3>
 <p>Klipper supports the following standard G-Code commands if the
 <a href="Config_Reference.html#virtual_sdcard">virtual_sdcard config section</a> is
