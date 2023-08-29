@@ -13,7 +13,7 @@
     
     
       
-        <title>PID - Klipper documentation</title>
+        <title>Axis Twist Compensation - Klipper documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pid" class="md-skip">
+        <a href="#axis-twist-compensation" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              PID
+              Axis Twist Compensation
             
           </span>
         </div>
@@ -381,12 +381,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
       
       
@@ -496,12 +498,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_4" type="checkbox" id="__nav_7_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_4" type="checkbox" id="__nav_7_4" checked>
       
       
       
@@ -611,6 +615,68 @@
       <a href="Endstop_Phase.html" class="md-nav__link">
         Endstop phase
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Axis Twist Compensation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="Axis_Twist_Compensation.html" class="md-nav__link md-nav__link--active">
+        Axis Twist Compensation
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview-of-compensation-usage" class="md-nav__link">
+    Overview of compensation usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#axis_twist_compensation-setup-and-commands" class="md-nav__link">
+    [axis_twist_compensation] setup and commands
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1239,29 +1305,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#history" class="md-nav__link">
-    History
+  <a href="#overview-of-compensation-usage" class="md-nav__link">
+    Overview of compensation usage
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#pid-calibration" class="md-nav__link">
-    PID Calibration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pid-control-parameters" class="md-nav__link">
-    Pid Control Parameters
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pid-control-algorithms" class="md-nav__link">
-    Pid Control Algorithms
+  <a href="#axis_twist_compensation-setup-and-commands" class="md-nav__link">
+    [axis_twist_compensation] setup and commands
   </a>
   
 </li>
@@ -1278,95 +1330,56 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/Klipper3d/klipper/blob/master/docs/PID.md" title="Edit this page" class="md-content__button md-icon">
+<a href="https://github.com/Klipper3d/klipper/blob/master/docs/Axis_Twist_Compensation.md" title="Edit this page" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-<h1 id="pid">PID<a class="headerlink" href="#pid" title="Permanent link">&para;</a></h1>
-<p>PID control is a widely used control method in the 3D printing world.
-It’s ubiquitous when it comes to temperature control, be it with heaters to
-generate or fans to remove heat. This document aims to provide a high-level
-overview of what PID is and how to use it best in Klipper.</p>
-<h2 id="history">History<a class="headerlink" href="#history" title="Permanent link">&para;</a></h2>
-<p>The first rudimentary PID controller was developed by Elmer Sperry in 1911 to
-automate the control of a ship's rudder. Engineer Nicolas Minorsky published the
-first mathematical analysis of a PID controller in 1922. In 1942, John Ziegler &amp;
-Nathaniel Nichols published their seminal paper, "Optimum Settings for Automatic
-Controllers," which described a trial-and-error method for tuning a PID
-controller, now commonly referred to as the "Ziegler-Nichols method.</p>
-<p>In 1984, Karl Astrom and Tore Hagglund published their paper "Automatic Tuning
-of Simple Regulators with Specifications on Phase and Amplitude Margins". In the
-paper they introduced an automatic tuning method commonly referred to as the
-"Astrom-Hagglund method" or the "relay method".</p>
-<p>In 2019 Brandon Taysom &amp; Carl Sorensen published their paper "Adaptive Relay
-Autotuning under Static and Non-static Disturbances with Application to
-Friction Stir Welding", which laid out a method to generate more accurate
-results from a relay test. This is the PID calibration method currently used by
-Klipper.</p>
-<h2 id="pid-calibration">PID Calibration<a class="headerlink" href="#pid-calibration" title="Permanent link">&para;</a></h2>
-<p>As previously mentioned, Klipper uses a relay test for calibration purposes. A
-standard relay test is conceptually simple. You turn the heater’s power on and
-off to get it to oscillate about the target temperature, as seen in the
-following graph.</p>
-<p><img alt="simple relay test" src="img/pid_01.png" /></p>
-<p>The above graph shows a common issue with a standard relay test. If the system
-being calibrated has too much or too little power for the chosen target
-temperature, it will produce biased and asymmetric results. As can be seen
-above, the system spends more time in the off state than on and has a larger
-amplitude above the target temperature than below.</p>
-<p>In an ideal system, both the on and off times and the amplitude above and below
-the target temperature would be the same. 3D printers don’t actively cool the
-hot end or bed, so they can never reach the ideal state.</p>
-<p>The following graph is a relay test based on the methodology laid out by
-Taysom &amp; Sorensen. After each iteration, the data is analyzed and a new maximum
-power setting is calculated. As can be seen, the system starts the test
-asymmetric but ends very symmetric.</p>
-<p><img alt="advanced relay test" src="img/pid_02.png" /></p>
-<p>A topic that’s not often discussed in the 3D printing community is the
-conditions in which calibration should be performed. When a calibration test is
-performed external variables should be minimized as much as possible, as the
-goal of the test is to model the system in a steady-state condition and free of
-external disturbances. For example, if you are calibrating a hot end, you do
-not want a bed or chamber heater actively heating up or cooling down. You want
-them off, or holding at their target temperature. Part cooling and chamber fans
-can also be problematic, as they can cause temperature fluctuations in the hot
-end.</p>
-<h2 id="pid-control-parameters">Pid Control Parameters<a class="headerlink" href="#pid-control-parameters" title="Permanent link">&para;</a></h2>
-<p>Many methods exist for calculating control parameters, such as Ziegler-Nichols,
-Cohen-Coon, Kappa-Tau, Lambda, and many more. By default, classical
-Ziegler-Nichols parameters are generated. If A user wants to experiment with
-other flavors of Ziegler-Nichols, or Cohen-Coon parameters, they can extract the
-constants from the log as seen below and enter them into this
-<a href="resources/pid_params.xls">spreadsheet</a>.</p>
-<div class="highlight"><pre><span></span><code>Ziegler-Nichols constants: Ku=0.103092 Tu=41.800000
-Cohen-Coon constants: Km=-17.734845 Theta=6.600000 Tau=-10.182680
-</code></pre></div>
-
-<p>Classic Ziegler-Nichols parameters work in all scenarios. Cohen-Coon parameters
-work better with systems that have a large amount of dead time/delay. For
-example, if a printer has a bed with a large thermal mass that’s slow to heat
-up and stabilize, the Cohen-Coon parameters will generally do a better job at
-controlling it.</p>
-<h2 id="pid-control-algorithms">Pid Control Algorithms<a class="headerlink" href="#pid-control-algorithms" title="Permanent link">&para;</a></h2>
-<p>Klipper currently supports two control algorithms: Positional and Velocity.
-The fundamental difference between the two algorithms is that the Positional
-algorithm calculates what the PWM value should be for the current time
-interval, and the Velocity algorithm calculates how much the previous PWM
-setting should be changed to get the PWM value for the current time interval.</p>
-<p>Positional is the default algorithm, as it will work in every scenario. The
-Velocity algorithm can provide superior results to the Positional algorithm but
-requires lower noise sensor readings, or a larger smoothing time setting.</p>
-<p>The most noticeable difference between the two algorithms is that for the same
-configuration parameters, velocity control will eliminate or drastically reduce
-overshoot, as seen in the graphs below, as it isn’t susceptible to integral
-wind-up.</p>
-<p><img alt="algorithm comparison" src="img/pid_03.png" /></p>
-<p><img alt="zoomed algorithm comparison" src="img/pid_04.png" /></p>
-<p>In some scenarios Velocity control will also be better at holding the heater at
-its target temperature, and rejecting disturbances. The primary reason for this
-is that velocity control is more like a standard second order differential
-equation. It takes into account position, velocity, and acceleration.</p>
+<h1 id="axis-twist-compensation">Axis Twist Compensation<a class="headerlink" href="#axis-twist-compensation" title="Permanent link">&para;</a></h1>
+<p>This document describes the [axis_twist_compensation] module.</p>
+<p>Some printers may have a small twist in their X rail which can skew the results
+of a probe attached to the X carriage.
+This is common in printers with designs like the Prusa MK3, Sovol SV06 etc and is
+further described under <a href="Probe_Calibrate.html#location-bias-check">probe location
+bias</a>. It may result in
+probe operations such as <a href="Bed_Mesh.html">Bed Mesh</a>,
+<a href="G-Codes.html#screws_tilt_adjust">Screws Tilt Adjust</a>,
+<a href="G-Codes.html#z_tilt_adjust">Z Tilt Adjust</a> etc returning inaccurate
+representations of the bed.</p>
+<p>This module uses manual measurements by the user to correct the probe's results.
+Note that if your axis is significantly twisted it is strongly recommended to
+first use mechanical means to fix it prior to applying software corrections.</p>
+<p><strong>Warning</strong>: This module is not compatible with dockable probes yet and will
+try to probe the bed without attaching the probe if you use it.</p>
+<h2 id="overview-of-compensation-usage">Overview of compensation usage<a class="headerlink" href="#overview-of-compensation-usage" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>Tip:</strong> Make sure the <a href="Config_Reference.html#probe">probe X and Y offsets</a> are
+correctly set as they greatly influence calibration.</p>
+</blockquote>
+<ol>
+<li>After setting up the [axis_twist_compensation] module,
+perform <code>AXIS_TWIST_COMPENSATION_CALIBRATE</code>
+* The calibration wizard will prompt you to measure the probe Z offset at a few
+points along the bed
+* The calibration defaults to 3 points but you can use the option
+<code>SAMPLE_COUNT=</code> to use a different number.</li>
+<li><a href="Probe_Calibrate.html#calibrating-probe-z-offset">Adjust your Z offset</a></li>
+<li>Perform automatic/probe-based bed tramming operations, such as
+<a href="G-Codes.html#screws_tilt_adjust">Screws Tilt Adjust</a>,
+<a href="G-Codes.html#z_tilt_adjust">Z Tilt Adjust</a> etc</li>
+<li>Home all axis, then perform a <a href="Bed_Mesh.html">Bed Mesh</a> if required</li>
+<li>Perform a test print, followed by any
+<a href="Axis_Twist_Compensation.html#fine-tuning">fine-tuning</a> as desired</li>
+</ol>
+<blockquote>
+<p><strong>Tip:</strong> Bed temperature and nozzle temperature and size do not seem to have
+an influence to the calibration process.</p>
+</blockquote>
+<h2 id="axis_twist_compensation-setup-and-commands">[axis_twist_compensation] setup and commands<a class="headerlink" href="#axis_twist_compensation-setup-and-commands" title="Permanent link">&para;</a></h2>
+<p>Configuration options for [axis_twist_compensation] can be found in the
+<a href="Config_Reference.html#axis_twist_compensation">Configuration Reference</a>.</p>
+<p>Commands for [axis_twist_compensation] can be found in the
+<a href="G-Codes.html#axis_twist_compensation">G-Codes Reference</a></p>
 
               
             </article>
@@ -1381,6 +1394,41 @@ equation. It takes into account position, velocity, and acceleration.</p>
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="Endstop_Phase.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Endstop phase" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Endstop phase
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="Resonance_Compensation.html" class="md-footer__link md-footer__link--next" aria-label="Next: Resonance Compensation" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Resonance Compensation
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
