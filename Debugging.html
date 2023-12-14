@@ -1087,13 +1087,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#using-virtual-pins" class="md-nav__link">
-    Using virtual-pins
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1260,6 +1253,20 @@
   
   
     <li class="md-nav__item">
+      <a href="Bootloader_Entry.html" class="md-nav__link">
+        Bootloader Entry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="CANBUS.html" class="md-nav__link">
         CANBUS
       </a>
@@ -1410,13 +1417,6 @@
           <li class="md-nav__item">
   <a href="#using-simulavr-with-gtkwave" class="md-nav__link">
     Using simulavr with gtkwave
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#using-virtual-pins" class="md-nav__link">
-    Using virtual-pins
   </a>
   
 </li>
@@ -1663,15 +1663,6 @@ change to the GPIOs on PORTA and PORTB. This could then be viewed
 using gtkwave with:</p>
 <div class="highlight"><pre><span></span><code>gtkwave avrsim.vcd
 </code></pre></div>
-
-<h3 id="using-virtual-pins">Using virtual-pins<a class="headerlink" href="#using-virtual-pins" title="Permanent link">&para;</a></h3>
-<p>The AVR atmega644p has a total of 40 pins, but only 30 of those can actually be
-used in Klipper (with 8 ADC capable).</p>
-<p>If you need more pins, you can use add a
-<a href="Config_Reference.html#virtual_pins">virtual_pins config section</a> and start using
-<code>virtual_pin:&lt;name&gt;</code> as the pin name.</p>
-<p>The virtual pins can be modified at run-time using the
-<a href="G-Codes.html#set_virtual_pin">SET_VIRTUAL_PIN command</a>.</p>
 
               
             </article>

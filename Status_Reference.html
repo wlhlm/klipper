@@ -894,6 +894,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#gcode" class="md-nav__link">
+    gcode
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#gcode_button" class="md-nav__link">
     gcode_button
   </a>
@@ -1085,13 +1092,6 @@
         <li class="md-nav__item">
   <a href="#dual_carriage" class="md-nav__link">
     dual_carriage
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#virtual_pins" class="md-nav__link">
-    virtual_pins
   </a>
   
 </li>
@@ -1508,6 +1508,20 @@
   
   
     <li class="md-nav__item">
+      <a href="Bootloader_Entry.html" class="md-nav__link">
+        Bootloader Entry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="CANBUS.html" class="md-nav__link">
         CANBUS
       </a>
@@ -1685,6 +1699,13 @@
         <li class="md-nav__item">
   <a href="#firmware_retraction" class="md-nav__link">
     firmware_retraction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gcode" class="md-nav__link">
+    gcode
   </a>
   
 </li>
@@ -1881,13 +1902,6 @@
         <li class="md-nav__item">
   <a href="#dual_carriage" class="md-nav__link">
     dual_carriage
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#virtual_pins" class="md-nav__link">
-    virtual_pins
   </a>
   
 </li>
@@ -2102,9 +2116,15 @@ objects:</p>
 <a href="Config_Reference.html#firmware_retraction">firmware_retraction</a> object:</p>
 <ul>
 <li><code>retract_length</code>, <code>retract_speed</code>, <code>unretract_extra_length</code>,
-  <code>unretract_speed</code>, <code>lift_z</code>: The current settings for the
-  firmware_retraction module. These settings may differ from the
-  config file if a <code>SET_RETRACTION</code> command alters them.</li>
+  <code>unretract_speed</code>: The current settings for the firmware_retraction
+  module. These settings may differ from the config file if a
+  <code>SET_RETRACTION</code> command alters them.</li>
+</ul>
+<h2 id="gcode">gcode<a class="headerlink" href="#gcode" title="Permanent link">&para;</a></h2>
+<p>The following information is available in the <code>gcode</code> object:</p>
+<ul>
+<li><code>commands</code>: Returns a list of all currently available commands. For each
+  command, if a help string is defined it will also be provided.</li>
 </ul>
 <h2 id="gcode_button">gcode_button<a class="headerlink" href="#gcode_button" title="Permanent link">&para;</a></h2>
 <p>The following information is available in
@@ -2255,7 +2275,8 @@ is defined):</p>
 </ul>
 <h2 id="output_pin">output_pin<a class="headerlink" href="#output_pin" title="Permanent link">&para;</a></h2>
 <p>The following information is available in
-<a href="Config_Reference.html#output_pin">output_pin some_name</a> objects:</p>
+<a href="Config_Reference.html#output_pin">output_pin some_name</a> and
+<a href="Config_Reference.html#pwm_tool">pwm_tool some_name</a> objects:</p>
 <ul>
 <li><code>value</code>: The "value" of the pin, as set by a <code>SET_PIN</code> command.</li>
 </ul>
@@ -2453,13 +2474,6 @@ on a cartesian, hybrid_corexy or hybrid_corexz robot</p>
   "INACTIVE" and "PRIMARY".</li>
 <li><code>carriage_1</code>: The mode of the carriage 1. Possible values are:
   "INACTIVE", "PRIMARY", "COPY", and "MIRROR".</li>
-</ul>
-<h2 id="virtual_pins">virtual_pins<a class="headerlink" href="#virtual_pins" title="Permanent link">&para;</a></h2>
-<p>The following information is available in the
-<a href="Config_Reference.html#virtual_pins">virtual_pins</a> object:</p>
-<ul>
-<li><code>pins</code>: Returns a dictionary containing the pin name and the value.
-  Additional fields may be available depending on the type of pin.</li>
 </ul>
 <h2 id="virtual_sdcard">virtual_sdcard<a class="headerlink" href="#virtual_sdcard" title="Permanent link">&para;</a></h2>
 <p>The following information is available in the
