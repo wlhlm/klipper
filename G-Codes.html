@@ -9,7 +9,7 @@
       
       
       <link rel="icon" href="img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
+      <meta name="generator" content="mkdocs-1.2.4, mkdocs-material-8.1.3">
     
     
       
@@ -1861,6 +1861,26 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#pwm_cycle_time" class="md-nav__link">
+    [pwm_cycle_time]
+  </a>
+  
+    <nav class="md-nav" aria-label="[pwm_cycle_time]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set_pin_1" class="md-nav__link">
+    SET_PIN
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#query_adc" class="md-nav__link">
     [query_adc]
   </a>
@@ -2228,26 +2248,6 @@
           <li class="md-nav__item">
   <a href="#tuning_tower_1" class="md-nav__link">
     TUNING_TOWER
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#virtual_pins" class="md-nav__link">
-    [virtual_pins]
-  </a>
-  
-    <nav class="md-nav" aria-label="[virtual_pins]">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#set_virtual_pin" class="md-nav__link">
-    SET_VIRTUAL_PIN
   </a>
   
 </li>
@@ -4006,6 +4006,26 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#pwm_cycle_time" class="md-nav__link">
+    [pwm_cycle_time]
+  </a>
+  
+    <nav class="md-nav" aria-label="[pwm_cycle_time]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set_pin_1" class="md-nav__link">
+    SET_PIN
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#query_adc" class="md-nav__link">
     [query_adc]
   </a>
@@ -4373,26 +4393,6 @@
           <li class="md-nav__item">
   <a href="#tuning_tower_1" class="md-nav__link">
     TUNING_TOWER
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#virtual_pins" class="md-nav__link">
-    [virtual_pins]
-  </a>
-  
-    <nav class="md-nav" aria-label="[virtual_pins]">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#set_virtual_pin" class="md-nav__link">
-    SET_VIRTUAL_PIN
   </a>
   
 </li>
@@ -4934,20 +4934,17 @@ retraction required.</p>
 <p>The following additional commands are also available.</p>
 <h4 id="set_retraction">SET_RETRACTION<a class="headerlink" href="#set_retraction" title="Permanent link">&para;</a></h4>
 <p><code>SET_RETRACTION [RETRACT_LENGTH=&lt;mm&gt;] [RETRACT_SPEED=&lt;mm/s&gt;]
-[UNRETRACT_EXTRA_LENGTH=&lt;mm&gt;] [UNRETRACT_SPEED=&lt;mm/s&gt;] [LIFT_Z=&lt;mm&gt;]</code>:
-Adjust the parameters used by firmware retraction. RETRACT_LENGTH
-determines the length of filament to retract and unretract. The
-speed of retraction is adjusted via RETRACT_SPEED, and is typically
-set relatively high. The speed of unretraction is adjusted via
-UNRETRACT_SPEED, and is not particularly critical, although often
-lower than RETRACT_SPEED. In some cases it is useful to add a small
-amount of additional length on unretraction, and this is set via
-UNRETRACT_EXTRA_LENGTH. Specifying LIFT_Z enables lifting of the
-toolhead upon every retract (and subsequent dropping upon unretract)
-to prevent the nozzle from dragging across surfaces or catching on
-the print. SET_RETRACTION is commonly set as part of slicer
-per-filament configuration, as different filaments require different
-parameter settings.</p>
+[UNRETRACT_EXTRA_LENGTH=&lt;mm&gt;] [UNRETRACT_SPEED=&lt;mm/s&gt;]</code>: Adjust the
+parameters used by firmware retraction. RETRACT_LENGTH determines the
+length of filament to retract and unretract. The speed of retraction
+is adjusted via RETRACT_SPEED, and is typically set relatively
+high. The speed of unretraction is adjusted via UNRETRACT_SPEED, and
+is not particularly critical, although often lower than RETRACT_SPEED.
+In some cases it is useful to add a small amount of additional length
+on unretraction, and this is set via UNRETRACT_EXTRA_LENGTH.
+SET_RETRACTION is commonly set as part of slicer per-filament
+configuration, as different filaments require different parameter
+settings.</p>
 <h4 id="get_retraction">GET_RETRACTION<a class="headerlink" href="#get_retraction" title="Permanent link">&para;</a></h4>
 <p><code>GET_RETRACTION</code>: Queries the current parameters used by firmware
 retraction and displays them on the terminal.</p>
@@ -5219,16 +5216,10 @@ commands to manage the LED's color settings).</p>
 <a href="Config_Reference.html#pwm_tool">pwm_tool config section</a> is
 enabled.</p>
 <h4 id="set_pin">SET_PIN<a class="headerlink" href="#set_pin" title="Permanent link">&para;</a></h4>
-<p><code>SET_PIN PIN=config_name VALUE=&lt;value&gt; [CYCLE_TIME=&lt;cycle_time&gt;]</code>: Set
-the pin to the given output <code>VALUE</code>. VALUE should be 0 or 1 for
-"digital" output pins. For PWM pins, set to a value between 0.0 and
-1.0, or between 0.0 and <code>scale</code> if a scale is configured in the
-output_pin config section.</p>
-<p>Some pins (currently only "soft PWM" pins) support setting an explicit
-cycle time using the CYCLE_TIME parameter (specified in seconds). Note
-that the CYCLE_TIME parameter is not stored between SET_PIN commands
-(any SET_PIN command without an explicit CYCLE_TIME parameter will use
-the <code>cycle_time</code> specified in the output_pin config section).</p>
+<p><code>SET_PIN PIN=config_name VALUE=&lt;value&gt;</code>: Set the pin to the given
+output <code>VALUE</code>. VALUE should be 0 or 1 for "digital" output pins. For
+PWM pins, set to a value between 0.0 and 1.0, or between 0.0 and
+<code>scale</code> if a scale is configured in the output_pin config section.</p>
 <h3 id="palette2">[palette2]<a class="headerlink" href="#palette2" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the
 <a href="Config_Reference.html#palette2">palette2 config section</a> is enabled.</p>
@@ -5262,16 +5253,12 @@ the filament load is complete.</p>
 in the config file.</p>
 <h4 id="pid_calibrate_1">PID_CALIBRATE<a class="headerlink" href="#pid_calibrate_1" title="Permanent link">&para;</a></h4>
 <p><code>PID_CALIBRATE HEATER=&lt;config_name&gt; TARGET=&lt;temperature&gt;
-[WRITE_FILE=1]</code>: Perform a PID calibration test. The
-specified heater will be enabled until the specified target temperature
-is reached, and then the heater will be turned off and on for several
-cycles. If the WRITE_FILE parameter is enabled, then the file
-/tmp/heattest.txt will be created with a log of all temperature samples
-taken during the test. TOLERANCE defaults to 0.02 if not passed in. The
-tighter the tolerance the better the calibration result will be, but how
-tight you can achieve depends on how clean your sensor readings are. low
-noise readings might allow 0.01, to be used, while noisy reading might
-require a value of 0.03 or higher.</p>
+[WRITE_FILE=1]</code>: Perform a PID calibration test. The specified heater
+will be enabled until the specified target temperature is reached, and
+then the heater will be turned off and on for several cycles. If the
+WRITE_FILE parameter is enabled, then the file /tmp/heattest.txt will
+be created with a log of all temperature samples taken during the
+test.</p>
 <h3 id="pause_resume">[pause_resume]<a class="headerlink" href="#pause_resume" title="Permanent link">&para;</a></h3>
 <p>The following commands are available when the
 <a href="Config_Reference.html#pause_resume">pause_resume config section</a> is
@@ -5334,6 +5321,18 @@ direction as well as Z.</p>
 babystepping), and subtract if from the probe's z_offset.  This acts
 to take a frequently used babystepping value, and "make it permanent".
 Requires a <code>SAVE_CONFIG</code> to take effect.</p>
+<h3 id="pwm_cycle_time">[pwm_cycle_time]<a class="headerlink" href="#pwm_cycle_time" title="Permanent link">&para;</a></h3>
+<p>The following command is available when a
+<a href="Config_Reference.html#pwm_cycle_time">pwm_cycle_time config section</a>
+is enabled.</p>
+<h4 id="set_pin_1">SET_PIN<a class="headerlink" href="#set_pin_1" title="Permanent link">&para;</a></h4>
+<p><code>SET_PIN PIN=config_name VALUE=&lt;value&gt; [CYCLE_TIME=&lt;cycle_time&gt;]</code>:
+This command works similarly to <a href="#output_pin">output_pin</a> SET_PIN
+commands. The command here supports setting an explicit cycle time
+using the CYCLE_TIME parameter (specified in seconds). Note that the
+CYCLE_TIME parameter is not stored between SET_PIN commands (any
+SET_PIN command without an explicit CYCLE_TIME parameter will use the
+<code>cycle_time</code> specified in the pwm_cycle_time config section).</p>
 <h3 id="query_adc">[query_adc]<a class="headerlink" href="#query_adc" title="Permanent link">&para;</a></h3>
 <p>The query_adc module is automatically loaded.</p>
 <h4 id="query_adc_1">QUERY_ADC<a class="headerlink" href="#query_adc_1" title="Permanent link">&para;</a></h4>
@@ -5627,13 +5626,6 @@ three possible combinations of options:</p>
   You can simply count bands or read tuning tower labels to determine
   the optimum value.</li>
 </ul>
-<h3 id="virtual_pins">[virtual_pins]<a class="headerlink" href="#virtual_pins" title="Permanent link">&para;</a></h3>
-<p>The following command is available when a
-<a href="Config_Reference.html#virtual_pins">virtual_pins config section</a> is
-enabled.</p>
-<h4 id="set_virtual_pin">SET_VIRTUAL_PIN<a class="headerlink" href="#set_virtual_pin" title="Permanent link">&para;</a></h4>
-<p><code>SET_VIRTUAL_PIN PIN=&lt;virtual_pin_name&gt; VALUE=&lt;value&gt;</code>: This will
-alter the value of the specified virtual pin.</p>
 <h3 id="virtual_sdcard">[virtual_sdcard]<a class="headerlink" href="#virtual_sdcard" title="Permanent link">&para;</a></h3>
 <p>Klipper supports the following standard G-Code commands if the
 <a href="Config_Reference.html#virtual_sdcard">virtual_sdcard config section</a> is
